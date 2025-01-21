@@ -1,0 +1,113 @@
+{
+  "format": 1,
+  "restore": {
+    "/home/olex/Рабочий стол/Projects/CryptoPro_C#/21 (копия).01.2025 13_40/CryptoCore_C#/CryptoCore.csproj": {}
+  },
+  "projects": {
+    "/home/olex/Рабочий стол/Projects/CryptoPro_C#/21 (копия).01.2025 13_40/CryptoCore_C#/CryptoCore.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/olex/Рабочий стол/Projects/CryptoPro_C#/21 (копия).01.2025 13_40/CryptoCore_C#/CryptoCore.csproj",
+        "projectName": "CryptoCore",
+        "projectPath": "/home/olex/Рабочий стол/Projects/CryptoPro_C#/21 (копия).01.2025 13_40/CryptoCore_C#/CryptoCore.csproj",
+        "packagesPath": "/home/olex/.nuget/packages/",
+        "outputPath": "/home/olex/Рабочий стол/Projects/CryptoPro_C#/21 (копия).01.2025 13_40/CryptoCore_C#/obj/",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "/usr/lib64/dotnet/sdk/NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "/home/olex/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "/home/olex/.nuget/NuGet/.local_package": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.100"
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "CryptoPro.Net.Security": {
+              "target": "Package",
+              "version": "[2024.11.19, )"
+            },
+            "CryptoPro.Security.Cryptography": {
+              "target": "Package",
+              "version": "[2024.11.19, )"
+            },
+            "CryptoPro.Security.Cryptography.Pkcs": {
+              "target": "Package",
+              "version": "[2024.11.19, )"
+            },
+            "CryptoPro.Security.Cryptography.Xml": {
+              "target": "Package",
+              "version": "[2024.11.19, )"
+            },
+            "Dapper": {
+              "target": "Package",
+              "version": "[2.1.35, )"
+            },
+            "Microsoft.Data.SqlClient": {
+              "target": "Package",
+              "version": "[5.2.2, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.3, )"
+            },
+            "Npgsql.EntityFrameworkCore.PostgreSQL": {
+              "target": "Package",
+              "version": "[9.0.2, )"
+            },
+            "System.Security.Cryptography.Algorithms": {
+              "target": "Package",
+              "version": "[4.3.1, )"
+            },
+            "System.Security.Cryptography.Pkcs": {
+              "target": "Package",
+              "version": "[9.0.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/lib64/dotnet/sdk/9.0.101/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

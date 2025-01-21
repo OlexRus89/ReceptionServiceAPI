@@ -1,0 +1,54 @@
+﻿{
+	"CoreName": "Ядро для работы с сервисом приема",
+	"Version": "1.0",
+	"AppSetting": {
+		"URLs": [
+			{
+				"UrlName": "Test",
+				"Url": "http://85.142.162.22:8100"
+			},
+			{
+				"UrlName": "Base",
+				"Url": "http://10.3.60.3:8100"
+			}
+		],
+		"StartupURL": "Test",
+		"ConnectionStrings": [
+			{
+				"Name": "ReceptionService",
+				"ProviderName": "System.Data.SqlClient",
+				"ConnectionString": "Data Source=DESKTOP-M3NSDVB;Initial Catalog=ReceptionService;Integrated Security=True;Encrypt=False"
+			},
+			{
+				"Name": "dekanat",
+				"ProviderName": "System.Data.SqlClient",
+				"ConnectionString": "server=192.168.2.2; database=dekanat;user id=sservice;password=q1w2e3;Integrated Security = false;"
+			},
+			{
+				"Name": "dekanat1",
+				"ProviderName": "System.Data.SqlClient",
+				"ConnectionString": "server=192.168.2.2; database=dekanat;Integrated Security = SSPI;"
+			}
+		],
+		"StartupSQLForAPI": "ReceptionService",
+		"StartupSQLForClient": "dekanat",
+		"Ogrn": "1022601961580",
+		"Kpp": [
+			{
+				"NameKpp": "СКФУ",
+				"KppOrganization": "263401001"
+			},
+			{
+				"NameKpp": "Пятигорский филиал, СКФУ",
+				"KppOrganization": "263202001"
+			},
+			{
+				"NameKpp": "Невинномысский технический институт, СКФУ",
+				"KppOrganization": "263102001"
+			}
+		],
+		"CerificateName": "ФЕДЕРАЛЬНЫЙ",
+		"Key": "SuperService_NCFU",
+		"Source": "Ядро Сервиса приема"
+	}
+}
