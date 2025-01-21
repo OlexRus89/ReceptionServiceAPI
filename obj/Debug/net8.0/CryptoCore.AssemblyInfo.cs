@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CryptoCore")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+38a8f7a3e1637b429cb7ce3a9c4ce18a58b5451b")]
 [assembly: System.Reflection.AssemblyProductAttribute("CryptoCore")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CryptoCore")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
