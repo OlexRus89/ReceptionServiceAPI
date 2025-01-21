@@ -256,12 +256,20 @@ namespace ReceptionServiceCore.Controller
             return Encoding.UTF8.GetString(Convert.FromBase64String(data.Item1.Token.Split('.')[1]));
         }
 
-        internal async Task<int> Test()
+        /// <summary>
+        /// Проверка работоспособности БД
+        /// </summary>
+        /// <returns></returns>
+        public async Task<int> Test()
         {
             return await Manager.Test();
         }
 
-        internal async Task SendTokens()
+        /// <summary>
+        /// Отправка токенов в ССПВО (Автоматизированная версия)
+        /// </summary>
+        /// <returns></returns>
+        public async Task SendTokens()
         {
             IEnumerable<GetTokenModel> tokens = await Manager.GetTokens();
             foreach (var item in tokens)
@@ -276,7 +284,16 @@ namespace ReceptionServiceCore.Controller
             if (tokens.Count() == 0) Console.WriteLine("Очередь на отправку пуста!"); Console.WriteLine();
         }
 
-        internal async Task GetTokens()
+        public async Task<int> CreateIdObject()
+        {
+            return await Manager.CreateIdObject();
+        }
+
+        /// <summary>
+        /// Принятия результатов токенов из ССПВО (Автоматизированная версия)
+        /// </summary>
+        /// <returns></returns>
+        public async Task GetTokens()
         {
             IEnumerable<GetTokenModel> tokens = await Manager.GetTokens(true);
             foreach (var item in tokens)
@@ -310,7 +327,10 @@ namespace ReceptionServiceCore.Controller
             if (tokens.Count() == 0) Console.WriteLine("Очередь на принятия данных пуста!"); Console.WriteLine();
         }
 
-        internal void SetupDataInDB()
+        /// <summary>
+        /// Дабавления таблиц, данные и хранимые процедуры в БД
+        /// </summary>
+        public void SetupDataInDB()
         {
             bool isLoadCls = false;
             Console.WriteLine("Данный сервис предназначен для добавления необходимых таблиц и хранимых процедур ");

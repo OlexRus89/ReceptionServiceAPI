@@ -85,7 +85,7 @@ namespace ReceptionServiceCore.DB
         /// Создание IdObject
         /// </summary>
         /// <returns>Числовое значение объекта</returns>
-        public async Task<int> CreateIdObject()
+        internal async Task<int> CreateIdObject()
         {
             return await Concrete.ExecFirstOfDefault<int>("[dbo].[GetIdObject]");
         }
@@ -104,7 +104,7 @@ namespace ReceptionServiceCore.DB
         /// <param name="Payload">Данные для отправки в СП</param>
         /// <param name="Result">Результат из СП</param>
         /// <returns>Числовое значение объекта</returns>
-        public async Task CreateToken(int Status, int IdObject, string? Action = null, string? Entity = null, string? Ogrn = null, string? Kpp = null, string? Payload = null, string? Result = null)
+        internal async Task CreateToken(int Status, int IdObject, string? Action = null, string? Entity = null, string? Ogrn = null, string? Kpp = null, string? Payload = null, string? Result = null)
         {
             await Concrete.Exec("[dbo].[InsertToken]", new { IdObject, Status, Action, Entity, Ogrn, Kpp, Payload, Result });
         }

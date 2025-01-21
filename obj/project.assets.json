@@ -4646,29 +4646,28 @@
     ]
   },
   "packageFolders": {
-    "/home/olex/.nuget/packages/": {},
-    "/usr/lib64/dotnet/sdk/NuGetFallbackFolder": {}
+    "C:\\Users\\D-302020900060\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/olex/Рабочий стол/Projects/CryptoPro_C#/21 (копия).01.2025 13_40/CryptoCore_C#/CryptoCore.csproj",
+      "projectUniqueName": "C:\\Users\\D-302020900060\\Desktop\\Готовые проекты\\ReceptionServiceAPI\\ReceptionServiceAPI\\CryptoCore.csproj",
       "projectName": "CryptoCore",
-      "projectPath": "/home/olex/Рабочий стол/Projects/CryptoPro_C#/21 (копия).01.2025 13_40/CryptoCore_C#/CryptoCore.csproj",
-      "packagesPath": "/home/olex/.nuget/packages/",
-      "outputPath": "/home/olex/Рабочий стол/Projects/CryptoPro_C#/21 (копия).01.2025 13_40/CryptoCore_C#/obj/",
+      "projectPath": "C:\\Users\\D-302020900060\\Desktop\\Готовые проекты\\ReceptionServiceAPI\\ReceptionServiceAPI\\CryptoCore.csproj",
+      "packagesPath": "C:\\Users\\D-302020900060\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\D-302020900060\\Desktop\\Готовые проекты\\ReceptionServiceAPI\\ReceptionServiceAPI\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "/usr/lib64/dotnet/sdk/NuGetFallbackFolder"
-      ],
       "configFilePaths": [
-        "/home/olex/.nuget/NuGet/NuGet.Config"
+        "C:\\Users\\D-302020900060\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
       ],
       "sources": {
-        "/home/olex/.nuget/NuGet/.local_package": {},
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
+        "C:\\Users\\D-302020900060\\Documents\\Nugets": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -4685,7 +4684,7 @@
       "restoreAuditProperties": {
         "enableAudit": "true",
         "auditLevel": "low",
-        "auditMode": "direct"
+        "auditMode": "all"
       },
       "SdkAnalysisLevel": "9.0.100"
     },
@@ -4745,12 +4744,26 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
+        "downloadDependencies": [
+          {
+            "name": "Microsoft.AspNetCore.App.Ref",
+            "version": "[8.0.11, 8.0.11]"
+          },
+          {
+            "name": "Microsoft.NETCore.App.Ref",
+            "version": "[8.0.11, 8.0.11]"
+          },
+          {
+            "name": "Microsoft.WindowsDesktop.App.Ref",
+            "version": "[8.0.11, 8.0.11]"
+          }
+        ],
         "frameworkReferences": {
           "Microsoft.NETCore.App": {
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/lib64/dotnet/sdk/9.0.101/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.100/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

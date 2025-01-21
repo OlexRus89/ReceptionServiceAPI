@@ -3,6 +3,10 @@
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
+    <Version>1.0.0</Version>
+    <Author>Svidnitckii Alexey Dmitrievich</Author>
+    <Company>NCFU</Company>
+    <Product>Library ReceptionServiceAPI</Product>
     <Nullable>enable</Nullable>
   </PropertyGroup>
 

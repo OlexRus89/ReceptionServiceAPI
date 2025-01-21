@@ -10,11 +10,11 @@
 using System;
 using System.Reflection;
 
-[assembly: System.Reflection.AssemblyCompanyAttribute("CryptoCore")]
+[assembly: System.Reflection.AssemblyCompanyAttribute("NCFU")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
-[assembly: System.Reflection.AssemblyProductAttribute("CryptoCore")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ef2fba89070d8f7d222b96d9ad3e8b570a23ed22")]
+[assembly: System.Reflection.AssemblyProductAttribute("Library ReceptionServiceAPI")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CryptoCore")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
 
