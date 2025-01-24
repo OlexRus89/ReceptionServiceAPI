@@ -12,6 +12,7 @@ using ReceptionServiceCore.Models.JsonData;
 using CryptoPro.Security.Cryptography.X509Certificates;
 using CryptoPro.Security.Cryptography.Pkcs;
 using System.Security.Cryptography.Pkcs;
+using System.IO;
 
 namespace ReceptionServiceCore.Extensions
 {

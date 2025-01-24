@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Serialization;
 using ReceptionServiceCore.Models.ReceptionService;
+using System.IO;
 
 namespace ReceptionServiceCore.Extensions
 {

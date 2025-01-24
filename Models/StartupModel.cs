@@ -9,6 +9,7 @@ using System.ComponentModel.Design;
 using ReceptionServiceCore.Models.ReceptionService;
 using ReceptionServiceCore.Models.ReceptionService.Own;
 using Microsoft.IdentityModel.Tokens;
+using System.IO;
 
 namespace ReceptionServiceCore.Models
 {
