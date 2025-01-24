@@ -3,4 +3,4 @@ obj/Debug/
 obj/Release
 bin/Debug/net8.0
 bin/Release/net8.0
-Program
+Program.cs
