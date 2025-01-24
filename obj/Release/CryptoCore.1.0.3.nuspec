@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
   <metadata>
     <id>CryptoCore</id>
-    <version>1.0.0</version>
+    <version>1.0.3</version>
     <authors>CryptoCore</authors>
     <description>Package Description</description>
     <repository type="git" commit="95abbe266bc9593b7d17373e0ce92f5bfcbe1a80" />

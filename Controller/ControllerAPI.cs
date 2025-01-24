@@ -6,6 +6,7 @@ using System.Reflection.Metadata.Ecma335;
 using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+using ReceptionServiceAPI.Models.JsonData;
 using ReceptionServiceCore.DB;
 using ReceptionServiceCore.Extensions;
 using ReceptionServiceCore.Models;
@@ -47,62 +48,53 @@ namespace ReceptionServiceCore.Controller
         }
 
         /// <summary>
-        /// Внесение справочников
-        /// </summary>
-        /// <param name="Ogrn">Огрн организации (может пустым, берется из конфигуратора приложения первым)</param>
-        /// <param name="Kpp">Кпп организации (может пустым, берется из конфигуратора приложения первым)</param>
-        public void InsertCls(string? Ogrn = null, string? Kpp = null)
-        {
-            StringExtension strE = new StringExtension();
-            if (Ogrn == null) Ogrn = Startup.AppSetting.Ogrn;
-            if (Kpp == null) Kpp = Startup.AppSetting.Kpp.First().KppOrganization;
-            Manager.InsertCls(strE.GetType<AchievementCategoryCls>(), Network.SendRequesAsync<AchievementCategoryCls[]>(Point.ClsGet, new HeaderClsData() { Ogrn = Ogrn, Kpp = Kpp, Cls = strE.GetType<AchievementCategoryCls>() }, isCls: true).Item1 ?? []);
-            Manager.InsertCls(strE.GetType<AdmissionEventCls>(), Network.SendRequesAsync<AdmissionEventCls[]>(Point.ClsGet, new HeaderClsData() { Ogrn = Ogrn, Kpp = Kpp, Cls = strE.GetType<AdmissionEventCls>() }, isCls: true).Item1 ?? []);
-            Manager.InsertCls(strE.GetType<BenefitCls>(), Network.SendRequesAsync<BenefitCls[]>(Point.ClsGet, new HeaderClsData() { Ogrn = Ogrn, Kpp = Kpp, Cls = strE.GetType<BenefitCls>() }, isCls: true).Item1 ?? []);
-            Manager.InsertCls(strE.GetType<CampaignStatusCls>(), Network.SendRequesAsync<CampaignStatusCls[]>(Point.ClsGet, new HeaderClsData() { Ogrn = Ogrn, Kpp = Kpp, Cls = strE.GetType<BenefitCls>() }, isCls: true).Item1 ?? []);
-            Manager.InsertCls(strE.GetType<CompetitiveGroupStatusCls>(), Network.SendRequesAsync<CompetitiveGroupStatusCls[]>(Point.ClsGet, new HeaderClsData() { Ogrn = Ogrn, Kpp = Kpp, Cls = strE.GetType<CompetitiveGroupStatusCls>() }, isCls: true).Item1 ?? []);
-            Manager.InsertCls(strE.GetType<DictionaryTypeCls>(), Network.SendRequesAsync<DictionaryTypeCls[]>(Point.ClsGet, new HeaderClsData() { Ogrn = Ogrn, Kpp = Kpp, Cls = strE.GetType<DictionaryTypeCls>() }, isCls: true).Item1 ?? []);
-            Manager.InsertCls(strE.GetType<DirectionCls>(), Network.SendRequesAsync<DirectionCls[]>(Point.ClsGet, new HeaderClsData() { Ogrn = Ogrn, Kpp = Kpp, Cls = strE.GetType<DirectionCls>() }, isCls: true).Item1 ?? []);
-            Manager.InsertCls(strE.GetType<DocumentCategoryCls>(), Network.SendRequesAsync<DocumentCategoryCls[]>(Point.ClsGet, new HeaderClsData() { Ogrn = Ogrn, Kpp = Kpp, Cls = strE.GetType<DocumentCategoryCls>() }, isCls: true).Item1 ?? []);
-            Manager.InsertCls(strE.GetType<DocumentCheckStatusCls>(), Network.SendRequesAsync<DocumentCheckStatusCls[]>(Point.ClsGet, new HeaderClsData() { Ogrn = Ogrn, Kpp = Kpp, Cls = strE.GetType<DocumentCheckStatusCls>() }, isCls: true).Item1 ?? []);
-            Manager.InsertCls(strE.GetType<DocumentTypeCls>(), Network.SendRequesAsync<DocumentTypeCls[]>(Point.ClsGet, new HeaderClsData() { Ogrn = Ogrn, Kpp = Kpp, Cls = strE.GetType<DocumentTypeCls>() }, isCls: true).Item1 ?? []);
-            Manager.InsertCls(strE.GetType<EducationFormCls>(), Network.SendRequesAsync<EducationFormCls[]>(Point.ClsGet, new HeaderClsData() { Ogrn = Ogrn, Kpp = Kpp, Cls = strE.GetType<EducationFormCls>() }, isCls: true).Item1 ?? []);
-            Manager.InsertCls(strE.GetType<EducationLevelCls>(), Network.SendRequesAsync<EducationLevelCls[]>(Point.ClsGet, new HeaderClsData() { Ogrn = Ogrn, Kpp = Kpp, Cls = strE.GetType<EducationLevelCls>() }, isCls: true).Item1 ?? []);
-            Manager.InsertCls(strE.GetType<EntranceTestLanguageCls>(), Network.SendRequesAsync<EntranceTestLanguageCls[]>(Point.ClsGet, new HeaderClsData() { Ogrn = Ogrn, Kpp = Kpp, Cls = strE.GetType<EntranceTestLanguageCls>() }, isCls: true).Item1 ?? []);
-            Manager.InsertCls(strE.GetType<EntranceTestTypeCls>(), Network.SendRequesAsync<EntranceTestTypeCls[]>(Point.ClsGet, new HeaderClsData() { Ogrn = Ogrn, Kpp = Kpp, Cls = strE.GetType<EntranceTestTypeCls>() }, isCls: true).Item1 ?? []);
-            Manager.InsertCls(strE.GetType<FreeEducationReasonCls>(), Network.SendRequesAsync<FreeEducationReasonCls[]>(Point.ClsGet, new HeaderClsData() { Ogrn = Ogrn, Kpp = Kpp, Cls = strE.GetType<FreeEducationReasonCls>() }, isCls: true).Item1 ?? []);
-            Manager.InsertCls(strE.GetType<GenderCls>(), Network.SendRequesAsync<GenderCls[]>(Point.ClsGet, new HeaderClsData() { Ogrn = Ogrn, Kpp = Kpp, Cls = strE.GetType<GenderCls>() }, isCls: true).Item1 ?? []);
-            Manager.InsertCls(strE.GetType<NoticesTypeCls>(), Network.SendRequesAsync<NoticesTypeCls[]>(Point.ClsGet, new HeaderClsData() { Ogrn = Ogrn, Kpp = Kpp, Cls = strE.GetType<NoticesTypeCls>() }, isCls: true).Item1 ?? []);
-            Manager.InsertCls(strE.GetType<OksmCls>(), Network.SendRequesAsync<OksmCls[]>(Point.ClsGet, new HeaderClsData() { Ogrn = Ogrn, Kpp = Kpp, Cls = strE.GetType<OksmCls>() }, isCls: true).Item1 ?? []);
-            Manager.InsertCls(strE.GetType<OlympicCls>(), Network.SendRequesAsync<OlympicCls[]>(Point.ClsGet, new HeaderClsData() { Ogrn = Ogrn, Kpp = Kpp, Cls = strE.GetType<OlympicCls>() }, isCls: true).Item1 ?? []);
-            Manager.InsertCls(strE.GetType<OlympicDiplomaTypeCls>(), Network.SendRequesAsync<OlympicDiplomaTypeCls[]>(Point.ClsGet, new HeaderClsData() { Ogrn = Ogrn, Kpp = Kpp, Cls = strE.GetType<OlympicDiplomaTypeCls>() }, isCls: true).Item1 ?? []);
-            Manager.InsertCls(strE.GetType<OlympicLevelCls>(), Network.SendRequesAsync<OlympicLevelCls[]>(Point.ClsGet, new HeaderClsData() { Ogrn = Ogrn, Kpp = Kpp, Cls = strE.GetType<OlympicLevelCls>() }, isCls: true).Item1 ?? []);
-            Manager.InsertCls(strE.GetType<OlympicProfileCls>(), Network.SendRequesAsync<OlympicProfileCls[]>(Point.ClsGet, new HeaderClsData() { Ogrn = Ogrn, Kpp = Kpp, Cls = strE.GetType<OlympicProfileCls>() }, isCls: true).Item1 ?? []);
-            Manager.InsertCls(strE.GetType<OlympicProfileSubjectCls>(), Network.SendRequesAsync<OlympicProfileSubjectCls[]>(Point.ClsGet, new HeaderClsData() { Ogrn = Ogrn, Kpp = Kpp, Cls = strE.GetType<OlympicProfileSubjectCls>() }, isCls: true).Item1 ?? []);
-            Manager.InsertCls(strE.GetType<OlympicRelationProfileCls>(), Network.SendRequesAsync<OlympicRelationProfileCls[]>(Point.ClsGet, new HeaderClsData() { Ogrn = Ogrn, Kpp = Kpp, Cls = strE.GetType<OlympicRelationProfileCls>() }, isCls: true).Item1 ?? []);
-            Manager.InsertCls(strE.GetType<PackagesStatusCls>(), Network.SendRequesAsync<PackagesStatusCls[]>(Point.ClsGet, new HeaderClsData { Ogrn = Ogrn, Kpp = Kpp, Cls = strE.GetType<PackagesStatusCls>() }, isCls: true).Item1 ?? []);
-            Manager.InsertCls(strE.GetType<PaidContractStatusCls>(), Network.SendRequesAsync<PaidContractStatusCls[]>(Point.ClsGet, new HeaderClsData() { Ogrn = Ogrn, Kpp = Kpp, Cls = strE.GetType<PaidContractStatusCls>() }, isCls: true).Item1 ?? []);
-            Manager.InsertCls(strE.GetType<PlaceTypeCls>(), Network.SendRequesAsync<PlaceTypeCls[]>(Point.ClsGet, new HeaderClsData() { Ogrn = Ogrn, Kpp = Kpp, Cls = strE.GetType<PlaceTypeCls>() }, isCls: true).Item1 ?? []);
-            Manager.InsertCls(strE.GetType<ReasonsRejectionCls>(), Network.SendRequesAsync<ReasonsRejectionCls[]>(Point.ClsGet, new HeaderClsData() { Ogrn = Ogrn, Kpp = Kpp, Cls = strE.GetType<ReasonsRejectionCls>() }, isCls: true).Item1 ?? []);
-            Manager.InsertCls(strE.GetType<RegionCls>(), Network.SendRequesAsync<RegionCls[]>(Point.ClsGet, new HeaderClsData() { Ogrn = Ogrn, Kpp = Kpp, Cls = strE.GetType<RegionCls>() }, isCls: true).Item1 ?? []);
-            Manager.InsertCls(strE.GetType<SpecialConditionsCls>(), Network.SendRequesAsync<SpecialConditionsCls[]>(Point.ClsGet, new HeaderClsData() { Ogrn = Ogrn, Kpp = Kpp, Cls = strE.GetType<SpecialConditionsCls>() }, isCls: true).Item1 ?? []);
-            Manager.InsertCls(strE.GetType<StagesAdmissionCls>(), Network.SendRequesAsync<StagesAdmissionCls[]>(Point.ClsGet, new HeaderClsData() { Ogrn = Ogrn, Kpp = Kpp, Cls = strE.GetType<StagesAdmissionCls>() }, isCls: true).Item1 ?? []);
-            Manager.InsertCls(strE.GetType<SubjectCls>(), Network.SendRequesAsync<SubjectCls[]>(Point.ClsGet, new HeaderClsData() { Ogrn = Ogrn, Kpp = Kpp, Cls = strE.GetType<SubjectCls>() }, isCls: true).Item1 ?? []);
-            Manager.InsertCls(strE.GetType<TargetAgreeStatusCls>(), Network.SendRequesAsync<TargetAgreeStatusCls[]>(Point.ClsGet, new HeaderClsData() { Ogrn = Ogrn, Kpp = Kpp, Cls = strE.GetType<TargetAgreeStatusCls>() }, isCls: true).Item1 ?? []);
-            Manager.InsertCls(strE.GetType<TargetContractStatusCls>(), Network.SendRequesAsync<TargetContractStatusCls[]>(Point.ClsGet, new HeaderClsData() { Ogrn = Ogrn, Kpp = Kpp, Cls = strE.GetType<TargetContractStatusCls>() }, isCls: true).Item1 ?? []);
-            Manager.InsertCls(strE.GetType<TargetContractTypeCls>(), Network.SendRequesAsync<TargetContractTypeCls[]>(Point.ClsGet, new HeaderClsData() { Ogrn = Ogrn, Kpp = Kpp, Cls = strE.GetType<TargetContractTypeCls>() }, isCls: true).Item1 ?? []);
-            Manager.InsertCls(strE.GetType<TargetDocumentTypeCls>(), Network.SendRequesAsync<TargetDocumentTypeCls[]>(Point.ClsGet, new HeaderClsData() { Ogrn = Ogrn, Kpp = Kpp, Cls = strE.GetType<TargetDocumentTypeCls>() }, isCls: true).Item1 ?? []);
-            Manager.InsertCls(strE.GetType<TransferMethodOriginalDocumentCls>(), Network.SendRequesAsync<TransferMethodOriginalDocumentCls[]>(Point.ClsGet, new HeaderClsData() { Ogrn = Ogrn, Kpp = Kpp, Cls = strE.GetType<TransferMethodOriginalDocumentCls>() }, isCls: true).Item1 ?? []);
-        }
-
-        /// <summary>
         /// Добавления сессии
         /// </summary>
         /// <param name="Ogrn">Огрн организации</param>
         /// <param name="Kpp">Кпп организации</param>
-        public void SetSessionKey(string? Ogrn = null, string? Kpp = null)
+        private void SetSessionKey(string? Ogrn = null, string? Kpp = null)
         {
             Session = Session.SetSession(Startup);
+        }
+
+        #region API_ССПВО
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="Data"></param>
+        /// <param name="Ogrn"></param>
+        /// <param name="Kpp"></param>
+        /// <returns></returns>
+        public (SessionData? Data, string? Error) API_SessionNew(string? Ogrn = null, string? Kpp = null)
+        {
+            Console.Write("Выполняется запрос: получение сессии ... ");
+            if (Ogrn == null) Ogrn = Startup.AppSetting.Ogrn;
+            if (Kpp == null) Kpp = Startup.AppSetting.Kpp.First().KppOrganization;
+            (SessionData? Item1, string? Item2) data = Network.SendRequesAsync<SessionData>(Point.SessionNew, new HeaderData() { Action = "Add", Entity = "ApplicationList", Ogrn = Ogrn ?? Startup.AppSetting.Ogrn, Kpp = Kpp ?? Startup.AppSetting.Kpp.First().KppOrganization }, "<PackageData></PackageData>", isJWT: true);
+            Console.WriteLine("завершение операции с ответом ... " + "\n" + (data.Item1 != null ? (data.Item1.SessionKey) : "Ошибка записана в логе!\n"));
+            return (data.Item1, data.Item2);
+        }
+
+        /// <summary>
+        /// Получение списков Cls из Сервиса приема "Поступление в ВУЗ онлайн". 
+        /// ВНИМАНИЕ. В значение T указывать только его модель без применения IEnumerable, List, Array или []
+        /// </summary>
+        /// <param name="Data">Результат списков Cls</param>
+        /// <param name="Ogrn">Огрн организации (может пустым, берется из конфигуратора приложения первым)</param>
+        /// <param name="Kpp">Кпп организации (может пустым, берется из конфигуратора приложения первым)</param>
+        /// <typeparam name="T">Значение модели Cls. Не принимать дополнительные значения массив (например, IEnumerable, List, Array или [])</typeparam>
+        /// <returns>Возвращаем два значения: Data - данные Cls, Error - ошибка</returns>
+        public (T[]? Data, string? Error) API_GetCls<T>(string? Ogrn = null, string? Kpp = null)
+        {
+            Console.Write("Выполняется запрос: получение списка Cls ... ");
+            StringExtension strE = new StringExtension();
+            if (Ogrn == null) Ogrn = Startup.AppSetting.Ogrn;
+            if (Kpp == null) Kpp = Startup.AppSetting.Kpp.First().KppOrganization;
+            var data = Network.SendRequesAsync<T[]>(Point.ClsGet, new HeaderClsData() { Ogrn = Ogrn, Kpp = Kpp, Cls = strE.GetType<T>() }, isCls: true);
+            Console.WriteLine("завершение операции с ответом ... " + "\n" + (data.Item1 != null ? (".Количество Cls: " + data.Item1.Count()) : "Ошибка записана в логе!\n"));
+            return (data.Item1, data.Item2);
+            
         }
 
         /// <summary>
@@ -111,7 +103,7 @@ namespace ReceptionServiceCore.Controller
         /// <param name="Ogrn">Огрн организации (может пустым, берется из конфигуратора приложения первым)</param>
         /// <param name="Kpp">Кпп организации (может пустым, берется из конфигуратора приложения первым)</param>
         /// <returns>Возвращает целостность сертификата. True - сертификат действующий, False - проблема с сертификатом</returns>
-        public (bool, string) CheckCertificate(string? Ogrn = null, string? Kpp = null)
+        public (bool? IsToken, string? Error) API_CheckCertificate(string? Ogrn = null, string? Kpp = null)
         {
             Console.Write("Выполняется запрос: проверка сертификата ... ");
             if (Ogrn == null) Ogrn = Startup.AppSetting.Ogrn;
@@ -124,11 +116,150 @@ namespace ReceptionServiceCore.Controller
         /// <summary>
         /// Работоспособность потока данных
         /// </summary>
-        public void GetDelay()
+        public (DelayData? Data, string? Error) API_GetDelay()
         {
             Console.Write("Выполняется запрос: пропускная способность ... ");
             var data = Network.SendRequesAsync<DelayData>(Point.DelayGet, null, Method: "Get");
             Console.WriteLine("завершение операции с ответом ... " + "\n" + (data.Item1 != null ? (data.Item1.Comment + ".\nКоличество секунд задержки: " + data.Item1.DelayHumanReadable + "\n") : "Ошибка записана в логе!\n"));
+            return (data.Item1, data.Item2);
+        }
+
+        /// <summary>
+        /// Создание токена для отправки в Сервис приема
+        /// </summary>
+        /// <typeparam name="T">Модель данных</typeparam>
+        /// <param name="Action">Вид активности</param>
+        /// <param name="Entity">Тип сущности</param>
+        /// <param name="Ogrn">Огрн (может пустым, берется из конфигуратора приложения первым)</param>
+        /// <param name="Kpp">Кпп (может пустым, берется из конфигуратора приложения первым)</param>
+        /// <param name="Tdata">Данные из модели данных (могут быть пустыми)</param>
+        /// <param name="Xml">XML документ (могут быть пустыми)</param>
+        /// <returns></returns>
+        public (TokenData? Data, string? Error) API_NewToken<T>(string Action, string? Entity, string? Ogrn = null, string? Kpp = null, T? Tdata = default(T), string? Xml = null) 
+        {
+            if (Ogrn == null) Ogrn = Startup.AppSetting.Ogrn;
+            if (Kpp == null) Kpp = Startup.AppSetting.Kpp.First().KppOrganization;
+            SetSessionKey(Ogrn, Kpp);
+            Console.Write("Выполняется запрос: добавление токена ... ");
+            if (Tdata == null && Xml == null)
+            {
+                Debug.Write("завершение операции с ответом ... ОШИБКА! ВНЕСИТЕ ДАННЫЕ ЗНАЧЕНИИ XML ИЛИ СУЩЕСТВУЮЩИХ МОДЕЛИ ДАННЫХ!");
+                return (null, "ОШИБКА! ВНЕСИТЕ ДАННЫЕ ЗНАЧЕНИИ XML ИЛИ СУЩЕСТВУЮЩИХ МОДЕЛИ ДАННЫХ!");
+            }
+            var data = Network.SendRequesAsync<TokenData>(Point.TokenNew, new HeaderData() { Action = Action, Entity = Entity == null ? new StringExtension().GetType<T>() : Entity, Ogrn = Ogrn, Kpp = Kpp }, Xml == null ? Tdata.EncodeXml<T>().SetPD() : Xml, Session.SessionKey, true);
+            Console.Write("завершение операции с ответом ... " + (data.Item1 != null ? data.Item1.IdJwt.ToString().ToUpper() + "\n" : "Ошибка записана в логе!\n"));
+            return (data.Item1, data.Item2);
+        }
+
+        /// <summary>
+        /// Результат выполнения отправки токена
+        /// </summary>
+        /// <param name="IdJwt">Уникальный идентификатор токена</param>
+        /// <param name="Ogrn">Огрн (может пустым, берется из конфигуратора приложения первым)</param>
+        /// <param name="Kpp">Кпп (может пустым, берется из конфигуратора приложения первым)</param>
+        /// <returns>Строчный результат</returns>
+        public (string? XmlData, string? Error) API_GetOwn(int IdJwt, string? Ogrn = null, string? Kpp = null)
+        {
+            if (Ogrn == null) Ogrn = Startup.AppSetting.Ogrn;
+            if (Kpp == null) Kpp = Startup.AppSetting.Kpp.First().KppOrganization;
+            SetSessionKey(Ogrn, Kpp);
+            Console.Write("Выполняется запрос: получения токена ... ");
+            var data = Network.SendRequesAsync<TokenData>(Point.OwnGet, null, "{ \"IdJwt\" : "  + IdJwt + " }", Session.SessionKey);
+            Console.Write("завершение операции с ответом ... " + (data.Item1 != null ? "Имеется токен" + "\n" : "Ошибка записана в логе!\n"));
+            if (data.Item1 == null) return (null, data.Item2);
+            return (Encoding.UTF8.GetString(Convert.FromBase64String(data.Item1.Token.Split('.')[1])), data.Item2);
+        }
+
+        /// <summary>
+        /// Результат выполнения получения токена из других источников
+        /// </summary>
+        /// <param name="Header">Шапка токена</param>
+        /// <param name="XmlData">Данные токена</param>
+        /// <param name="IdJwt">Уникальный идентификатор токена<</param>
+        /// <param name="Ogrn">Огрн (может пустым, берется из конфигуратора приложения первым)</param>
+        /// <param name="Kpp">Кпп (может пустым, берется из конфигуратора приложения первым)</param>
+        /// <returns>Возврщения шапки, данные токена, в случае каких проблем выводит ошибку</returns>
+        public (HeaderJwtData? Header, string? XmlData, string? Error) API_GetDespatch(int IdJwt, string? Ogrn = null, string? Kpp = null)
+        {
+            if (Ogrn == null) Ogrn = Startup.AppSetting.Ogrn;
+            if (Kpp == null) Kpp = Startup.AppSetting.Kpp.First().KppOrganization;
+            SetSessionKey(Ogrn, Kpp);
+            Console.Write("Выполняется запрос: получения токена ... ");
+            var data = Network.SendRequesAsync<TokenData>(Point.DespatchGet, null, "{ \"IdJwt\" : "  + IdJwt + " }", Session.SessionKey);
+            Console.Write("завершение операции с ответом ... " + (data.Item1 != null ? "Имеется токен" + "\n" : "Ошибка записана в логе!\n"));
+            if (data.Item1 == null) return (null, null, data.Item2);
+            return (JsonConvert.DeserializeObject<HeaderJwtData>(Encoding.UTF8.GetString(Convert.FromBase64String(data.Item1.Token.Split('.')[0]))), Encoding.UTF8.GetString(Convert.FromBase64String(data.Item1.Token.Split('.')[1])), data.Item2);
+        }
+
+        /// <summary>
+        /// Результат списков необработканных Jwt токенов
+        /// </summary>
+        /// <param name="IsDespatch">Выводить список из внешнего источника (Despatch - True) или из внутренней организации (Own - False)</param>
+        /// <param name="Ogrn">Огрн (может пустым, берется из конфигуратора приложения первым)</param>
+        /// <param name="Kpp">Кпп (может пустым, берется из конфигуратора приложения первым)</param>
+        /// <returns>Список необработанных токенов</returns>
+        public (IdJwtList? JwtList, string? Error) API_GetJwtList(bool IsDespatch, string? Ogrn = null, string? Kpp = null)
+        {
+            if (Ogrn == null) Ogrn = Startup.AppSetting.Ogrn;
+            if (Kpp == null) Kpp = Startup.AppSetting.Kpp.First().KppOrganization;
+            SetSessionKey(Ogrn, Kpp);
+            Console.Write("Выполняется запрос: получение списков Jwt токенов ... ");
+            var data = Network.SendRequesAsync<IdJwtList>(!IsDespatch ? Point.OwnGet : Point.DespatchGet, null, "{ \"IdJwt\" : "  + 0 + " }", Session.SessionKey);
+            Console.Write("завершение операции с ответом ... " + (data.Item1 != null ? "Имеются списки ожидаемых обработок токенов" + "\n" : "Ошибка записана в логе!\n"));
+            return (data.Item1, data.Item2);
+        }
+
+        #endregion
+
+        #region Взаимодействие с другими методами 
+
+        /// <summary>
+        /// Внесение справочников
+        /// </summary>
+        /// <param name="Ogrn">Огрн организации (может пустым, берется из конфигуратора приложения первым)</param>
+        /// <param name="Kpp">Кпп организации (может пустым, берется из конфигуратора приложения первым)</param>
+        public void Command_InsertCls(string? Ogrn = null, string? Kpp = null)
+        {
+            StringExtension strE = new StringExtension();
+            if (Ogrn == null) Ogrn = Startup.AppSetting.Ogrn;
+            if (Kpp == null) Kpp = Startup.AppSetting.Kpp.First().KppOrganization;
+            Manager.InsertCls(strE.GetType<AchievementCategoryCls>(), API_GetCls<AchievementCategoryCls>().Data ?? []);
+            Manager.InsertCls(strE.GetType<AdmissionEventCls>(), API_GetCls<AdmissionEventCls>().Data ?? []);
+            Manager.InsertCls(strE.GetType<BenefitCls>(), API_GetCls<BenefitCls>().Data ?? []);
+            Manager.InsertCls(strE.GetType<CampaignStatusCls>(), API_GetCls<CampaignStatusCls>().Data ?? []);
+            Manager.InsertCls(strE.GetType<CompetitiveGroupStatusCls>(), API_GetCls<CompetitiveGroupStatusCls>().Data ?? []);
+            Manager.InsertCls(strE.GetType<DictionaryTypeCls>(), API_GetCls<DictionaryTypeCls>().Data ?? []);
+            Manager.InsertCls(strE.GetType<DirectionCls>(), API_GetCls<DirectionCls>().Data ?? []);
+            Manager.InsertCls(strE.GetType<DocumentCategoryCls>(), API_GetCls<DocumentCategoryCls>().Data ?? []);
+            Manager.InsertCls(strE.GetType<DocumentCheckStatusCls>(), API_GetCls<DocumentCheckStatusCls>().Data ?? []);
+            Manager.InsertCls(strE.GetType<DocumentTypeCls>(), API_GetCls<DocumentTypeCls>().Data ?? []);
+            Manager.InsertCls(strE.GetType<EducationFormCls>(), API_GetCls<EducationFormCls>().Data ?? []);
+            Manager.InsertCls(strE.GetType<EducationLevelCls>(), API_GetCls<EducationLevelCls>().Data ?? []);
+            Manager.InsertCls(strE.GetType<EntranceTestLanguageCls>(), API_GetCls<EntranceTestLanguageCls>().Data ?? []);
+            Manager.InsertCls(strE.GetType<EntranceTestTypeCls>(), API_GetCls<EntranceTestTypeCls>().Data ?? []);
+            Manager.InsertCls(strE.GetType<FreeEducationReasonCls>(), API_GetCls<FreeEducationReasonCls>().Data ?? []);
+            Manager.InsertCls(strE.GetType<GenderCls>(), API_GetCls<GenderCls>().Data ?? []);
+            Manager.InsertCls(strE.GetType<NoticesTypeCls>(), API_GetCls<NoticesTypeCls>().Data ?? []);
+            Manager.InsertCls(strE.GetType<OksmCls>(), API_GetCls<OksmCls>().Data ?? []);
+            Manager.InsertCls(strE.GetType<OlympicCls>(), API_GetCls<OlympicCls>().Data ?? []);
+            Manager.InsertCls(strE.GetType<OlympicDiplomaTypeCls>(), API_GetCls<OlympicDiplomaTypeCls>().Data ?? []);
+            Manager.InsertCls(strE.GetType<OlympicLevelCls>(), API_GetCls<OlympicLevelCls>().Data ?? []);
+            Manager.InsertCls(strE.GetType<OlympicProfileCls>(), API_GetCls<OlympicProfileCls>().Data ?? []);
+            Manager.InsertCls(strE.GetType<OlympicProfileSubjectCls>(), API_GetCls<OlympicProfileSubjectCls>().Data ?? []);
+            Manager.InsertCls(strE.GetType<OlympicRelationProfileCls>(), API_GetCls<OlympicRelationProfileCls>().Data ?? []);
+            Manager.InsertCls(strE.GetType<PackagesStatusCls>(), API_GetCls<PackagesStatusCls>().Data ?? []);
+            Manager.InsertCls(strE.GetType<PaidContractStatusCls>(), API_GetCls<PaidContractStatusCls>().Data ?? []);
+            Manager.InsertCls(strE.GetType<PlaceTypeCls>(), API_GetCls<PlaceTypeCls>().Data ?? []);
+            Manager.InsertCls(strE.GetType<ReasonsRejectionCls>(), API_GetCls<ReasonsRejectionCls>().Data ?? []);
+            Manager.InsertCls(strE.GetType<RegionCls>(), API_GetCls<RegionCls>().Data ?? []);
+            Manager.InsertCls(strE.GetType<SpecialConditionsCls>(), API_GetCls<SpecialConditionsCls>().Data ?? []);
+            Manager.InsertCls(strE.GetType<StagesAdmissionCls>(), API_GetCls<StagesAdmissionCls>().Data ?? []);
+            Manager.InsertCls(strE.GetType<SubjectCls>(), API_GetCls<SubjectCls>().Data ?? []);
+            Manager.InsertCls(strE.GetType<TargetAgreeStatusCls>(), API_GetCls<TargetAgreeStatusCls>().Data ?? []);
+            Manager.InsertCls(strE.GetType<TargetContractStatusCls>(), API_GetCls<TargetContractStatusCls>().Data ?? []);
+            Manager.InsertCls(strE.GetType<TargetContractTypeCls>(), API_GetCls<TargetContractTypeCls>().Data ?? []);
+            Manager.InsertCls(strE.GetType<TargetDocumentTypeCls>(), API_GetCls<TargetDocumentTypeCls>().Data ?? []);
+            Manager.InsertCls(strE.GetType<TransferMethodOriginalDocumentCls>(), API_GetCls<TransferMethodOriginalDocumentCls>().Data ?? []);
         }
 
         /// <summary>
@@ -136,7 +267,7 @@ namespace ReceptionServiceCore.Controller
         /// </summary>
         /// <param name="Ogrn">Огрн (может пустым, берется из конфигуратора приложения первым)</param>
         /// <param name="Kpp">Кпп (может пустым, берется из конфигуратора приложения первым)</param>
-        public void GetFields(string? Ogrn = null, string? Kpp = null)
+        public void Command_GetFields(string? Ogrn = null, string? Kpp = null)
         {
             StringExtension strE = new StringExtension();
             if (Ogrn == null) Ogrn = Startup.AppSetting.Ogrn;
@@ -211,97 +342,83 @@ namespace ReceptionServiceCore.Controller
         }
 
         /// <summary>
-        /// Создание токена для отправки в Сервис приема
-        /// </summary>
-        /// <typeparam name="T">Модель данных</typeparam>
-        /// <param name="Action">Вид активности</param>
-        /// <param name="Entity">Тип сущности</param>
-        /// <param name="Ogrn">Огрн (может пустым, берется из конфигуратора приложения первым)</param>
-        /// <param name="Kpp">Кпп (может пустым, берется из конфигуратора приложения первым)</param>
-        /// <param name="Tdata">Данные из модели данных (могут быть пустыми)</param>
-        /// <param name="Xml">XML документ (могут быть пустыми)</param>
-        /// <returns></returns>
-        public TokenData? NewToken<T>(string Action, string? Entity, string? Ogrn = null, string? Kpp = null, T? Tdata = default(T), string? Xml = null) 
-        {
-            if (Ogrn == null) Ogrn = Startup.AppSetting.Ogrn;
-            if (Kpp == null) Kpp = Startup.AppSetting.Kpp.First().KppOrganization;
-            SetSessionKey(Ogrn, Kpp);
-            Console.Write("Выполняется запрос: добавление токена ... ");
-            if (Tdata == null && Xml == null)
-            {
-                Debug.Write("завершение операции с ответом ... ОШИБКА! ВНЕСИТЕ ДАННЫЕ ЗНАЧЕНИИ XML ИЛИ СУЩЕСТВУЮЩИХ МОДЕЛИ ДАННЫХ!");
-                return null;
-            }
-            var data = Network.SendRequesAsync<TokenData>(Point.TokenNew, new HeaderData() { Action = Action, Entity = Entity == null ? new StringExtension().GetType<T>() : Entity, Ogrn = Ogrn, Kpp = Kpp }, Xml == null ? Tdata.EncodeXml<T>().SetPD() : Xml, Session.SessionKey, true);
-            Console.Write("завершение операции с ответом ... " + (data.Item1 != null ? data.Item1.IdJwt.ToString().ToUpper() + "\n" : "Ошибка записана в логе!\n"));
-            return data.Item1;
-        }
-
-        /// <summary>
-        /// Результат выполнения отправки токена
-        /// </summary>
-        /// <param name="IdJwt">Уникальный идентификатор токена</param>
-        /// <param name="Ogrn">Огрн (может пустым, берется из конфигуратора приложения первым)</param>
-        /// <param name="Kpp">Кпп (может пустым, берется из конфигуратора приложения первым)</param>
-        /// <returns>Строчный результат</returns>
-        public string? GetOwn(int IdJwt, string? Ogrn = null, string? Kpp = null)
-        {
-            if (Ogrn == null) Ogrn = Startup.AppSetting.Ogrn;
-            if (Kpp == null) Kpp = Startup.AppSetting.Kpp.First().KppOrganization;
-            SetSessionKey(Ogrn, Kpp);
-            Console.Write("Выполняется запрос: получения токена ... ");
-            var data = Network.SendRequesAsync<TokenData>(Point.OwnGet, null, "{ \"IdJwt\" : "  + IdJwt + " }", Session.SessionKey);
-            Console.Write("завершение операции с ответом ... " + (data.Item1 != null ? "Имеется токен" + "\n" : "Ошибка записана в логе!\n"));
-            if (data.Item1 == null) return null;
-            return Encoding.UTF8.GetString(Convert.FromBase64String(data.Item1.Token.Split('.')[1]));
-        }
-
-        /// <summary>
         /// Проверка работоспособности БД
         /// </summary>
         /// <returns></returns>
-        public async Task<int> Test()
+        public async Task<int> Command_WorkingDB()
         {
             return await Manager.Test();
         }
 
         /// <summary>
+        /// Получение уникального идентификатора объекта их токенов ССПВО
+        /// </summary>
+        /// <returns></returns>
+        public async Task<int> Command_CreateIdObject()
+        {
+            return await Manager.CreateIdObject();
+        }
+
+        /// <summary>
+        /// Получения токенов по соответсвующим статусам
+        /// Если хотим получить все токены для отправки, указываем значение IsGetToken = false
+        /// Если хотим обработать все отправленные токены,указываем значение IsGetToken = true
+        /// </summary>
+        /// <param name="IsGetToken">Получение токенов по соответствующим статусам</param>
+        /// <returns></returns>
+        public async Task<IEnumerable<GetTokenModel?>> Command_GetTokensOwn(bool IsGetToken)
+        {
+            return await Manager.GetTokensOwn(IsGetToken);
+        }
+
+        /// <summary>
+        /// Получения токенов по соответсвующим статусам
+        /// Если хотим получить все данные токенов от IdJWT, указываем значение IsGetToken = true
+        /// Если хотим обработать все токены и распределить все данные по БД, указываем значение IsGetToken = false
+        /// </summary>
+        /// <param name="IsGetToken">Получение токенов по соответствующим статусам</param>
+        /// <returns></returns>
+        public async Task<IEnumerable<GetTokenDespatchModel>?> Command_GetTokensDespatch(bool IsGetToken)
+        {
+            return await Manager.GetTokensDespatch(IsGetToken);
+        }
+
+        #endregion
+        
+        #region Автоматизация
+
+        /// <summary>
         /// Отправка токенов в ССПВО (Автоматизированная версия)
         /// </summary>
         /// <returns></returns>
-        public async Task SendTokens()
+        public async Task Auto_SendTokens()
         {
-            IEnumerable<GetTokenModel> tokens = await Manager.GetTokens();
+            IEnumerable<GetTokenModel> tokens = await Manager.GetTokensOwn();
             foreach (var item in tokens)
             {
-                var data = NewToken<TokenData?>(item.Action, item.Entity, item.Ogrn, item.Kpp, Xml: item.Payload);
-                if (data != null)
+                var data = API_NewToken<TokenData?>(item.Action, item.Entity, item.Ogrn, item.Kpp, Xml: item.Payload);
+                if (data.Data != null)
                 {
-                    await Manager.UpdateToken(item.IdObject, (int)data.IdJwt, (int)data.DelaySeconds);
+                    await Manager.UpdateToken(item.IdObject, (int)data.Data.IdJwt, (int)data.Data.DelaySeconds);
                 }
                 await Task.Delay(2000);
             }
             if (tokens.Count() == 0) Console.WriteLine("Очередь на отправку пуста!"); Console.WriteLine();
         }
 
-        public async Task<int> CreateIdObject()
-        {
-            return await Manager.CreateIdObject();
-        }
-
         /// <summary>
         /// Принятия результатов токенов из ССПВО (Автоматизированная версия)
         /// </summary>
         /// <returns></returns>
-        public async Task GetTokens()
+        public async Task Auto_GetTokens()
         {
-            IEnumerable<GetTokenModel> tokens = await Manager.GetTokens(true);
+            IEnumerable<GetTokenModel> tokens = await Manager.GetTokensOwn(true);
             foreach (var item in tokens)
             {
                 if (item.IdJWT != null)
                 {
                     bool isStop = false;
-                    string data = GetOwn((int)item.IdJWT, item.Ogrn, item.Kpp);
+                    string data = API_GetOwn((int)item.IdJWT, item.Ogrn, item.Kpp).XmlData;
                     if (data != null)
                     {
                         if (data.DecodeXml<DefaultResponse>(true).ErrorList != null && !isStop)
@@ -328,9 +445,56 @@ namespace ReceptionServiceCore.Controller
         }
 
         /// <summary>
+        /// Получения Id токенов из внешнего источника (Despatch) в ССПВО (Автоматизированная версия)
+        /// </summary>
+        /// <returns></returns>
+        public async Task Auto_GetIdsJwtDespatch()
+        {
+            Console.WriteLine("Запущен процесс получения списков идентификаторов токенов");
+            var data = API_GetJwtList(true);
+            {
+                if (data.JwtList == null) Console.WriteLine("Отсутствуют данные!");
+                if (data.JwtList != null && data.JwtList.Length == 0) Console.WriteLine("В очереди отсутвствуют данные!");
+                if (data.JwtList != null && data.JwtList.Length > 0)
+                {
+                    foreach (var item in data.JwtList.List)
+                    {
+                        Console.WriteLine("Запись в БД уникальный идентификатор токена: {0}", item);
+                        await Manager.UpdateToken(item);
+                        await Task.Delay(1000);
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        /// Получения всех токенов из внешних источников (Despatch) в ССПВО (Автоматизированная версия)
+        /// </summary>
+        /// <returns></returns>
+        public async Task Auto_GetTokensDespatch()
+        {
+            Console.WriteLine("Запущен процесс получения токенов по идентификаторам IdJwt");
+            var tokens = await Manager.GetTokensDespatch();
+            foreach(var item in tokens)
+            {
+                var data = API_GetDespatch(item.IdJwt);
+                if (data.XmlData != null)
+                {
+                    await Manager.CreateToken(item.IdJwt, data.XmlData, data.Header.Entity, data.Header.CreatedAt);
+                }
+                await Task.Delay(2000);
+            }
+            if (tokens.Count() == 0) Console.WriteLine("Очередь на принятия данных от источников пуста!"); Console.WriteLine();
+        }
+
+        #endregion
+
+        #region Установка БД
+
+        /// <summary>
         /// Дабавления таблиц, данные и хранимые процедуры в БД
         /// </summary>
-        public void SetupDataInDB()
+        public void Setup_DataInDB()
         {
             bool isLoadCls = false;
             Console.WriteLine("Данный сервис предназначен для добавления необходимых таблиц и хранимых процедур ");
@@ -356,7 +520,7 @@ namespace ReceptionServiceCore.Controller
             );
             """);
             
-            Console.WriteLine("Добавление таблицы \"Хранения токенов (RS_PackageTokens)\"");
+            Console.WriteLine("Добавление таблицы \"Хранения токенов внутренних данных (Own) (RS_PackageTokens)\"");
             await Manager.InsertSQLText("""
             CREATE TABLE RS_PackageTokens (
                 IdObject int not null
@@ -372,6 +536,21 @@ namespace ReceptionServiceCore.Controller
                 CreateDate datetime null,
                 UpdateDate datetime null
             );
+            """);
+
+            Console.WriteLine("Добавления таблицы \"Хранения токенов внешних данных (Despatch) (RS_PackageTokens)\"");
+            await Manager.InsertSQLText("""
+              create table RS_PackageTokensDespatch
+              (
+                Id int not null identity(1, 1),
+                IdJwt bigint null,
+                Entity nvarchar(max) null,
+                CreatedAt nvarchar(max) null,
+                Payload nvarchar(max) null,
+                Status int null,
+                CreatedDateDB datetime null,
+                UpdateDateDB datetime null
+              );
             """);
 
             Console.WriteLine("Добавление таблицы \"Мониторинга для обработки данных из клиентской части (RS_MonitoringApp)\"");
@@ -412,6 +591,9 @@ namespace ReceptionServiceCore.Controller
 
             Console.WriteLine("Внесение данных в таблицу RS_StatusListCls (В обработке: получен токен)");
             await Manager.InsertSQLText("insert into RS_StatusListCls (Name) values ('В обработке: получен токен');");
+
+            Console.WriteLine("Внесение данных в таблицу RS_StatusListCls (Новый)");
+            await Manager.InsertSQLText("insert into RS_StatusListCls (Name) values ('Новый');");
 
             Console.WriteLine("Добавление хранимой процедуры \"Удаления движения (RS_DeleteActionApp)\"");
             await Manager.InsertSQLText($"""
@@ -522,20 +704,37 @@ namespace ReceptionServiceCore.Controller
             -- Description:	Просмотр токена
             -- =============================================
             CREATE PROCEDURE [dbo].[RS_GetToken]
+                @IsDespatch bit = 0,
                 @IsGetToken bit = 0
             AS
             BEGIN
-                if (@IsGetToken = 1)
+                if @IsDespatch = 0
                 begin
-                    select * from RS_PackageTokens
-                    where Status in (7)
-                    order by IdObject
+                    if (@IsGetToken = 1)
+                    begin
+                        select * from RS_PackageTokens
+                        where Status in (7)
+                        order by IdObject
+                    end
+                    else
+                        begin
+                        select * from RS_PackageTokens
+                        where Status in (1, 2, 3)
+                        order by IdObject
+                    end
                 end
                 else
+                begin
+                    if (@IsGetToken = 1)
                     begin
-                    select * from RS_PackageTokens
-                    where Status in (1, 2, 3)
-                    order by IdObject
+                        select * from RS_PackageTokensDespatch
+                        where Status in (7)
+                    end
+                    else
+                    begin
+                        select * from RS_PackageTokensDespatch
+                        where Status in (9)
+                    end
                 end
             END;
             """);
@@ -554,14 +753,31 @@ namespace ReceptionServiceCore.Controller
             -- Description:	Внесения идентификатора JWT
             -- =============================================
             CREATE PROCEDURE [dbo].[RS_InsertJWT]
-                @IdObject int,
-                @IdJwt int,
-                @DelaySecond int
+                -- Разделение таблицы PackageTokens (Own) и PackageTokensDespatch (Despatch)
+                @IsDespatch bit,
+                
+                -- Для значения таблицы PackageTokens (Own)
+                @IdObject int null,
+                @DelaySecond int null,
+                
+                -- Общие значения
+                @IdJwt int null
             AS
             BEGIN
-                update RS_PackageTokens
-                set IdJwt = @IDJwt, DelaySecond = @DelaySecond, Status = 7
-                where IdObject = @IdObject
+                if @IsDespatch = 0
+                    begin
+                        update RS_PackageTokens
+                        set IdJwt = @IDJwt, DelaySecond = @DelaySecond, Status = 7
+                        where IdObject = @IdObject
+                    end
+                    else
+                    begin
+                    if not exists (select top 1 * from RS_PackageTokensDespatch where IdJwt = @IdJwt)
+                    begin
+                        insert into RS_PackageTokensDespatch (IdJwt, Status, CreatedDateDB)
+                        values (@IdJwt, 7, GETDATE())
+                    end
+                end
             END;
             """);
 
@@ -603,6 +819,41 @@ namespace ReceptionServiceCore.Controller
             END;
             """);
 
+            Console.WriteLine("Добавление хранимой процедуры \"Внесения токена (RS_InsertTokenDespatch)\"");
+            await Manager.InsertSQLText($"""
+            GO
+            /****** Object:  StoredProcedure [dbo].[InsertToken]    Script Date: {DateTime.Now} ******/
+            SET ANSI_NULLS ON
+            GO
+            SET QUOTED_IDENTIFIER ON
+            GO
+            -- =============================================
+            -- Author:		ReceptionServiceAPI
+            -- Create date: {DateTime.Now}
+            -- Description:	Внесения токена (Despatch)
+            -- =============================================
+            CREATE PROCEDURE [dbo].[InsertTokenDespatch]
+                @IdJwt int,
+                @Entity nvarchar(max) null,
+                @CreatedAt nvarchar(max) null,
+                @Payload nvarchar(max) null
+            AS
+            BEGIN
+                if (@Payload is not null) and exists (select top 1 * from PackageTokensDespatch where IdJwt = @IdJwt)
+                begin
+                    update PackageTokensDespatch
+                    set Status = 9, Entity = @Entity, CreatedAt = @CreatedAt, Payload = @Payload, UpdateDateDB = GetDate()
+                    where IdJwt = @IdJwt
+                end
+                else if exists (select top 1 * from PackageTokensDespatch where IdJwt = @IdJwt and Status = 9)
+                begin
+                    update PackageTokens
+                    set Status = 5, UpdateDate = GETDATE()
+                    where IdJwt = @IdJwt
+                end
+            END
+            """);
+
             Console.WriteLine("Добавление хранимой процедуры \"Сохранение логов в случае если произошла ошибка при отправке запроса (RS_SaveLogRequest)\"");
             await Manager.InsertSQLText($"""
             GO
@@ -633,5 +884,8 @@ namespace ReceptionServiceCore.Controller
         {
 
         }
+
+        #endregion
+        
     }
 }

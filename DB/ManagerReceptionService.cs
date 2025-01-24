@@ -91,7 +91,7 @@ namespace ReceptionServiceCore.DB
         }
 
         /// <summary>
-        /// Добавления токена в очередь
+        /// Добавления токена в очередь (Own)
         /// 
         /// Логика: Если вы хотите отправить данные - указываете все, кроме Результата
         /// Логика: Если вы хотите отправить результат, указываете Result и Status
@@ -103,22 +103,74 @@ namespace ReceptionServiceCore.DB
         /// <param name="Kpp">КПП</param>
         /// <param name="Payload">Данные для отправки в СП</param>
         /// <param name="Result">Результат из СП</param>
-        /// <returns>Числовое значение объекта</returns>
+        /// <returns></returns>
         internal async Task CreateToken(int Status, int IdObject, string? Action = null, string? Entity = null, string? Ogrn = null, string? Kpp = null, string? Payload = null, string? Result = null)
         {
             await Concrete.Exec("[dbo].[InsertToken]", new { IdObject, Status, Action, Entity, Ogrn, Kpp, Payload, Result });
         }
 
-        #region Tokens
-
-        internal async Task<IEnumerable<GetTokenModel?>> GetTokens(bool IsGetToken = false)
+        /// <summary>
+        /// Добавления токена в очередь (Despatch)
+        /// 
+        /// Логика: Сначала вытаскиваем все Id JWT (Статус пакета всегда будет: В обработке: получен токен), потом получаем все токены (Статус меняется на "Новое")
+        /// Продолжение логики: в реестре заявок (песочнице) их просто начинает обрабатывать и распределять их по БД (Меняется статус на "Выгружена")
+        /// </summary>
+        /// <param name="IdJwt">Уникальный идентификатор токена</param>
+        /// <param name="Payload">Данные для отправки в СП</param>
+        /// <param name="Entity">Тип сущности</param>
+        /// <param name="CreatedAt">Дата создания токена от ССПВО</param>
+        /// <returns></returns>
+        internal async Task CreateToken(int IdJwt, string? Payload = null, string? Entity = null, string? CreatedAt = null)
         {
-            return await Concrete.ExecQuery<GetTokenModel>("[dbo].[GetToken]", new { IsGetToken });
+            await Concrete.Exec("[dbo].[InsertTokenDespatch]", new { IdJwt, Entity, CreatedAt, Payload });
         }
 
+        #region Tokens
+
+        /// <summary>
+        /// Получения токенов по соответсвующим статусам
+        /// Если хотим получить все токены для отправки, указываем значение IsGetToken = false
+        /// Если хотим обработать все отправленные токены,указываем значение IsGetToken = true
+        /// </summary>
+        /// <param name="IsGetToken">Получение токенов по соответствующим статусам</param>
+        /// <returns></returns>
+        internal async Task<IEnumerable<GetTokenModel?>> GetTokensOwn(bool IsGetToken = false)
+        {
+            return await Concrete.ExecQuery<GetTokenModel>("[dbo].[GetToken]", new { IsDespatch = false, IsGetToken });
+        }
+
+        /// <summary>
+        /// Получения токенов по соответсвующим статусам
+        /// Если хотим получить все данные токенов от IdJWT, указываем значение IsGetToken = true
+        /// Если хотим обработать все токены и распределить все данные по БД, указываем значение IsGetToken = false
+        /// </summary>
+        /// <param name="IsGetToken">Получение токенов по соответствующим статусам</param>
+        /// <returns></returns>
+        internal async Task<IEnumerable<GetTokenDespatchModel?>> GetTokensDespatch(bool IsGetToken = true)
+        {
+            return await Concrete.ExecQuery<GetTokenDespatchModel>("[dbo].[GetToken]", new { IsDespatch = true, IsGetToken });
+        }
+
+        /// <summary>
+        /// Для внутренних данных (Own)
+        /// </summary>
+        /// <param name="IdObject"></param>
+        /// <param name="IdJWT"></param>
+        /// <param name="DelaySecond"></param>
+        /// <returns></returns>
         internal async Task UpdateToken(int IdObject, int IdJWT, int DelaySecond)
         {
-            await Concrete.Exec("[dbo].[InsertJWT]", new { IdObject, IdJWT, DelaySecond });
+            await Concrete.Exec("[dbo].[InsertJWT]", new { IsDespatch = false, IdObject, DelaySecond, IdJWT });
+        }
+
+        /// <summary>
+        /// Для внешних данных (Despatch)
+        /// </summary>
+        /// <param name="IdJWT"></param>
+        /// <returns></returns>
+        internal async Task UpdateToken(int IdJWT)
+        {
+            await Concrete.Exec("[dbo].[InsertJWT]", new { IsDespatch = true, IdJWT });
         }
 
         internal async Task<int> Test()

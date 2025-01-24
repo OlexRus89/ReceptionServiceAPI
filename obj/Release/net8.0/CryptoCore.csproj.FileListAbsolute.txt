@@ -10,16 +10,29 @@
 /home/olex/Рабочий стол/Projects/CryptoPro_C#/21 (копия).01.2025 13_40/CryptoCore_C#/obj/Release/net8.0/refint/CryptoCore.dll
 /home/olex/Рабочий стол/Projects/CryptoPro_C#/21 (копия).01.2025 13_40/CryptoCore_C#/obj/Release/net8.0/CryptoCore.pdb
 /home/olex/Рабочий стол/Projects/CryptoPro_C#/21 (копия).01.2025 13_40/CryptoCore_C#/obj/Release/net8.0/ref/CryptoCore.dll
-C:\Users\D-302020900060\Desktop\Готовые проекты\ReceptionServiceAPI\ReceptionServiceAPI\bin\Release\net8.0\CryptoCore.deps.json
-C:\Users\D-302020900060\Desktop\Готовые проекты\ReceptionServiceAPI\ReceptionServiceAPI\bin\Release\net8.0\CryptoCore.dll
-C:\Users\D-302020900060\Desktop\Готовые проекты\ReceptionServiceAPI\ReceptionServiceAPI\bin\Release\net8.0\CryptoCore.pdb
-C:\Users\D-302020900060\Desktop\Готовые проекты\ReceptionServiceAPI\ReceptionServiceAPI\obj\Release\net8.0\CryptoCore.csproj.AssemblyReference.cache
-C:\Users\D-302020900060\Desktop\Готовые проекты\ReceptionServiceAPI\ReceptionServiceAPI\obj\Release\net8.0\CryptoCore.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\D-302020900060\Desktop\Готовые проекты\ReceptionServiceAPI\ReceptionServiceAPI\obj\Release\net8.0\CryptoCore.AssemblyInfoInputs.cache
-C:\Users\D-302020900060\Desktop\Готовые проекты\ReceptionServiceAPI\ReceptionServiceAPI\obj\Release\net8.0\CryptoCore.AssemblyInfo.cs
-C:\Users\D-302020900060\Desktop\Готовые проекты\ReceptionServiceAPI\ReceptionServiceAPI\obj\Release\net8.0\CryptoCore.csproj.CoreCompileInputs.cache
-C:\Users\D-302020900060\Desktop\Готовые проекты\ReceptionServiceAPI\ReceptionServiceAPI\obj\Release\net8.0\CryptoCore.sourcelink.json
-C:\Users\D-302020900060\Desktop\Готовые проекты\ReceptionServiceAPI\ReceptionServiceAPI\obj\Release\net8.0\CryptoCore.dll
-C:\Users\D-302020900060\Desktop\Готовые проекты\ReceptionServiceAPI\ReceptionServiceAPI\obj\Release\net8.0\refint\CryptoCore.dll
-C:\Users\D-302020900060\Desktop\Готовые проекты\ReceptionServiceAPI\ReceptionServiceAPI\obj\Release\net8.0\CryptoCore.pdb
-C:\Users\D-302020900060\Desktop\Готовые проекты\ReceptionServiceAPI\ReceptionServiceAPI\obj\Release\net8.0\ref\CryptoCore.dll
+C:/Users/D-302020900060/Desktop/Готовые проекты/ReceptionServiceAPI/ReceptionServiceAPI/bin/Release/net8.0/CryptoCore.deps.json
+C:/Users/D-302020900060/Desktop/Готовые проекты/ReceptionServiceAPI/ReceptionServiceAPI/bin/Release/net8.0/CryptoCore.dll
+C:/Users/D-302020900060/Desktop/Готовые проекты/ReceptionServiceAPI/ReceptionServiceAPI/bin/Release/net8.0/CryptoCore.pdb
+C:/Users/D-302020900060/Desktop/Готовые проекты/ReceptionServiceAPI/ReceptionServiceAPI/obj/Release/net8.0/CryptoCore.csproj.AssemblyReference.cache
+C:/Users/D-302020900060/Desktop/Готовые проекты/ReceptionServiceAPI/ReceptionServiceAPI/obj/Release/net8.0/CryptoCore.GeneratedMSBuildEditorConfig.editorconfig
+C:/Users/D-302020900060/Desktop/Готовые проекты/ReceptionServiceAPI/ReceptionServiceAPI/obj/Release/net8.0/CryptoCore.AssemblyInfoInputs.cache
+C:/Users/D-302020900060/Desktop/Готовые проекты/ReceptionServiceAPI/ReceptionServiceAPI/obj/Release/net8.0/CryptoCore.AssemblyInfo.cs
+C:/Users/D-302020900060/Desktop/Готовые проекты/ReceptionServiceAPI/ReceptionServiceAPI/obj/Release/net8.0/CryptoCore.csproj.CoreCompileInputs.cache
+C:/Users/D-302020900060/Desktop/Готовые проекты/ReceptionServiceAPI/ReceptionServiceAPI/obj/Release/net8.0/CryptoCore.sourcelink.json
+C:/Users/D-302020900060/Desktop/Готовые проекты/ReceptionServiceAPI/ReceptionServiceAPI/obj/Release/net8.0/CryptoCore.dll
+C:/Users/D-302020900060/Desktop/Готовые проекты/ReceptionServiceAPI/ReceptionServiceAPI/obj/Release/net8.0/refint/CryptoCore.dll
+C:/Users/D-302020900060/Desktop/Готовые проекты/ReceptionServiceAPI/ReceptionServiceAPI/obj/Release/net8.0/CryptoCore.pdb
+C:/Users/D-302020900060/Desktop/Готовые проекты/ReceptionServiceAPI/ReceptionServiceAPI/obj/Release/net8.0/ref/CryptoCore.dll
+/home/olex/Рабочий стол/Projects/ReceptionServiceLibrary/ReceptionServiceAPI/bin/Release/net8.0/CryptoCore.deps.json
+/home/olex/Рабочий стол/Projects/ReceptionServiceLibrary/ReceptionServiceAPI/bin/Release/net8.0/CryptoCore.dll
+/home/olex/Рабочий стол/Projects/ReceptionServiceLibrary/ReceptionServiceAPI/bin/Release/net8.0/CryptoCore.pdb
+/home/olex/Рабочий стол/Projects/ReceptionServiceLibrary/ReceptionServiceAPI/obj/Release/net8.0/CryptoCore.csproj.AssemblyReference.cache
+/home/olex/Рабочий стол/Projects/ReceptionServiceLibrary/ReceptionServiceAPI/obj/Release/net8.0/CryptoCore.GeneratedMSBuildEditorConfig.editorconfig
+/home/olex/Рабочий стол/Projects/ReceptionServiceLibrary/ReceptionServiceAPI/obj/Release/net8.0/CryptoCore.AssemblyInfoInputs.cache
+/home/olex/Рабочий стол/Projects/ReceptionServiceLibrary/ReceptionServiceAPI/obj/Release/net8.0/CryptoCore.AssemblyInfo.cs
+/home/olex/Рабочий стол/Projects/ReceptionServiceLibrary/ReceptionServiceAPI/obj/Release/net8.0/CryptoCore.csproj.CoreCompileInputs.cache
+/home/olex/Рабочий стол/Projects/ReceptionServiceLibrary/ReceptionServiceAPI/obj/Release/net8.0/CryptoCore.sourcelink.json
+/home/olex/Рабочий стол/Projects/ReceptionServiceLibrary/ReceptionServiceAPI/obj/Release/net8.0/CryptoCore.dll
+/home/olex/Рабочий стол/Projects/ReceptionServiceLibrary/ReceptionServiceAPI/obj/Release/net8.0/refint/CryptoCore.dll
+/home/olex/Рабочий стол/Projects/ReceptionServiceLibrary/ReceptionServiceAPI/obj/Release/net8.0/CryptoCore.pdb
+/home/olex/Рабочий стол/Projects/ReceptionServiceLibrary/ReceptionServiceAPI/obj/Release/net8.0/ref/CryptoCore.dll
