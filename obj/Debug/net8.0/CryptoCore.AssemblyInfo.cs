@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("NCFU")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.4.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.4+95abbe266bc9593b7d17373e0ce92f5bfcbe1a80")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.4+1e7206e8a4927178719076452dd46715051f20fe")]
 [assembly: System.Reflection.AssemblyProductAttribute("Library ReceptionServiceAPI")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CryptoCore")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.4.0")]
