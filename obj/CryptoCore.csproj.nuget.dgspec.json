@@ -5,7 +5,7 @@
   },
   "projects": {
     "/home/olex/Рабочий стол/Projects/ReceptionServiceLibrary/ReceptionServiceAPI/CryptoCore.csproj": {
-      "version": "1.0.4",
+      "version": "1.0.10",
       "restore": {
         "projectUniqueName": "/home/olex/Рабочий стол/Projects/ReceptionServiceLibrary/ReceptionServiceAPI/CryptoCore.csproj",
         "projectName": "CryptoCore",

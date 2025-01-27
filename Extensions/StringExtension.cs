@@ -10,7 +10,6 @@ namespace ReceptionServiceCore.Extensions
     {
         public string GetType<T>() 
         {
-            Debug.WriteLine(typeof(T).Name.Replace("[]", ""));
             return typeof(T).Name.Replace("[]", "");
         }
 
@@ -25,15 +24,15 @@ namespace ReceptionServiceCore.Extensions
         }
     }
 
-    public static class StringExtensions
+    internal static class StringExtensions
     {
-        public static bool IsValidURI(this string source)
+        internal static bool IsValidURI(this string source)
         {
             Uri uriResult;
             return Uri.TryCreate(source, UriKind.Absolute, out uriResult) && uriResult.Scheme == Uri.UriSchemeHttp;
         }
 
-        public static (bool ResultBool, int ResultInt) IsValidInt(this string source)
+        internal static (bool ResultBool, int ResultInt) IsValidInt(this string source)
         {
             int n;
             if (int.TryParse(source, out n))
@@ -41,6 +40,12 @@ namespace ReceptionServiceCore.Extensions
                 return (true, n);
             }
             else return (false, 0);
+        }
+
+        internal static bool IsValidFile(this string sourse)
+        {
+            DirectoryInfo directory = new DirectoryInfo(sourse);
+            return directory.Exists;  
         }
     }
 }

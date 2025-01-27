@@ -22,7 +22,7 @@ namespace ReceptionServiceCore.Extensions
         protected ManagerReceptionService Manager { get; private set; }
         [JsonIgnore]
         protected StartupModel Startup { get; private set; }
-        internal Network(StartupModel startup)
+        public Network(StartupModel startup)
         {
             Startup = startup;
             Manager = new ManagerReceptionService(Startup);
@@ -66,13 +66,15 @@ namespace ReceptionServiceCore.Extensions
                 {
                     using (var stream = ex.Response?.GetResponseStream())
                     using (var reader = new StreamReader(stream)) 
+                    {
 #if DEBUG
-                    Console.WriteLine("Message: " + ex.Message + "\n" + "StackTrace: " + ex.StackTrace + "\n" + "Sender: " + JsonConvert.SerializeObject(new ErrorData() { Point = GetURL(point), Method = Method, Source = Startup.AppSetting.Source, Header = Header != null ? JsonConvert.SerializeObject(Header) : null, Payload = Payload, SessionKey = Session }) + "\n" + "MessageResult: " + reader.ReadToEnd());
-                    Error = "Message: " + ex.Message + "\n" + "StackTrace: " + ex.StackTrace + "\n" + "Sender: " + JsonConvert.SerializeObject(new ErrorData() { Point = GetURL(point), Method = Method, Source = Startup.AppSetting.Source, Header = Header != null ? JsonConvert.SerializeObject(Header) : null, Payload = Payload, SessionKey = Session });
+                        Console.WriteLine("Message: " + ex.Message + "\n" + "StackTrace: " + ex.StackTrace + "\n" + "Sender: " + JsonConvert.SerializeObject(new ErrorData() { Point = GetURL(point), Method = Method, Source = Startup.AppSetting.Source, Header = Header != null ? JsonConvert.SerializeObject(Header) : null, Payload = Payload, SessionKey = Session }) + "\n" + "MessageResult: " + reader.ReadToEnd());
+                        Error = "Message: " + ex.Message + "\n" + "StackTrace: " + ex.StackTrace + "\n" + "Sender: " + JsonConvert.SerializeObject(new ErrorData() { Point = GetURL(point), Method = Method, Source = Startup.AppSetting.Source, Header = Header != null ? JsonConvert.SerializeObject(Header) : null, Payload = Payload, SessionKey = Session });
 #else
-                    Manager.SaveErrorRequest(Message: ex.Message, StackTrace: ex.StackTrace, Sender: (new ErrorData() { Point = GetURL(point), Method = Method, Header = Header != null ? JsonConvert.SerializeObject(Header) : null, Payload = Payload, SessionKey = Session }).EncodeJSON(Startup), MessageResult: reader.ReadToEnd());
-                    Error = "Message: " + ex.Message + "\n" + "StackTrace: " + ex.StackTrace + "\n" + "Sender: " + JsonConvert.SerializeObject(new ErrorData() { Point = GetURL(point), Method = Method, Source = Startup.AppSetting.Source, Header = Header != null ? JsonConvert.SerializeObject(Header) : null, Payload = Payload, SessionKey = Session });
+                        Task task = Task.Run(async () => await Manager.SaveErrorRequest(Message: ex.Message, StackTrace: ex.StackTrace, Sender: (new ErrorData() { Point = GetURL(point), Method = Method, Header = Header != null ? JsonConvert.SerializeObject(Header) : null, Payload = Payload, SessionKey = Session }).EncodeJSON(Startup), MessageResult: reader.ReadToEnd())); task.Wait();
+                        Error = "Message: " + ex.Message + "\n" + "StackTrace: " + ex.StackTrace + "\n" + "Sender: " + JsonConvert.SerializeObject(new ErrorData() { Point = GetURL(point), Method = Method, Source = Startup.AppSetting.Source, Header = Header != null ? JsonConvert.SerializeObject(Header) : null, Payload = Payload, SessionKey = Session });
 #endif
+                    }
                 }
                 catch (Exception ex1)
                 {
@@ -80,7 +82,7 @@ namespace ReceptionServiceCore.Extensions
                     Console.WriteLine("Message: " + ex1.Message + "\n" + "StackTrace: " + ex1.StackTrace + "\n" + "Sender: " + JsonConvert.SerializeObject(new ErrorData() { Point = GetURL(point), Method = Method, Source = Startup.AppSetting.Source, Header = Header != null ? JsonConvert.SerializeObject(Header) : null, Payload = Payload, SessionKey = Session }));
                     Error = "Message: " + ex1.Message + "\n" + "StackTrace: " + ex1.StackTrace + "\n" + "Sender: " + JsonConvert.SerializeObject(new ErrorData() { Point = GetURL(point), Method = Method, Source = Startup.AppSetting.Source, Header = Header != null ? JsonConvert.SerializeObject(Header) : null, Payload = Payload, SessionKey = Session });
 #else
-                    Manager.SaveErrorRequest(Message: ex1.Message, StackTrace: ex1.StackTrace, Sender: (new ErrorData() { Point = GetURL(point), Method = Method, Header = Header != null ? JsonConvert.SerializeObject(Header) : null, Payload = Payload, SessionKey = Session }).EncodeJSON(Startup), MessageResult: null);
+                    Task task = Task.Run(async () => await Manager.SaveErrorRequest(Message: ex1.Message, StackTrace: ex1.StackTrace, Sender: (new ErrorData() { Point = GetURL(point), Method = Method, Header = Header != null ? JsonConvert.SerializeObject(Header) : null, Payload = Payload, SessionKey = Session }).EncodeJSON(Startup), MessageResult: null)); task.Wait();
                     Error = "Message: " + ex1.Message + "\n" + "StackTrace: " + ex1.StackTrace + "\n" + "Sender: " + JsonConvert.SerializeObject(new ErrorData() { Point = GetURL(point), Method = Method, Source = Startup.AppSetting.Source, Header = Header != null ? JsonConvert.SerializeObject(Header) : null, Payload = Payload, SessionKey = Session });
 #endif
                 }
@@ -91,7 +93,7 @@ namespace ReceptionServiceCore.Extensions
                     Console.WriteLine("Message: " + ex.Message + "\n" + "StackTrace: " + ex.StackTrace + "\n" + "Sender: " + JsonConvert.SerializeObject(new ErrorData() { Point = GetURL(point), Method = Method, Source = Startup.AppSetting.Source, Header = Header != null ? JsonConvert.SerializeObject(Header) : null, Payload = Payload, SessionKey = Session }));
                     Error = "Message: " + ex.Message + "\n" + "StackTrace: " + ex.StackTrace + "\n" + "Sender: " + JsonConvert.SerializeObject(new ErrorData() { Point = GetURL(point), Method = Method, Source = Startup.AppSetting.Source, Header = Header != null ? JsonConvert.SerializeObject(Header) : null, Payload = Payload, SessionKey = Session });
 #else
-                    Manager.SaveErrorRequest(Message: ex.Message, StackTrace: ex.StackTrace, Sender: (new ErrorData() { Point = GetURL(point), Method = Method, Header = Header != null ? JsonConvert.SerializeObject(Header) : null, Payload = Payload, SessionKey = Session }).EncodeJSON(Startup), MessageResult: null);
+                    Task task = Task.Run(async () => await Manager.SaveErrorRequest(Message: ex.Message, StackTrace: ex.StackTrace, Sender: (new ErrorData() { Point = GetURL(point), Method = Method, Header = Header != null ? JsonConvert.SerializeObject(Header) : null, Payload = Payload, SessionKey = Session }).EncodeJSON(Startup), MessageResult: null)); task.Wait();
                     Error = "Message: " + ex.Message + "\n" + "StackTrace: " + ex.StackTrace + "\n" + "Sender: " + JsonConvert.SerializeObject(new ErrorData() { Point = GetURL(point), Method = Method, Source = Startup.AppSetting.Source, Header = Header != null ? JsonConvert.SerializeObject(Header) : null, Payload = Payload, SessionKey = Session });
 #endif
             }
@@ -115,7 +117,7 @@ namespace ReceptionServiceCore.Extensions
             }
         }
 
-        private string CreateJWT(dynamic Header, string Payload)
+        protected string CreateJWT(dynamic Header, string Payload)
         {
             string result = "";
             string header = "";
@@ -128,7 +130,7 @@ namespace ReceptionServiceCore.Extensions
             return result;
         }
 
-        private byte[] SignMsg(Byte[] msg, CpX509Certificate2? signerCert)
+        protected byte[] SignMsg(Byte[] msg, CpX509Certificate2? signerCert)
         {
             ContentInfo contentInfo = new ContentInfo(msg);
             CpSignedCms signedCms = new CpSignedCms(contentInfo, true);
@@ -137,7 +139,7 @@ namespace ReceptionServiceCore.Extensions
             return signedCms.Encode();
         }
 
-        private CpX509Certificate2? GetSignerCert(string signerName)
+        protected CpX509Certificate2? GetSignerCert(string signerName)
         {
             CpX509Store storeMy =  new CpX509Store(StoreName.My, StoreLocation.CurrentUser);
             storeMy.Open(OpenFlags.ReadOnly);
@@ -148,7 +150,7 @@ namespace ReceptionServiceCore.Extensions
             return certColl[0];
         }
 
-        private string GetSignature(string data)
+        protected string GetSignature(string data)
         {
             return Convert.ToBase64String(SignMsg(Encoding.UTF8.GetBytes(data), GetSignerCert(Startup.AppSetting.CerificateName)));
         }

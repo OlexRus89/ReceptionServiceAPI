@@ -220,6 +220,7 @@ namespace ReceptionServiceCore.Models
                     CerificateName = "",
                     StartupDelay = -1,
                     Key = "",
+                    SaveFileDirectory = "",
                     Source = ""
                 };
             }
@@ -244,6 +245,7 @@ namespace ReceptionServiceCore.Models
                 |    -- Kpp - Массив КПП организации {(startup.AppSetting.Kpp.Count() > 0 ? $"(Внесено: {startup.AppSetting.Kpp.Count()})" : "")}
                 |    |   -- NameKpp - Наименование КПП организации
                 |    |   -- KppOrganization - КПП организации
+                |    -- SaveFileDirectory - Наименование сохранения файла (например, для Windows - С:\Users\Пользователь\Desktop\Файл, для Linux - /home/Пользователь/Desktop/Файл) {(startup.AppSetting.SaveFileDirectory != "" ? "✓" : "")}
                 |    -- CerificateName - Наименование сертификата (по правилу указать 1 слово вашего сертификата из программы КриптоПро) {(startup.AppSetting.CerificateName != "" ? "✓" : "")}
                 |    -- StartupDelay - Задержка времени (в сек.) работоспособности программы во избежание постоянных отправок данных в ССПВО, значение можно поставить от 2 секунд и выше {(startup.AppSetting.StartupDelay != -1 ? "✓" : "")}
                 |    -- Key - Ваш ключ шифрорвания/дешифрования для доступа к конфигурации, БД и токенов {(startup.AppSetting.Key != "" ? "✓" : "")}
@@ -312,6 +314,10 @@ namespace ReceptionServiceCore.Models
                     case "StartupDelay":
                         Console.Write($"Укажите данные для ключа StartupDelay {(startup.AppSetting.StartupDelay != -1 ? "(Имеются данные: " + startup.AppSetting.StartupDelay + ", если не хотите изменять, скопируйте-вставьте данные и нажмите на Enter)" : "")}: ");
                         startup.AppSetting.StartupDelay = (Console.ReadLine()).IsValidInt().ResultInt;
+                        continue;
+                    case "SaveFileDirectory":
+                        Console.Write($"Укажите данные для ключа SaveFileDirectory {(startup.AppSetting.SaveFileDirectory != "" ? "(Имеются данные: " + startup.AppSetting.SaveFileDirectory + ", если не хотите изменять, скопируйте-вставьте данные и нажмите на Enter" : "")}: ");
+                        startup.AppSetting.Source = Console.ReadLine();
                         continue;
 
                     case "URL":
@@ -757,6 +763,7 @@ namespace ReceptionServiceCore.Models
                             Console.WriteLine("|    |    -- KppOrganization: " + kpp.KppOrganization);
                             count++;
                         }
+                        Console.WriteLine("|    -- SaveFileDirectory: " + startup.AppSetting.SaveFileDirectory);
                         Console.WriteLine("|    -- CerificateName: " + startup.AppSetting.CerificateName);
                         Console.WriteLine("|    -- StartupDelay: " + startup.AppSetting.StartupDelay);
                         Console.WriteLine("|    -- Key: " + startup.AppSetting.Key);
@@ -814,6 +821,8 @@ namespace ReceptionServiceCore.Models
             }
             if (startup.AppSetting.StartupURL == null || startup.AppSetting.StartupURL == "") isValid = false;
             if (startup.AppSetting.ConnectionStrings.IsNullOrEmpty()) isValid = false;
+            if (startup.AppSetting.SaveFileDirectory == null || startup.AppSetting.SaveFileDirectory == "") isValid = false;
+            else if (startup.AppSetting.SaveFileDirectory != "" && !startup.AppSetting.SaveFileDirectory.IsValidFile()) isValid = false;
             foreach(var t in startup.AppSetting.ConnectionStrings)
             {
                 if (t.Name == null || t.Name == "") isValid = false;
@@ -854,6 +863,8 @@ namespace ReceptionServiceCore.Models
                         if (t.Url == null || t.Url == "") Console.WriteLine("-- Отсутствует URL-адрес (Url) из массива URL-адреса (URLs), внесите необходимые данные!");
                         else if (t.Url != "" && !t.Url.IsValidURI()) Console.WriteLine("-- Неправильно составлена схема URL-адреса (Url) из массива URL-адреса (URLs), внесите по соответсвующим требованиям (например, http(s)://XXX.XXX.XXX.XXX:XXXX)!");
                     }
+                    if (startup.AppSetting.SaveFileDirectory == null || startup.AppSetting.SaveFileDirectory == "") Console.WriteLine("-- Отсутствует папка для сохранения файлов (SaveFileDirectory), внесите необходимые данные!");
+                    else if (startup.AppSetting.SaveFileDirectory != "" && !startup.AppSetting.SaveFileDirectory.IsValidFile()) Console.WriteLine("-- Неправильно составлена папка для сохранения файлов (SaveFileDirectory), убедитесь, что вы внесли првильный путь на сохранения фйлов (например: для Windows: С:\\Users\\Пользователь\\Desktop\\Файл, для Linux: /home/Пользователь/Рабочий стол/Файл)!");
                     if (startup.AppSetting.StartupURL == null || startup.AppSetting.StartupURL == "") Console.WriteLine("-- Отсутствует первоначальный запуск URL-адреса (StartupURL), внесите необходимые данные!");
                     if (startup.AppSetting.ConnectionStrings.IsNullOrEmpty()) Console.WriteLine("-- Отсутствуют строки подключения БД (ConnectionStrings), внесите необходимые данные!");
                     foreach(var t in startup.AppSetting.ConnectionStrings)
@@ -888,7 +899,7 @@ namespace ReceptionServiceCore.Models
 
         private (FileInfo FileSetup, FileInfo FileAppData, DirectoryInfo FileTempAppData) DirectoryFiles()
         {
-             var os = Environment.OSVersion;
+            var os = Environment.OSVersion;
             var a = Enum.GetValues(typeof(Environment.SpecialFolder))
                 .Cast<Environment.SpecialFolder>()
                 .Select(specialFolder => new
@@ -914,6 +925,7 @@ namespace ReceptionServiceCore.Models
         public required string Ogrn { get; set; }
         public required Kpp[] Kpp { get; set; }
         public required string CerificateName { get; set; }
+        public required string SaveFileDirectory { get; set; } // TODO: Добавить в инструкцию
         public required int? StartupDelay { get; set; }
         public required string Key { get; set; }
         public required string Source { get; set; }

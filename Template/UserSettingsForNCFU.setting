@@ -24,9 +24,15 @@
 				"SQLName": "MSSQL",
 				"ProviderName": "System.Data.SqlClient",
 				"ConnectionString": "server=192.168.2.2; database=dekanat;user id=sservice;password=q1w2e3;Integrated Security = false;"
+			},
+			{
+				"Name": "ReceptionServiceDBTest",
+				"SQLName": "MSSQL",
+				"ProviderName": "System.Data.SqlClient",
+				"ConnectionString": "Data Source=127.0.0.1; database=ReceptionServiceDBTest;user id=SService;password=tihega21ForPS5;Integrated Security = false; Trust Server Certificate=true"
 			}
 		],
-		"StartupSQLForAPI": "ReceptionService",
+		"StartupSQLForAPI": "ReceptionServiceDBTest",
 		"StartupSQLForClient": "dekanat",
 		"Ogrn": "1022601961580",
 		"Kpp": [
@@ -44,6 +50,7 @@
 			}
 		],
 		"CerificateName": "ФЕДЕРАЛЬНЫЙ",
+		"SaveFileDirectory": "/home/olex/Рабочий стол/Файл",
 		"StartupDelay": 5,
 		"Key": "SuperService_NCFU",
 		"Source": "Ядро Сервиса приема"
