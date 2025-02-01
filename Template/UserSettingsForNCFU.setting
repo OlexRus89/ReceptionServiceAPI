@@ -51,7 +51,7 @@
 		],
 		"CerificateName": "ФЕДЕРАЛЬНЫЙ",
 		"SaveFileDirectory": "/home/olex/Рабочий стол/Файл",
-		"StartupDelay": 5,
+		"StartupDelay": 600,
 		"Key": "SuperService_NCFU",
 		"Source": "Ядро Сервиса приема"
 	}

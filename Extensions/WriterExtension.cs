@@ -11,6 +11,7 @@ namespace ReceptionServiceCore.Extensions
 
         public WriterExtension()
         {
+            var os = Environment.OSVersion;
             var a = Enum.GetValues(typeof(Environment.SpecialFolder))
                 .Cast<Environment.SpecialFolder>()
                 .Select(specialFolder => new
@@ -19,12 +20,13 @@ namespace ReceptionServiceCore.Extensions
                     Path = Environment.GetFolderPath(specialFolder)
                 })
                 .OrderBy(item => item.Path.ToLower());
-            FileInfo FileAppData = new FileInfo(a.First(a => a.Name == "LocalApplicationData").Path + "\\SSCoreApp\\XmlSuperSerice.txt");
+            FileInfo FileAppData = new FileInfo(a.First(a => a.Name == "LocalApplicationData").Path + (os.Platform == PlatformID.Win32NT ? "\\SSCoreApp\\XmlSuperSerice.txt" : "/SSCoreApp/XmlSuperSerice.txt"));
             path = FileAppData.ToString();
         }
 
         internal void WriteTxt(string Xml, string? path = null)
         {
+            var os = Environment.OSVersion;
             var a = Enum.GetValues(typeof(Environment.SpecialFolder))
                 .Cast<Environment.SpecialFolder>()
                 .Select(specialFolder => new
@@ -33,8 +35,8 @@ namespace ReceptionServiceCore.Extensions
                     Path = Environment.GetFolderPath(specialFolder)
                 })
                 .OrderBy(item => item.Path.ToLower());
-            FileInfo FileAppData = new FileInfo(a.First(a => a.Name == "LocalApplicationData").Path + "\\SSCoreApp\\XmlSuperSerice.txt");
-            DirectoryInfo FileTempAppData = new DirectoryInfo(a.First(a => a.Name == "LocalApplicationData").Path + "\\SSCoreApp");
+            FileInfo FileAppData = new FileInfo(a.First(a => a.Name == "LocalApplicationData").Path + (os.Platform == PlatformID.Win32NT ? "\\SSCoreApp\\XmlSuperSerice.txt" : "/SSCoreApp/XmlSuperSerice.txt"));
+            DirectoryInfo FileTempAppData = new DirectoryInfo(a.First(a => a.Name == "LocalApplicationData").Path + (os.Platform == PlatformID.Win32NT ? "\\SSCoreApp" : "/SSCoreApp"));
             using (StreamWriter writer = new StreamWriter(path != null ? path : FileAppData.ToString(), false))
             {
                 writer.WriteLine(Xml);
@@ -44,6 +46,7 @@ namespace ReceptionServiceCore.Extensions
 
         public void DeleteTxt(string? path = null)
         {
+            var os = Environment.OSVersion;
             var a = Enum.GetValues(typeof(Environment.SpecialFolder))
                 .Cast<Environment.SpecialFolder>()
                 .Select(specialFolder => new
@@ -52,8 +55,8 @@ namespace ReceptionServiceCore.Extensions
                     Path = Environment.GetFolderPath(specialFolder)
                 })
                 .OrderBy(item => item.Path.ToLower());
-            FileInfo FileAppData = new FileInfo(a.First(a => a.Name == "LocalApplicationData").Path + "\\SSCoreApp\\XmlSuperSerice.txt");
-            DirectoryInfo FileTempAppData = new DirectoryInfo(a.First(a => a.Name == "LocalApplicationData").Path + "\\SSCoreApp");
+            FileInfo FileAppData = new FileInfo(a.First(a => a.Name == "LocalApplicationData").Path + (os.Platform == PlatformID.Win32NT ? "\\SSCoreApp\\XmlSuperSerice.txt" : "/SSCoreApp/XmlSuperSerice.txt"));
+            DirectoryInfo FileTempAppData = new DirectoryInfo(a.First(a => a.Name == "LocalApplicationData").Path + (os.Platform == PlatformID.Win32NT ? "\\SSCoreApp" : "/SSCoreApp"));
             FileInfo fileInfo = new FileInfo(path != null ? path : FileAppData.ToString());
             if (fileInfo.Exists)
             {
