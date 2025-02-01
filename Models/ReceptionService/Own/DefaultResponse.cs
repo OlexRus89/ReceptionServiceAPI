@@ -144,7 +144,7 @@ namespace ReceptionServiceCore.Models.ReceptionService.Own
         /// <summary>
         /// Время формирования ответа
         /// </summary>
-        public required DateTime Time { get; set; }
+        public required string Time { get; set; }
     }
 
     public class Params

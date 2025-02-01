@@ -19,5 +19,36 @@ namespace ReceptionServiceCore.Extensions
         {
             return Date > DateTime.Now;
         }
+
+        public static string ConvertToStringYMD(this DateTime Date)
+        {
+            return Date.ToString("yyyy-MM-dd");
+        }
+
+        public static string ConvertTostringYMDHMS(this DateTime Date)
+        {
+            return Date.ToString("yyyy-MM-dd HH:mm:ss");
+        }
+
+        public static string ConvertToStringYMDTHMSZ(this DateTime Date)
+        {
+            return Date.ToString("yyyy-MM-dd'T'HH:mm:ss+03:00");
+        }
+
+        public static string ConvertToStringYMD(this string Date)
+        {
+            return DateTime.Parse(Date).ToString("yyyy-MM-dd");
+        }
+
+        public static string ConvertTostringYMDHMS(this string Date)
+        {
+            return DateTime.Parse(Date).ToString("yyyy-MM-dd HH:mm:ss");
+        }
+
+        public static string ConvertToStringYMDTHMSZ(this string Date)
+        {
+            return DateTime.Parse(Date).ToString("yyyy-MM-dd'T'HH:mm:ss+03:00");
+        }
+
     }
 }

@@ -27,7 +27,7 @@ namespace ReceptionServiceCore.Models.ReceptionService
         /// <summary>
         /// Дата регистрации. Формат RFC3339 шаблон "2006-01-02T15:04:05+03:00"
         /// </summary>
-        public required DateTime RegistrationDate { get; set; }
+        public required string RegistrationDate { get; set; }
         /// <summary>
         /// Признак первого образования
         /// </summary>

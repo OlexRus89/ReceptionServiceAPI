@@ -21,6 +21,6 @@ namespace ReceptionServiceCore.Models.ReceptionService.Despatch
         /// <summary>
         /// Дата и время подачи/отзыва оригинала. Формат RFC3339 шаблон "2006-01-02T15:04:05+03:00"
         /// </summary>
-        public required DateTime OrigDocDate { get; set; }
+        public required string OrigDocDate { get; set; }
     }
 }

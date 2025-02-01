@@ -105,11 +105,11 @@ namespace ReceptionServiceCore.Models.ReceptionService.Despatch
         /// <summary>
         /// Дата выдачи. Шаблон "2006-01-02"
         /// </summary>
-        public DateTime? IssueDate { get; set; }
+        public string? IssueDate { get; set; }
         /// <summary>
         /// Дата рождения. Шаблон "2006-01-02"
         /// </summary>
-        public required DateTime Birthdate { get; set; }
+        public required string Birthdate { get; set; }
         /// <summary>
         /// Место рождения
         /// </summary>
@@ -248,6 +248,6 @@ namespace ReceptionServiceCore.Models.ReceptionService.Despatch
         /// <summary>
         /// Дата выдачи сертификата маткапитала. Шаблон "2006-01-02"
         /// </summary>
-        public DateTime? IssueDate { get; set; }
+        public string? IssueDate { get; set; }
     }
 }

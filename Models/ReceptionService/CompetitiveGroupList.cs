@@ -58,7 +58,7 @@ namespace ReceptionServiceCore.Models.ReceptionService
         /// <summary>
         /// Дата и время создания КГ. Формат RFC3339 шаблон "2006-01-02T15:04:05+03:00"
         /// </summary>
-        public DateTime? CreatedDateTime { get; set; }
+        public string? CreatedDateTime { get; set; }
         [XmlElement("Priority", typeof(Priority))]
         /// <summary>
         /// Приоритет КГ заявления
@@ -77,7 +77,7 @@ namespace ReceptionServiceCore.Models.ReceptionService
         /// <summary>
         /// Дата и время отказа от зачисления. Формат RFC3339 шаблон "2006-01-02T15:04:05+03:00"
         /// </summary>
-        public DateTime? RefuseEnrollmentDate { get; set; }
+        public string? RefuseEnrollmentDate { get; set; }
         /// <summary>
         /// Огрн организации за которую заполняются данные (организация должна быть либо филиалом либо головной организацией с вашей организацией)
         /// </summary>
@@ -89,7 +89,7 @@ namespace ReceptionServiceCore.Models.ReceptionService
         /// <summary>
         /// Время последнего редактирования статуса. Формат RFC3339 шаблон "2006-01-02T15:04:05+03:00". Значение только по московскому времени
         /// </summary>
-        public DateTime? StatusUpdatedDateTime { get; set; }
+        public string? StatusUpdatedDateTime { get; set; }
         /// <summary>
         /// Признак создания вузом (true - создано вузом, false - поступающим через ЕПГУ)
         /// </summary>
@@ -97,7 +97,7 @@ namespace ReceptionServiceCore.Models.ReceptionService
         /// <summary>
         /// Время последнего редактирования приоритета. Формат RFC3339 шаблон "2006-01-02T15:04:05+03:00". Значение только по московскому времени
         /// </summary>
-        public DateTime? PriorityUpdatedDateTime { get; set; }
+        public string? PriorityUpdatedDateTime { get; set; }
         /// <summary>
         /// Этап приема конкурса ПК. Идентификатор классификатора StagesAdmissionCls
         /// </summary>

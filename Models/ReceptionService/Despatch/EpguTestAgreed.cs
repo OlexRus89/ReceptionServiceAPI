@@ -29,10 +29,10 @@ namespace ReceptionServiceCore.Models.ReceptionService.Despatch
         /// <summary>
         /// Дата и время создания записи на ВИ. Формат RFC3339 шаблон "2006-01-02T15:04:05+03:00"
         /// </summary>
-        public required DateTime CreatedDateTime { get; set; }
+        public required string CreatedDateTime { get; set; }
         /// <summary>
         /// Дата и время последнего изменения записи на ВИ. Формат RFC3339 шаблон "2006-01-02T15:04:05+03:00"
         /// </summary>
-        public DateTime? UpdatedDateTime { get; set; }
+        public string? UpdatedDateTime { get; set; }
     }
 }

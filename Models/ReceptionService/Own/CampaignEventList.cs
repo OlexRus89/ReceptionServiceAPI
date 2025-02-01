@@ -67,10 +67,10 @@ namespace ReceptionServiceCore.Models.ReceptionService.Own
         /// <summary>
         /// Дата и время начала мероприятия. Формат RFC3339 шаблон "2006-01-02T15:04:05+03:00". Задавать значение только по московскому времени
         /// </summary>
-        public DateTime? StartEvent { get; set; }
+        public string? StartEvent { get; set; }
         /// <summary>
         /// Дата и время окончания мероприятия. Формат RFC3339 шаблон "2006-01-02T15:04:05+03:00". Задавать значение только по московскому времени
         /// </summary>
-        public DateTime? EndEvent { get; set; }
+        public string? EndEvent { get; set; }
     }
 }

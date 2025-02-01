@@ -46,19 +46,19 @@ namespace ReceptionServiceCore.Models.ReceptionService.Own
         /// <summary>
         /// Дата и время начала сдачи. Формат RFC3339 шаблон "2006-01-02T15:04:05+03:00". Задавать значение только по московскому времени
         /// </summary>
-        public DateTime? StartTest { get; set; }
+        public string? StartTest { get; set; }
         /// <summary>
         /// Дата и время завершения сдачи. Указывать только если задается период сдачи, иначе тэг не писать. Формат RFC3339 шаблон "2006-01-02T15:04:05+03:00". Задавать значение только по московскому времени
         /// </summary>
-        public DateTime? EndTest { get; set; }
+        public string? EndTest { get; set; }
         /// <summary>
         /// Дата и время начала записи (значения должны попадать в периоды мероприятий «Проведение ВИ вуза» или «Проведение ДВИ»). Формат RFC3339 шаблон "2006-01-02T15:04:05+03:00". Задавать значение только по московскому времени
         /// </summary>
-        public DateTime? StartRegistration { get; set; }
+        public string? StartRegistration { get; set; }
         /// <summary>
         /// Дата и время завершения записи (значения должны попадать в периоды мероприятий «Проведение ВИ вуза» или «Проведение ДВИ»). Формат RFC3339 шаблон "2006-01-02T15:04:05+03:00". Задавать значение только по московскому времени
         /// </summary>
-        public DateTime? EndRegistration { get; set; }
+        public string? EndRegistration { get; set; }
         /// <summary>
         /// Идентификатор классификатора SubjectCls
         /// </summary>

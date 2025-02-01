@@ -53,6 +53,6 @@ namespace ReceptionServiceCore.Models.ReceptionService.Despatch
         /// <summary>
         /// Дата договора
         /// </summary>
-        public required DateTime DateContract { get; set; }
+        public required string DateContract { get; set; }
     }
 }

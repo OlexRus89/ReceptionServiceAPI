@@ -61,7 +61,7 @@ namespace ReceptionServiceCore.Models.ReceptionService.Own
         /// <summary>
         /// Дата регистрации. Формат RFC3339 шаблон "2006-01-02T15:04:05+03:00". Задавать значение только по московскому времени
         /// </summary>
-        public DateTime? RegistrationDate { get; set; }
+        public string? RegistrationDate { get; set; }
         /// <summary>
         /// Нет высшего образования
         /// </summary>
@@ -153,7 +153,7 @@ namespace ReceptionServiceCore.Models.ReceptionService.Own
         /// <summary>
         /// Дата рождения. Шаблон "2006-01-02"
         /// </summary>
-        public required DateTime Birthday { get; set; }
+        public required string Birthday { get; set; }
         /// <summary>
         /// Место рождения
         /// </summary>
@@ -210,7 +210,7 @@ namespace ReceptionServiceCore.Models.ReceptionService.Own
         /// <summary>
         /// Дата выдачи. Шаблон "2006-01-02"
         /// </summary>
-        public required DateTime IssueDate { get; set; }  
+        public required string IssueDate { get; set; }  
         /// <summary>
         /// Огранизация, выдавшая документ
         /// </summary>
@@ -222,7 +222,7 @@ namespace ReceptionServiceCore.Models.ReceptionService.Own
         /// <summary>
         /// Время создания документа. Формат RFC3339 шаблон "2006-01-02T15:04:05+03:00". Значение только по московскому времени
         /// </summary>
-        public DateTime? CreatedDateTime { get; set; } 
+        public string? CreatedDateTime { get; set; } 
     }
 
     /// <summary>

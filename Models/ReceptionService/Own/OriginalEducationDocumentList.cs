@@ -34,7 +34,7 @@ namespace ReceptionServiceCore.Models.ReceptionService.Own
         /// <summary>
         /// Дата и время подачи оригинала. Формат RFC3339 шаблон "2006-01-02T15:04:05+03:00". Задавать значение только по московскому времени
         /// </summary>
-        public DateTime? OrigDocDate { get; set; }
+        public string? OrigDocDate { get; set; }
         /// <summary>
         /// Способ подачи оригинала. Идентификатор классификатора TransferMethodOriginalDocumentCls. Если не возвращается, значит оригинал в вуз не подан
         /// </summary>
@@ -46,6 +46,6 @@ namespace ReceptionServiceCore.Models.ReceptionService.Own
         /// <summary>
         /// Дата подачи оригинала. Шаблон "2006-01-02T15:04:05+03:00"
         /// </summary>
-        public DateTime? TransferDate { get; set; }
+        public string? TransferDate { get; set; }
     }
 }

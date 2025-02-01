@@ -51,7 +51,7 @@ namespace ReceptionServiceCore.Models.ReceptionService.Own
         /// <summary>
         /// Время поступления ответа от ЕПГУ. Формат RFC3339 шаблон "2006-01-02T15:04:05+03:00". Возвращается только если IsDone == true
         /// </summary>
-        public DateTime? RecieveDate { get; set; }
+        public string? RecieveDate { get; set; }
 
     }
 }

@@ -70,6 +70,6 @@ namespace ReceptionServiceCore.Models.ReceptionService.Own
         /// <summary>
         /// Дата договора
         /// </summary>
-        public DateTime? DateContract { get; set; }
+        public string? DateContract { get; set; }
     }
 }

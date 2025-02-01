@@ -55,7 +55,7 @@ namespace ReceptionServiceCore.Models.ReceptionService
         /// <summary>
         /// Дата выдачи. Шаблон "2006-01-02"
         /// </summary>
-        public DateTime? IssueDate { get; set; }
+        public string? IssueDate { get; set; }
         /// <summary>
         /// Огранизация, выдавшая документ
         /// </summary>
@@ -75,11 +75,11 @@ namespace ReceptionServiceCore.Models.ReceptionService
         /// <summary>
         /// Время создания документа. Формат RFC3339 шаблон "2006-01-02T15:04:05+03:00". Значение только по московскому времени
         /// </summary>
-        public DateTime? CreatedDateTime { get; set; }
+        public string? CreatedDateTime { get; set; }
         /// <summary>
         /// Время последнего редактирования документа. Формат RFC3339 шаблон "2006-01-02T15:04:05+03:00". Значение только по московскому времени
         /// </summary>
-        public DateTime? UpdatedDateTime { get; set; }
+        public string? UpdatedDateTime { get; set; }
         /// <summary>
         /// Источник создания документа
         /// </summary>

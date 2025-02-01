@@ -36,7 +36,7 @@ namespace ReceptionServiceCore.Models.ReceptionService
         /// <summary>
         /// Дата рождения. Шаблон "2006-01-02"
         /// </summary>
-        public DateTime? Birthday { get; set; }
+        public string? Birthday { get; set; }
         /// <summary>
         /// Место рождения
         /// </summary>
@@ -96,6 +96,6 @@ namespace ReceptionServiceCore.Models.ReceptionService
         /// <summary>
         /// Московское время последнего запроса на наличие документа о высшем образовании в ФРДО. Формат RFC3339 шаблон "2006-01-02T15:04:05+03:00"
         /// </summary>
-        public DateTime? DateAvailabilityEduDoc { get; set; }
+        public string? DateAvailabilityEduDoc { get; set; }
     }
 }

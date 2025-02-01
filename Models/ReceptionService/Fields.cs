@@ -268,27 +268,27 @@ namespace ReceptionServiceCore.Models.ReceptionService
         /// <summary>
         /// Дата установления инвалидности
         /// <summary>
-        public DateTime? DateFrom { get; set; }
+        public string? DateFrom { get; set; }
 
         /// <summary>
         /// Дата следующего освидетельствования
         /// <summary>
-        public DateTime? DateOfNextCheck { get; set; }
+        public string? DateOfNextCheck { get; set; }
 
         /// <summary>
         /// Дата решения ГЭК
         /// <summary>
-        public DateTime? ResultDate { get; set; }
+        public string? ResultDate { get; set; }
 
         /// <summary>
         /// Дата окончания срока действия
         /// <summary>
-        public DateTime? ExpirationDate { get; set; }
+        public string? ExpirationDate { get; set; }
 
         /// <summary>
         /// Дата продления
         /// <summary>
-        public DateTime? ProlongationDate { get; set; }
+        public string? ProlongationDate { get; set; }
     }
 
     public class ListEventsList 
@@ -321,11 +321,11 @@ namespace ReceptionServiceCore.Models.ReceptionService
         /// <summary>
         /// Дата начала мероприятия
         /// <summary>
-        public DateTime? StartDate { get; set; }
+        public string? StartDate { get; set; }
 
         /// <summary>
         /// Дата окончания мероприятия
         /// <summary>
-        public DateTime? ExpirationDate { get; set; }
+        public string? ExpirationDate { get; set; }
     }
 }

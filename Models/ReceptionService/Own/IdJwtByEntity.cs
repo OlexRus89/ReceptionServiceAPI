@@ -73,6 +73,6 @@ namespace ReceptionServiceCore.Models.ReceptionService.Own
         /// <summary>
         /// Дата и время запроса по Москве. Формат RFC3339 шаблон "2006-01-02T15:04:05+03:00"
         /// </summary>
-        public required DateTime CreatedDateTime { get; set; }
+        public required string CreatedDateTime { get; set; }
     }
 }
