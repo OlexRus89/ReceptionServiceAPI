@@ -4,8 +4,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 
-namespace ReceptionServiceCore.Models.ReceptionService.Own
+namespace CryptoCore.Models.ReceptionService.Own
 {
+    [Obsolete(message: "Данная модель является устаревшим от МинОбрНауки", error: true)]
     /// <summary>
     /// Получение информации о наличии документов о высшем образовании в ФРДО (сущность)
     /// </summary>
@@ -18,6 +19,7 @@ namespace ReceptionServiceCore.Models.ReceptionService.Own
         public required AvailabilityHigherEducationFrdo[] AvailabilityHigherEducationFrdo { get; set; }
     }
 
+    [Obsolete(message: "Данная модель является устаревшим от МинОбрНауки", error: true)]
     /// <summary>
     /// Объект
     /// </summary>

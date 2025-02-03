@@ -4,8 +4,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 
-namespace ReceptionServiceCore.Models.ReceptionService.Own
+namespace CryptoCore.Models.ReceptionService.Own
 {
+    [Obsolete(message: "Данная модель является устаревшим от МинОбрНауки", error: true)]
     /// <summary>
     /// Получение информации о запросах в Сервисе приема по сущности
     /// </summary>
@@ -49,6 +50,7 @@ namespace ReceptionServiceCore.Models.ReceptionService.Own
         public List? List { get; set; }
     }
 
+    [Obsolete(message: "Данная модель является устаревшим от МинОбрНауки", error: true)]
     /// <summary>
     /// Список IdJwt
     /// </summary>
@@ -61,6 +63,7 @@ namespace ReceptionServiceCore.Models.ReceptionService.Own
         public required Jwt[] Jwt { get; set; }
     }
 
+    [Obsolete(message: "Данная модель является устаревшим от МинОбрНауки", error: true)]
     /// <summary>
     /// Данные по IdJwt
     /// </summary>

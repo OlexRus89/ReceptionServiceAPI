@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 using System.Xml.Serialization;
 using Microsoft.Identity.Client;
 
-namespace ReceptionServiceCore.Models.ReceptionService.Own
+namespace CryptoCore.Models.ReceptionService.Own
 {
+    [Obsolete(message: "Данная модель является устаревшим от МинОбрНауки", error: true)]
     /// <summary>
     /// Конкурсный список (сущность)
     /// </summary>
@@ -24,6 +25,7 @@ namespace ReceptionServiceCore.Models.ReceptionService.Own
         public Entrant[]? Entrant { get; set; }
     }
 
+    [Obsolete(message: "Данная модель является устаревшим от МинОбрНауки", error: true)]
     /// <summary>
     /// Информация по абитуриенту для КС
     /// </summary>

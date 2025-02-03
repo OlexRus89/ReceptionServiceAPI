@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace ReceptionServiceCore.Models.ReceptionService.Despatch
+namespace CryptoCore.Models.ReceptionService.Despatch
 {
     /// <summary>
     /// Выполнение действия на ЕПГУ по уведомлению

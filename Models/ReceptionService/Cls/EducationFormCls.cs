@@ -1,4 +1,4 @@
-namespace ReceptionServiceCore.Models.ReceptionService.Cls
+namespace CryptoCore.Models.ReceptionService.Cls
 {
     /// <summary>
     /// Формы образования

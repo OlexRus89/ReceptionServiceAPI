@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 
-namespace ReceptionServiceCore.Models.ReceptionService.Own
+namespace CryptoCore.Models.ReceptionService.Own
 {
     /// <summary>
     /// Конкурсы (сущность)
@@ -26,7 +26,12 @@ namespace ReceptionServiceCore.Models.ReceptionService.Own
         /// <summary>
         /// Уникальный идентификатор объекта в рамках данного токена
         /// </summary>
-        public required int IdObject { get; set; }
+        public required long IdObject { get; set; }
+        /// <summary>
+        /// Id объекта
+        /// </summary>
+        /// <value></value>
+        public long? Id { get; set; }
         /// <summary>
         /// Огрн организации за которую заполняются данные (организация должна быть либо филиалом либо головной организацией с вашей организацией)
         /// </summary>
@@ -42,11 +47,29 @@ namespace ReceptionServiceCore.Models.ReceptionService.Own
         /// <summary>
         /// Уникальный идентификатор Приемной кампании (CampaignList) к которой относится данный объект
         /// </summary>
+        /// <value></value>
+        public long? IdCampaign { get; set; }
+        [Obsolete(message: "Данная модель является устаревшим от МинОбрНауки", error: true)]
+        /// <summary>
+        /// Уникальный идентификатор Приемной кампании (CampaignList) к которой относится данный объект
+        /// </summary>
         public string? UidCampaign { get; set; }
+        /// <summary>
+        /// Идентификатор классификатора DirectionCls
+        /// </summary>
+        /// <value></value>
+        public int? IdDirection { get; set; }
+        /// <summary>
+        /// НП из состава УГСН
+        /// </summary>
+        /// <value></value>
+        public OksoUgsnList[]? OksoUgsnList { get; set; }
+        [Obsolete(message: "Данная модель является устаревшим от МинОбрНауки", error: true)]
         /// <summary>
         /// Уникальный идентификатор Направления подготовки организации (OrgDirectionList) к которой относится данный объект
         /// </summary>
         public string? UidOrgDirection { get; set; }
+        [Obsolete(message: "Данная модель является устаревшим от МинОбрНауки", error: true)]
         /// <summary>
         /// Наименование (для отображения поступающему на ЕПГУ)
         /// </summary>
@@ -67,6 +90,11 @@ namespace ReceptionServiceCore.Models.ReceptionService.Own
         /// Идентификатор классификатора PlaceTypeCls
         /// </summary>
         public int? IdPlaceType { get; set; }
+        /// <summary>
+        /// Значение справочника BudgetLevelCls
+        /// </summary>
+        /// <value></value>
+        public int? IdBudgetLevel { get; set; }
         /// <summary>
         /// Количество мест
         /// </summary>
@@ -104,6 +132,48 @@ namespace ReceptionServiceCore.Models.ReceptionService.Own
         /// Список доп параметров конкурса
         /// </summary>
         public CompetitionParamList? CompetitionParamList{ get; set; }
+        /// <summary>
+        /// Образовательные программы
+        /// </summary>
+        /// <value></value>
+        public EducationalProgramList? EducationalProgramList { get; set; }
+        /// <summary>
+        /// Целевые организации
+        /// </summary>
+        /// <value></value>
+        public TargetOrganizationList? TargetOrganizationList { get; set; }
+        /// <summary>
+        /// Только для ВО
+        /// </summary>
+        /// <value></value>
+        public bool? OnlyForVo { get; set; }
+        /// <summary>
+        /// Только для СПО
+        /// </summary>
+        /// <value></value>
+        public bool? OnlyForSpo { get; set; }
+        /// <summary>
+        /// Утверждено учредителем
+        /// </summary>
+        /// <value></value>
+        public bool? ApprovedFoiv { get; set; }
+        /// <summary>
+        /// Стоимость обучения в рублях
+        /// </summary>
+        /// <value></value>
+        public float? CostOfStudy { get; set; }
+    }
+
+    /// <summary>
+    /// НП из состава УГСН
+    /// </summary>
+    public class OksoUgsnList
+    {
+        /// <summary>
+        /// Идентификатор классификатора DirectionCls
+        /// </summary>
+        /// <value></value>
+        public required int IdDirection { get; set; }
     }
 
     /// <summary>
@@ -111,9 +181,15 @@ namespace ReceptionServiceCore.Models.ReceptionService.Own
     /// </summary>
     public class CompetitionParamList
     {
+        [Obsolete(message: "Данная модель является устаревшим от МинОбрНауки", error: true)]
         /// <summary>
         /// Uid значения справочника DictionaryValueList. Все значения UidDictionaryValue в теге CompetitionParamList должны быть уникальны, иначе ошибка
         /// </summary>
-        public required string[] UidDictionaryValue { get; set; }
+        public string[]? UidDictionaryValue { get; set; }
+        /// <summary>
+        /// Id значения справочника DictionaryValueList. Все значения IdDictionaryValue в теге CompetitionParamList должны быть уникальны, иначе ошибка
+        /// </summary>
+        /// <value></value>
+        public required int[] IdDictionaryValue { get; set; }
     }
 }

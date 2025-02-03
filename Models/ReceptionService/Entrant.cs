@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
-using ReceptionServiceCore.Models.ReceptionService;
-using ReceptionServiceCore.Models.ReceptionService.Despatch;
+using CryptoCore.Models.ReceptionService;
+using CryptoCore.Models.ReceptionService.Despatch;
 
-namespace ReceptionServiceCore.Models.ReceptionService
+namespace CryptoCore.Models.ReceptionService
 {
     /// <summary>
     /// Профиль поступающего

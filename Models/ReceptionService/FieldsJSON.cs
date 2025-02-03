@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 
-namespace ReceptionServiceCore.Models.ReceptionService
+namespace CryptoCore.Models.ReceptionService
 {
     public class FieldsJSON
     {

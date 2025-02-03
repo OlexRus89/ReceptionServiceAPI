@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using System.Xml.Serialization;
 using Microsoft.Identity.Client;
 
-namespace ReceptionServiceCore.Models.ReceptionService.Own
+namespace CryptoCore.Models.ReceptionService.Own
 {
     /// <summary>
     /// Мероприятия ПК (сущность)
@@ -27,11 +27,22 @@ namespace ReceptionServiceCore.Models.ReceptionService.Own
         /// <summary>
         /// Уникальный идентификатор объекта в рамках данного токена
         /// </summary>
-        public required int IdObject { get; set; }
+        public required long IdObject { get; set; }
         /// <summary>
         /// Уникальный идентификатор объекта в рамках организации сгенерированный организацией
         /// </summary>
         public string? Uid { get; set; }
+        /// <summary>
+        /// Уникальный идентификатор объекта CampaignEvent
+        /// </summary>
+        /// <value></value>
+        public long? Id { get; set; }
+        /// <summary>
+        /// Уникальный идентификатор Приемной кампании (CampaignList) к которой относится данный объект
+        /// </summary>
+        /// <value></value>
+        public int? IdCampaign { get; set; }
+        [Obsolete(message: "Данная модель является устаревшим от МинОбрНауки", error: true)]
         /// <summary>
         /// Уникальный идентификатор Приемной кампании (CampaignList) к которой относится данный объект
         /// </summary>
@@ -45,7 +56,7 @@ namespace ReceptionServiceCore.Models.ReceptionService.Own
         /// </summary>
         public required string KppOwnerOrganization { get; set; }
         /// <summary>
-        /// Идентификатор классификатора AdmissionEventCls
+        /// Идентификатор классификатора IdStagesAdmission
         /// </summary>
         public int? IdAdmissionEvent { get; set; }
         /// <summary>

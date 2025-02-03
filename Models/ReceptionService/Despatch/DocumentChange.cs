@@ -5,7 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 
-namespace ReceptionServiceCore.Models.ReceptionService.Despatch
+namespace CryptoCore.Models.ReceptionService.Despatch
 {
     /// <summary>
     /// Изменения документа (новый документ)

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 
-namespace ReceptionServiceCore.Models.ReceptionService.Own
+namespace CryptoCore.Models.ReceptionService.Own
 {
     /// <summary>
     /// Приемная кампания (сущность)
@@ -26,7 +26,12 @@ namespace ReceptionServiceCore.Models.ReceptionService.Own
         /// <summary>
         /// Уникальный идентификатор объекта в рамках данного токена
         /// </summary>
-        public required int IdObject { get; set; }
+        public required long IdObject { get; set; }
+        /// <summary>
+        /// Id объекта ПК
+        /// </summary>
+        /// <value></value>
+        public long Id { get; set; }
         /// <summary>
         /// Уникальный идентификатор объекта в рамках организации сгенерированный организацией
         /// </summary>
@@ -39,6 +44,7 @@ namespace ReceptionServiceCore.Models.ReceptionService.Own
         /// Учебный год приемной кампании в котором начинается прием
         /// </summary>
         public int? YearStart { get; set; }
+        [Obsolete(message: "Данная модель является устаревшим от МинОбрНауки", error: true)]
         /// <summary>
         /// Идентификатор классификатора CampaignStatusCls
         /// </summary>
@@ -76,17 +82,76 @@ namespace ReceptionServiceCore.Models.ReceptionService.Own
         /// </summary>
         public string? UrlGrantingSpecialRights { get; set; }
         /// <summary>
+        /// URL-ссылка на правила предоставления общежития
+        /// </summary>
+        /// <value></value>
+        public string? UrlHostelPreProvisionRules { get; set; }
+        /// <summary>
+        /// URL-ссылка на правила приема на военную кафедру
+        /// </summary>
+        /// <value></value>
+        public string? UrlRulesAdmissionMilitaryDepartment { get; set; }
+        /// <summary>
+        /// URL-ссылка на стажировки
+        /// </summary>
+        /// <value></value>
+        public string? UrlInternship { get; set; }
+        /// <summary>
+        /// URL-ссылка на научную лабораторию
+        /// </summary>
+        /// <value></value>
+        public string? UrlScientificLaboratory { get; set; }
+        /// <summary>
+        /// URL-ссылка на особые стипендии
+        /// </summary>
+        /// <value></value>
+        public string? UrlSpecialScholarships { get; set; }
+        /// <summary>
+        /// URL-ссылка на партнерские проект
+        /// </summary>
+        /// <value></value>
+        public string? UrlPartnerProjects { get; set; }
+        /// <summary>
+        /// URL-ссылка на правила приема вуза
+        /// </summary>
+        /// <value></value>
+        public string? UrlUniversityAdmissionRules { get; set; }
+        /// <summary>
+        /// Согласие на использование сервисов VK для общения с поступающими и поступившими
+        /// </summary>
+        /// <value></value>
+        public bool? VkAccept { get; set; }
+        /// <summary>
+        /// Ссылка на VK-мессенджер для поступающих
+        /// </summary>
+        /// <value></value>
+        public string? UrlVk { get; set; }
+        /// <summary>
+        /// ID сообщества VK
+        /// </summary>
+        /// <value></value>
+        public string? IdVkCommunity { get; set; }
+        /// <summary>
+        /// Значение справочника VkGroupChatTypesCls
+        /// </summary>
+        /// <value></value>
+        public int? IdVkGroupChatType { get; set; }
+        [Obsolete(message: "Данная модель является устаревшим от МинОбрНауки", error: true)]
+        /// <summary>
         /// Подача единого заявления только в головной вуз на бюджетные места во время основного набора
         /// </summary>
         public bool? HeadVuzBudgetBasic { get; set; }
+        [Obsolete(message: "Данная модель является устаревшим от МинОбрНауки", error: true)]
         /// <summary>
         /// Подача единого заявления только в головной вуз на платные места во время основного набора
         /// </summary>
         public bool? HeadVuzPaidBasic { get; set; }
+        [Obsolete(message: "Данная модель является устаревшим от МинОбрНауки", error: true)]
         /// <summary>
         /// Подача единого заявления только в головной вуз на бюджетные места во время дополнительного набора
         /// </summary>
         public bool? HeadVuzBudgetAdditional { get; set; }
+        [Obsolete(message: "Данная модель является устаревшим от МинОбрНауки", error: true)]
         /// <summary>
         /// Подача единого заявления только в головной вуз на платные места во время дополнительного набора
         /// </summary>

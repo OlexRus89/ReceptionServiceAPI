@@ -4,10 +4,11 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 using Microsoft.Identity.Client;
-using ReceptionServiceCore.Models.ReceptionService.Despatch;
+using CryptoCore.Models.ReceptionService.Despatch;
 
-namespace ReceptionServiceCore.Models.ReceptionService.Own
+namespace CryptoCore.Models.ReceptionService.Own
 {
+    [Obsolete(message: "Данная модель является устаревшим от МинОбрНауки", error: true)]
     /// <summary>
     /// Список заявлений поступающего (сущность)
     /// </summary>
@@ -20,6 +21,7 @@ namespace ReceptionServiceCore.Models.ReceptionService.Own
         public required Application[] Application { get; set; }
     }
 
+    [Obsolete(message: "Данная модель является устаревшим от МинОбрНауки", error: true)]
     /// <summary>
     /// Объект
     /// </summary>
@@ -116,6 +118,7 @@ namespace ReceptionServiceCore.Models.ReceptionService.Own
         public bool? Actual { get; set; }
     }
 
+    [Obsolete(message: "Данная модель является устаревшим от МинОбрНауки", error: true)]
     /// <summary>
     /// Информация поступающегося
     /// </summary>
@@ -132,6 +135,7 @@ namespace ReceptionServiceCore.Models.ReceptionService.Own
         public AddEntrant? AddEntrant { get; set; }
     }
 
+    [Obsolete(message: "Данная модель является устаревшим от МинОбрНауки", error: true)]
     /// <summary>
     /// Добавления нового абитуриента
     /// </summary>
@@ -182,6 +186,7 @@ namespace ReceptionServiceCore.Models.ReceptionService.Own
         public AddressList? AddressList { get; set; }
     }
 
+    [Obsolete(message: "Данная модель является устаревшим от МинОбрНауки", error: true)]
     /// <summary>
     /// Документ удостоверяющий личность. ФИО, указанные в нем, будут считаться ФИО поступающего. ДУЛ будет считаться подтвержденным вузом
     /// </summary>
@@ -225,6 +230,7 @@ namespace ReceptionServiceCore.Models.ReceptionService.Own
         public string? CreatedDateTime { get; set; } 
     }
 
+    [Obsolete(message: "Данная модель является устаревшим от МинОбрНауки", error: true)]
     /// <summary>
     /// Создать вместе с заявлением конкурсные группы (минимум одну)
     /// </summary>
@@ -237,6 +243,7 @@ namespace ReceptionServiceCore.Models.ReceptionService.Own
         public required AddCompetitiveGroup[] AddCompetitiveGroup { get; set; }
     }
 
+    [Obsolete(message: "Данная модель является устаревшим от МинОбрНауки", error: true)]
     /// <summary>
     /// Добавить конкурсную группу в заявление
     /// </summary>

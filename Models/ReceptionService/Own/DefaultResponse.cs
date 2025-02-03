@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
-using ReceptionServiceCore.Extensions;
+using CryptoCore.Extensions;
 
-namespace ReceptionServiceCore.Models.ReceptionService.Own
+namespace CryptoCore.Models.ReceptionService.Own
 {
     [Serializable]
     [XmlRoot("PackageData"), XmlType("PackageData")]
@@ -23,11 +23,13 @@ namespace ReceptionServiceCore.Models.ReceptionService.Own
         /// Наименование стадии обработки на которой завершилось выполнение токена
         /// </summary>
         public required string Stage { get; set; }
+        [Obsolete(message: "Данная модель является устаревшим от МинОбрНауки", error: true)]
         [XmlElement("ActualList", typeof(ActualList))]
         /// <summary>
         /// Актуальный список
         /// </summary>
         public ActualList? ActualList { get; set; }
+        [Obsolete(message: "Данная модель является устаревшим от МинОбрНауки", error: true)]
         [XmlElement("NotActualList", typeof(NotActualList))]
         /// <summary>
         /// Отозванные на ЕПГУ заявления
@@ -52,11 +54,13 @@ namespace ReceptionServiceCore.Models.ReceptionService.Own
         /// Наименование стадии обработки на которой завершилось выполнение токена
         /// </summary>
         public required string Stage { get; set; }
+        [Obsolete(message: "Данная модель является устаревшим от МинОбрНауки", error: true)]
         [XmlElement("ActualList", typeof(ActualList))]
         /// <summary>
         /// Актуальный список
         /// </summary>
         public ActualList? ActualList { get; set; }
+        [Obsolete(message: "Данная модель является устаревшим от МинОбрНауки", error: true)]
         [XmlElement("NotActualList", typeof(NotActualList))]
         /// <summary>
         /// Отозванные на ЕПГУ заявления

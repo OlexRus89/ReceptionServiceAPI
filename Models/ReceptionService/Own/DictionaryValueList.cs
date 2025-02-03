@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 
-namespace ReceptionServiceCore.Models.ReceptionService.Own
+namespace CryptoCore.Models.ReceptionService.Own
 {
     /// <summary>
     /// Справочники вуза (сущность)
@@ -26,7 +26,12 @@ namespace ReceptionServiceCore.Models.ReceptionService.Own
         /// <summary>
         /// Уникальный идентификатор объекта в рамках данного токена
         /// </summary>
-        public required int IdObject { get; set; }
+        public required long IdObject { get; set; }
+        /// <summary>
+        /// Id объекта
+        /// </summary>
+        /// <value></value>
+        public int? Id { get; set; }
         /// <summary>
         /// Уникальный идентификатор объекта в рамках организации сгенерированный организацией
         /// </summary>

@@ -1,29 +1,32 @@
 {
   "format": 1,
   "restore": {
-    "/home/olex/Рабочий стол/Projects/ReceptionServiceLibrary/ReceptionServiceAPI/CryptoCore.csproj": {}
+    "C:\\Users\\Olex\\Desktop\\ProjectsForReceptionService\\Projects\\ReceptionServiceLibrary\\CryptoCore\\CryptoCore.csproj": {}
   },
   "projects": {
-    "/home/olex/Рабочий стол/Projects/ReceptionServiceLibrary/ReceptionServiceAPI/CryptoCore.csproj": {
-      "version": "1.0.12",
+    "C:\\Users\\Olex\\Desktop\\ProjectsForReceptionService\\Projects\\ReceptionServiceLibrary\\CryptoCore\\CryptoCore.csproj": {
+      "version": "1.0.14",
       "restore": {
-        "projectUniqueName": "/home/olex/Рабочий стол/Projects/ReceptionServiceLibrary/ReceptionServiceAPI/CryptoCore.csproj",
+        "projectUniqueName": "C:\\Users\\Olex\\Desktop\\ProjectsForReceptionService\\Projects\\ReceptionServiceLibrary\\CryptoCore\\CryptoCore.csproj",
         "projectName": "CryptoCore",
-        "projectPath": "/home/olex/Рабочий стол/Projects/ReceptionServiceLibrary/ReceptionServiceAPI/CryptoCore.csproj",
-        "packagesPath": "/home/olex/.nuget/packages/",
-        "outputPath": "/home/olex/Рабочий стол/Projects/ReceptionServiceLibrary/ReceptionServiceAPI/obj/",
+        "projectPath": "C:\\Users\\Olex\\Desktop\\ProjectsForReceptionService\\Projects\\ReceptionServiceLibrary\\CryptoCore\\CryptoCore.csproj",
+        "packagesPath": "C:\\Users\\Olex\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Olex\\Desktop\\ProjectsForReceptionService\\Projects\\ReceptionServiceLibrary\\CryptoCore\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "/usr/lib64/dotnet/sdk/NuGetFallbackFolder"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "/home/olex/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\Olex\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
         ],
         "sources": {
-          "/home/olex/.nuget/NuGet/.local_package": {},
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Users\\Olex\\AppData\\Roaming\\NuGet\\local_package": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -105,7 +108,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/lib64/dotnet/sdk/9.0.101/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.102/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

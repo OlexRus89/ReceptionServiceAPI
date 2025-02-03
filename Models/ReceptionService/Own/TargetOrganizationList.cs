@@ -4,20 +4,28 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 
-namespace ReceptionServiceCore.Models.ReceptionService.Own
+namespace CryptoCore.Models.ReceptionService.Own
 {
     /// <summary>
     /// Список целевых организаций (сущность)
     /// </summary>
     public class TargetOrganizationList
     {
+        /// <summary>
+        /// Id значения справочника TargetOrganizationsCls. Все значения IdTargetOrganization в теге TargetOrganizationList должны быть уникальны, иначе ошибка
+        /// </summary>
+        /// <value></value>
+        public required int[] IdTargetOrganization { get; set; }
+        
+        [Obsolete(message: "Данная модель является устаревшим от МинОбрНауки", error: true)]
         [XmlElement("TargetOrganization", typeof(TargetOrganization))]
         /// <summary>
         /// Объект
         /// </summary>
-        public required TargetOrganization[] TargetOrganization { get; set; }
+        public TargetOrganization[]? TargetOrganization { get; set; }
     }
 
+    [Obsolete(message: "Данная модель является устаревшим от МинОбрНауки", error: false)]
     /// <summary>
     /// Объект
     /// </summary>

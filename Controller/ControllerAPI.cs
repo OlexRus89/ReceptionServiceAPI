@@ -6,16 +6,15 @@ using System.Reflection.Metadata.Ecma335;
 using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
-using ReceptionServiceAPI.Models.JsonData;
-using ReceptionServiceCore.DB;
-using ReceptionServiceCore.Extensions;
-using ReceptionServiceCore.Models;
-using ReceptionServiceCore.Models.JsonData;
-using ReceptionServiceCore.Models.ReceptionService;
-using ReceptionServiceCore.Models.ReceptionService.Cls;
-using ReceptionServiceCore.Models.ReceptionService.Own;
+using CryptoCore.Models.JsonData;
+using CryptoCore.DB;
+using CryptoCore.Extensions;
+using CryptoCore.Models;
+using CryptoCore.Models.ReceptionService;
+using CryptoCore.Models.ReceptionService.Cls;
+using CryptoCore.Models.ReceptionService.Own;
 
-namespace ReceptionServiceCore.Controller
+namespace CryptoCore.Controller
 {
     public class ControllerAPI
     {

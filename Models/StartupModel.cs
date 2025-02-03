@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Threading.Tasks;
-using ReceptionServiceCore.Extensions;
+using CryptoCore.Extensions;
 using Newtonsoft.Json;
 using System.ComponentModel.Design;
-using ReceptionServiceCore.Models.ReceptionService;
-using ReceptionServiceCore.Models.ReceptionService.Own;
+using CryptoCore.Models.ReceptionService;
+using CryptoCore.Models.ReceptionService.Own;
 using Microsoft.IdentityModel.Tokens;
 using System.IO;
 
-namespace ReceptionServiceCore.Models
+namespace CryptoCore.Models
 {
     public class StartupModel
     {
@@ -93,6 +93,13 @@ namespace ReceptionServiceCore.Models
                     Console.WriteLine("Нажмите на любую клавишу для выхода из терминала...");
                     Console.ReadLine();
                     Environment.Exit(0);
+                }
+
+                if (IsValid(startup)) return startup;
+                else
+                {
+                    IsValidComment(startup);
+                    return null;
                 }
             }
             return null;

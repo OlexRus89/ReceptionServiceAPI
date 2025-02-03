@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 
-namespace ReceptionServiceCore.Models.ReceptionService
+namespace CryptoCore.Models.ReceptionService
 {
     /// <summary>
     /// Особые права КГ заявлений

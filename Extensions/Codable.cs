@@ -7,10 +7,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Serialization;
-using ReceptionServiceCore.Models.ReceptionService;
+using CryptoCore.Models.ReceptionService;
 using System.IO;
+using CryptoCore.Extensions;
 
-namespace ReceptionServiceCore.Extensions
+namespace CryptoCore.Extensions
 {
     public static class Codable
     {

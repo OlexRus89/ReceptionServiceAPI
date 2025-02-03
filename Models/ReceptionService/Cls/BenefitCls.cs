@@ -1,5 +1,6 @@
-namespace ReceptionServiceCore.Models.ReceptionService.Cls
+namespace CryptoCore.Models.ReceptionService.Cls
 {
+    [Obsolete(message: "Данная модель является устаревшим от МинОбрНауки", error: true)]
     /// <summary>
     /// Справочник льгот
     /// </summary>

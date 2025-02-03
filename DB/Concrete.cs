@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.Data.Common;
 using System.Linq;
 using System.Threading.Tasks;
-using ReceptionServiceCore.Models;
+using CryptoCore.Models;
 using Microsoft.Data.SqlClient;
 using System.Data;
 using Dapper;
 using Npgsql;
 
-namespace ReceptionServiceCore.DB
+namespace CryptoCore.DB
 {
     public class Concrete
     {

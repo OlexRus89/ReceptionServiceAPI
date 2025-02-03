@@ -1,4 +1,4 @@
-namespace ReceptionServiceCore.Models.ReceptionService.Cls
+namespace CryptoCore.Models.ReceptionService.Cls
 {
     /// <summary>
     /// Типы справочников вуза
@@ -17,10 +17,5 @@ namespace ReceptionServiceCore.Models.ReceptionService.Cls
         /// Признак актуальности
         /// </summary>
         public bool? Actual { get; set; }
-
-        public override string ToString()
-        {
-            return Name;
-        }
     }
 }

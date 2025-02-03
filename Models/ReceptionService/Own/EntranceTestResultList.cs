@@ -4,8 +4,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 
-namespace ReceptionServiceCore.Models.ReceptionService.Own
+namespace CryptoCore.Models.ReceptionService.Own
 {
+    [Obsolete(message: "Данная модель является устаревшим от МинОбрНауки", error: true)]
     /// <summary>
     /// Результаты сдачи предметов (ВИ) (сущность)
     /// </summary>
@@ -18,6 +19,7 @@ namespace ReceptionServiceCore.Models.ReceptionService.Own
         public required EntranceTestResult[] EntranceTestResult { get; set; }
     }
 
+    [Obsolete(message: "Данная модель является устаревшим от МинОбрНауки", error: true)]
     /// <summary>
     /// Объект
     /// </summary>
@@ -62,6 +64,7 @@ namespace ReceptionServiceCore.Models.ReceptionService.Own
         public int? IdEntranceTestLanguage { get; set; }
     }
 
+    [Obsolete(message: "Данная модель является устаревшим от МинОбрНауки", error: true)]
     /// <summary>
     /// Единый государственный экзамен
     /// </summary>

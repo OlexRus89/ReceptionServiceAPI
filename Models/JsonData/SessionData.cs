@@ -4,9 +4,9 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
-using ReceptionServiceCore.Extensions;
+using CryptoCore.Extensions;
 
-namespace ReceptionServiceCore.Models.JsonData
+namespace CryptoCore.Models.JsonData
 {
     public class SessionData
     {

@@ -2,10 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using ReceptionServiceCore.Controller;
-using ReceptionServiceCore.Models;
+using CryptoCore.Controller;
+using CryptoCore.Models;
 
-namespace ReceptionServiceAPI.Models.JsonData
+namespace CryptoCore.Models.JsonData
 {
     public class FileData
     {

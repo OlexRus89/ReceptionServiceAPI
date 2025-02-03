@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 
-namespace ReceptionServiceCore.Models.ReceptionService.Own
+namespace CryptoCore.Models.ReceptionService.Own
 {
     /// <summary>
     /// Вступительные испытания (сущность)
@@ -26,11 +26,22 @@ namespace ReceptionServiceCore.Models.ReceptionService.Own
         /// <summary>
         /// Уникальный идентификатор объекта в рамках данного токена
         /// </summary>
-        public required int IdObject { get; set; }
+        public required long IdObject { get; set; }
+        /// <summary>
+        /// Id объекта EntranceTest
+        /// </summary>
+        /// <value></value>
+        public long? Id { get; set; }
         /// <summary>
         /// Уникальный идентификатор объекта в рамках организации сгенерированный организацией
         /// </summary>
         public string? Uid { get; set; }
+        /// <summary>
+        /// Уникальный идентификатор конкурса (CompetitionList)
+        /// </summary>
+        /// <value></value>
+        public long? IdCompetition { get; set; }
+        [Obsolete(message: "Данная модель является устаревшим от МинОбрНауки", error: true)]
         /// <summary>
         /// Уникальный идентификатор конкурса (CompetitionList) в рамках организации сгенерированный организацией
         /// </summary>
@@ -47,6 +58,11 @@ namespace ReceptionServiceCore.Models.ReceptionService.Own
         /// Минимальный балл
         /// </summary>
         public int? MinScore { get; set; }
+        /// <summary>
+        /// Максимальный балл
+        /// </summary>
+        /// <value></value>
+        public int? MaxScore { get; set; }
         [XmlElement("LanguageList", typeof(LanguageList))]
         /// <summary>
         /// Список языков сдачи ВИ

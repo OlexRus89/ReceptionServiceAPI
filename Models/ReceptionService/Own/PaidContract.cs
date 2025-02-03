@@ -4,8 +4,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 
-namespace ReceptionServiceCore.Models.ReceptionService.Own
+namespace CryptoCore.Models.ReceptionService.Own
 {
+    [Obsolete(message: "Данная модель является устаревшим от МинОбрНауки", error: true)]
     /// <summary>
     /// Проект платного договора/ доп.соглашения к договору (сущность)
     /// </summary>
@@ -27,6 +28,7 @@ namespace ReceptionServiceCore.Models.ReceptionService.Own
         public required FileType Signature { get; set; }
     }
 
+    [Obsolete(message: "Данная модель является устаревшим от МинОбрНауки", error: true)]
     /// <summary>
     /// Описание файлов
     /// </summary>

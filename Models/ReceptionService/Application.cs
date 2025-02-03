@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
-using ReceptionServiceCore.Models.ReceptionService.Cls;
+using CryptoCore.Models.ReceptionService.Cls;
 
-namespace ReceptionServiceCore.Models.ReceptionService
+namespace CryptoCore.Models.ReceptionService
 {
     /// <summary>
     /// Заявление

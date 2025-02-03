@@ -6,15 +6,16 @@ using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
-using ReceptionServiceCore.DB;
-using ReceptionServiceCore.Models;
-using ReceptionServiceCore.Models.JsonData;
+using CryptoCore.DB;
+using CryptoCore.Models;
+using CryptoCore.Models.JsonData;
 using CryptoPro.Security.Cryptography.X509Certificates;
 using CryptoPro.Security.Cryptography.Pkcs;
 using System.Security.Cryptography.Pkcs;
 using System.IO;
+using CryptoCore.Extensions;
 
-namespace ReceptionServiceCore.Extensions
+namespace CryptoCore.Extensions
 {
     public class Network
     {

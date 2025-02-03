@@ -5,11 +5,11 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.IdentityModel.Tokens;
-using ReceptionServiceAPI.Models.JsonData;
-using ReceptionServiceCore.Extensions;
-using ReceptionServiceCore.Models;
+using CryptoCore.Models.JsonData;
+using CryptoCore.Extensions;
+using CryptoCore.Models;
 
-namespace ReceptionServiceCore.DB
+namespace CryptoCore.DB
 {
     public class ManagerReceptionService
     {

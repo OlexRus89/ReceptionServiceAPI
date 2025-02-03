@@ -4,8 +4,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 
-namespace ReceptionServiceCore.Models.ReceptionService.Own
+namespace CryptoCore.Models.ReceptionService.Own
 {
+    [Obsolete(message: "Данная модель является устаревшим от МинОбрНауки", error: true)]
     /// <summary>
     /// Сведения о наличии заявки на платформе 'Работа в России' (сущность)
     /// </summary>
@@ -18,6 +19,7 @@ namespace ReceptionServiceCore.Models.ReceptionService.Own
         public required TargetAgree[] TargetAgree { get; set; }
     }
 
+    [Obsolete(message: "Данная модель является устаревшим от МинОбрНауки", error: true)]
     public class TargetAgree 
     {
         /// <summary>
@@ -43,6 +45,7 @@ namespace ReceptionServiceCore.Models.ReceptionService.Own
         public StatusList? StatusList { get; set; }
     }
 
+    [Obsolete(message: "Данная модель является устаревшим от МинОбрНауки", error: true)]
     /// <summary>
     /// Список статусов заявок
     /// </summary>
@@ -55,6 +58,7 @@ namespace ReceptionServiceCore.Models.ReceptionService.Own
         public required Status[] Status { get; set; }
     }
 
+    [Obsolete(message: "Данная модель является устаревшим от МинОбрНауки", error: true)]
     /// <summary>
     /// Cтатус заявки
     /// </summary>

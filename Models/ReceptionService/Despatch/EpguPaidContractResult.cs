@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 
-namespace ReceptionServiceCore.Models.ReceptionService.Despatch
+namespace CryptoCore.Models.ReceptionService.Despatch
 {
     /// <summary>
     /// Результат подписания платного договор/доп.соглашения на ЕПГУ

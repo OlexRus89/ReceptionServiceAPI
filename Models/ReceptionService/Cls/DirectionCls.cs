@@ -1,4 +1,4 @@
-namespace ReceptionServiceCore.Models.ReceptionService.Cls
+namespace CryptoCore.Models.ReceptionService.Cls
 {
     /// <summary>
     /// Общероссийский классификатор специальностей по образованию
@@ -32,10 +32,10 @@ namespace ReceptionServiceCore.Models.ReceptionService.Cls
         /// </summary>
         /// <value></value>
         public int? Section { get; set; }
-
-        public override string ToString()
-        {
-            return Code + " " + Name;
-        }
+        /// <summary>
+        /// Уровень образования. Идентификатор классификатора EducationLevelCls
+        /// </summary>
+        /// <value></value>
+        public int? IdEducationLevel { get; set; }
     }
 }

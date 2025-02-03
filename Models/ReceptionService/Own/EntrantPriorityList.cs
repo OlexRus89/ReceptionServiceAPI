@@ -4,8 +4,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 
-namespace ReceptionServiceCore.Models.ReceptionService.Own
+namespace CryptoCore.Models.ReceptionService.Own
 {
+    [Obsolete(message: "Данная модель является устаревшим от МинОбрНауки", error: true)]
     /// <summary>
     /// Изменение приоритетов в заявлениях списком (сущность)
     /// </summary>
@@ -18,6 +19,7 @@ namespace ReceptionServiceCore.Models.ReceptionService.Own
         public required EntrantPriority[] EntrantPriority { get; set; }
     }
 
+    [Obsolete(message: "Данная модель является устаревшим от МинОбрНауки", error: true)]
     /// <summary>
     /// Объект
     /// </summary>
@@ -38,6 +40,7 @@ namespace ReceptionServiceCore.Models.ReceptionService.Own
         public required CompetitiveGroupPriorityList CompetitiveGroupPriorityList { get; set; }
     }
 
+    [Obsolete(message: "Данная модель является устаревшим от МинОбрНауки", error: true)]
     /// <summary>
     /// Список приоритетов + КГ
     /// </summary>
@@ -50,6 +53,7 @@ namespace ReceptionServiceCore.Models.ReceptionService.Own
         public required CompetitiveGroupPriority[] CompetitiveGroupPriority { get; set; }
     }
     
+    [Obsolete(message: "Данная модель является устаревшим от МинОбрНауки", error: true)]
     /// <summary>
     /// Приоритет + КГ
     /// </summary>

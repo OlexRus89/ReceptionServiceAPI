@@ -4,7 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace ReceptionServiceCore.Extensions
+namespace CryptoCore.Extensions
 {
     public class StringExtension
     {
@@ -29,7 +29,10 @@ namespace ReceptionServiceCore.Extensions
         internal static bool IsValidURI(this string source)
         {
             Uri uriResult;
-            return Uri.TryCreate(source, UriKind.Absolute, out uriResult) && uriResult.Scheme == Uri.UriSchemeHttp;
+            bool isTrue = false;
+            if (Uri.TryCreate(source, UriKind.Absolute, out uriResult) && uriResult.Scheme == Uri.UriSchemeHttp) isTrue = true;
+            if (Uri.TryCreate(source, UriKind.Absolute, out uriResult) && uriResult.Scheme == Uri.UriSchemeHttps) isTrue = true;
+            return isTrue;
         }
 
         internal static (bool ResultBool, int ResultInt) IsValidInt(this string source)

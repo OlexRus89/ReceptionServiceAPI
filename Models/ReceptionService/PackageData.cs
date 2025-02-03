@@ -5,9 +5,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Serialization;
-using ReceptionServiceCore.Extensions;
+using CryptoCore.Extensions;
 
-namespace ReceptionServiceCore.Models.ReceptionService
+namespace CryptoCore.Models.ReceptionService
 {
     public static class PackageData
     {
