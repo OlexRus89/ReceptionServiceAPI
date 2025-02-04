@@ -14,6 +14,7 @@ using CryptoPro.Security.Cryptography.Pkcs;
 using System.Security.Cryptography.Pkcs;
 using System.IO;
 using CryptoCore.Extensions;
+using System.Text.Json.Nodes;
 
 namespace CryptoCore.Extensions
 {
@@ -29,15 +30,17 @@ namespace CryptoCore.Extensions
             Manager = new ManagerReceptionService(Startup);
         }
 
-        internal (T?, string) SendRequesAsync<T>(Point point, dynamic Header, string? Payload = null, string? Session = null, bool isJWT = false, bool isCls = false, string Method = "POST")
+        internal (T? Data, string DataToString, string Error) SendRequesAsync<T>(Point point, dynamic Header, string? Payload = null, string? Session = null, bool isJWT = false, bool isCls = false, bool isToString = false, string Method = "POST")
         {
             T? ResponseData = default(T);
+            string? ResponseDataToString = null;
             string Error = "";
             try
             {
                 HttpWebRequest request = WebRequest.Create(GetURL(point)) as HttpWebRequest;
                 request.ContentType = "application/json";
                 request.Method = Method;
+                request.Headers.Add("Token-Header", HeaderToBase64(Header));
                 if (Session != null) request.Headers.Add("Session-Key", Session);
                 if (Method.ToUpper() != "GET")
                     if (!isJWT) 
@@ -47,7 +50,11 @@ namespace CryptoCore.Extensions
                     } 
                     else using (StreamWriter writer = new StreamWriter(request.GetRequestStream()))
                     {
-                        string data = "{\"Token\": \"" + CreateJWT(Header, Payload) + "\"}";
+                        string data = JsonConvert.SerializeObject(new SenderDataModel()
+                        {
+                            payload_base64 = Payload == null ? null : PayloadToBase64(Payload),
+                            signature_base64 = Signature(Header, Payload)
+                        }); 
                         writer.Write(data);
                     }
 
@@ -55,10 +62,14 @@ namespace CryptoCore.Extensions
                 using (StreamReader reader = new StreamReader(response.GetResponseStream()))
                 {
                     string data = reader.ReadToEnd();
-                    if (data == null || data == "") throw new Exception("NotFountData: Нет данных отправленного токена, повторите отправить данные позже!");
+                    if (data == null || data == "") throw new Exception("NotFoundData: Нет данных отправленного токена, повторите отправить данные позже!");
 
                     if (!isCls) ResponseData = JsonConvert.DeserializeObject<T>(data);
-                    else ResponseData = data.DecodeXml<T>();
+                    else 
+                    {
+                        if (!isToString) ResponseData = data.DecodeXml<T>();
+                        else ResponseDataToString = data;
+                    }
                 }
             }
             catch (WebException ex)
@@ -98,7 +109,7 @@ namespace CryptoCore.Extensions
                     Error = "Message: " + ex.Message + "\n" + "StackTrace: " + ex.StackTrace + "\n" + "Sender: " + JsonConvert.SerializeObject(new ErrorData() { Point = GetURL(point), Method = Method, Source = Startup.AppSetting.Source, Header = Header != null ? JsonConvert.SerializeObject(Header) : null, Payload = Payload, SessionKey = Session });
 #endif
             }
-            return (ResponseData, Error);
+            return (ResponseData, ResponseDataToString, Error);
         }
 
         private string GetURL(Point point)
@@ -118,17 +129,33 @@ namespace CryptoCore.Extensions
             }
         }
 
-        protected string CreateJWT(dynamic Header, string Payload)
+        protected string HeaderToBase64(dynamic Header)
         {
-            string result = "";
-            string header = "";
-            Payload = Convert.ToBase64String(Encoding.UTF8.GetBytes(Payload ?? ""));
-            string seriz = JsonConvert.SerializeObject(Header);
-            byte[] bytes = Encoding.UTF8.GetBytes(seriz);
-            header = Convert.ToBase64String(bytes);
-            string Signature = GetSignature(header + "." + Payload);
-            result = header + "." + Payload + "." + Signature;
-            return result;
+            return Convert.ToBase64String(Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(Header)));
+        }
+
+        protected string PayloadToBase64(string Payload)
+        {
+            return Convert.ToBase64String(Encoding.UTF8.GetBytes(Payload ?? ""));
+        }
+
+        protected string Signature(dynamic Header, string Payload)
+        {
+            if (Payload != null && Header != null)
+            {
+                return Convert.ToBase64String(Encoding.UTF8.GetBytes(GetSignature(HeaderToBase64(Header) + "." + PayloadToBase64(Payload))));
+            }
+            
+            if (Header != null)
+            {
+                return Convert.ToBase64String(Encoding.UTF8.GetBytes(GetSignature(HeaderToBase64(Header))));
+            }
+
+            if (Payload != null)
+            {
+                return Convert.ToBase64String(Encoding.UTF8.GetBytes(GetSignature(PayloadToBase64(Header))));
+            }
+            return "";
         }
 
         protected byte[] SignMsg(Byte[] msg, CpX509Certificate2? signerCert)
@@ -154,6 +181,12 @@ namespace CryptoCore.Extensions
         protected string GetSignature(string data)
         {
             return Convert.ToBase64String(SignMsg(Encoding.UTF8.GetBytes(data), GetSignerCert(Startup.AppSetting.CerificateName)));
+        }
+
+        private class SenderDataModel
+        {
+            public string? payload_base64 { get; set; }
+            public string? signature_base64 { get; set; }
         }
     }
 

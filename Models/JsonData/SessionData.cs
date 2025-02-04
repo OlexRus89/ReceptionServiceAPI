@@ -12,12 +12,13 @@ namespace CryptoCore.Models.JsonData
     {
         [JsonProperty("Session-Key")]
         public string? SessionKey { get; set; }
+        public string? Deprecated { get; set; }
         [JsonIgnore]
         public DateTime Expired { get; set; }
         protected SessionData? WriteSession(CryptographyExtension crypro, FileInfo FileAppData, StartupModel startup, string? Ogrn = null, string? Kpp = null)
         {
             Network Network = new Network(startup);
-            SessionData Session = Network.SendRequesAsync<SessionData>(Point.SessionNew, new HeaderData() { Action = "Add", Entity = "ApplicationList", Ogrn = Ogrn ?? startup.AppSetting.Ogrn, Kpp = Kpp ?? startup.AppSetting.Kpp.First().KppOrganization }, "<PackageData></PackageData>", isJWT: true).Item1 ?? new();
+            SessionData Session = Network.SendRequesAsync<SessionData>(Point.SessionNew, new HeaderData() { Action = "Add", Entity = "ApplicationList", Ogrn = Ogrn ?? startup.AppSetting.Ogrn, Kpp = Kpp ?? startup.AppSetting.Kpp.First().KppOrganization }, "<PackageData></PackageData>", isJWT: true).Data ?? new();
             Console.WriteLine("завершение операции c ответом ... " + ((Session != null && Session.SessionKey != null) ? ("сессионный ключ записан " + "до " + Session.SessionKey.Split('+')[2] + "\n") : "Ошибка записана в логе!\n"));
             if (Session != null && Session.SessionKey != null)
             {

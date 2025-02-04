@@ -66,7 +66,6 @@ namespace CryptoCore.Models
                 else
                 {
                     IsValidComment(startup);
-                    return null;
                 }
             }
 
@@ -99,7 +98,6 @@ namespace CryptoCore.Models
                 else
                 {
                     IsValidComment(startup);
-                    return null;
                 }
             }
             return null;

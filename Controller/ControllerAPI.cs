@@ -70,9 +70,9 @@ namespace CryptoCore.Controller
             Console.Write("Выполняется запрос: получение сессии ... ");
             if (Ogrn == null) Ogrn = Startup.AppSetting.Ogrn;
             if (Kpp == null) Kpp = Startup.AppSetting.Kpp.First().KppOrganization;
-            (SessionData? Item1, string? Item2) data = Network.SendRequesAsync<SessionData>(Point.SessionNew, new HeaderData() { Action = "Add", Entity = "ApplicationList", Ogrn = Ogrn ?? Startup.AppSetting.Ogrn, Kpp = Kpp ?? Startup.AppSetting.Kpp.First().KppOrganization }, "<PackageData></PackageData>", isJWT: true);
-            Console.WriteLine("завершение операции с ответом ... " + "\n" + (data.Item1 != null ? (data.Item1.SessionKey) : "Ошибка записана в логе!\n"));
-            return (data.Item1, data.Item2);
+            var data = Network.SendRequesAsync<SessionData>(Point.SessionNew, new HeaderSessionData() { Ogrn = Ogrn ?? Startup.AppSetting.Ogrn, Kpp = Kpp ?? Startup.AppSetting.Kpp.First().KppOrganization }, isJWT: true);
+            Console.WriteLine("завершение операции с ответом ... " + "\n" + (data.Data != null ? (data.Data.SessionKey) : "Ошибка записана в логе!\n"));
+            return (data.Data, data.Error);
         }
 
         /// <summary>
@@ -84,16 +84,18 @@ namespace CryptoCore.Controller
         /// <param name="Kpp">Кпп организации (может пустым, берется из конфигуратора приложения первым)</param>
         /// <typeparam name="T">Значение модели Cls. Не принимать дополнительные значения массив (например, IEnumerable, List, Array или [])</typeparam>
         /// <returns>Возвращаем два значения: Data - данные Cls, Error - ошибка</returns>
-        public (T[]? Data, string? Error) API_GetCls<T>(string? Ogrn = null, string? Kpp = null)
+        public (T[]? Data, string? DataToString, string? Error) API_GetCls<T>(bool isToString = false, string? Ogrn = null, string? Kpp = null)
         {
             StringExtension str = new StringExtension();
             Console.Write($"Выполняется запрос: получение списка {str.GetType<T>()} ... ");
             StringExtension strE = new StringExtension();
             if (Ogrn == null) Ogrn = Startup.AppSetting.Ogrn;
             if (Kpp == null) Kpp = Startup.AppSetting.Kpp.First().KppOrganization;
-            var data = Network.SendRequesAsync<T[]>(Point.ClsGet, new HeaderClsData() { Ogrn = Ogrn, Kpp = Kpp, Cls = strE.GetType<T>() }, isCls: true);
-            Console.Write("завершение операции с ответом ... " + (data.Item1 != null ? ("... Количество Cls: " + data.Item1.Count()) : "Ошибка записана в логе!\n"));
-            return (data.Item1, data.Item2);
+            SetSessionKey(Ogrn, Kpp);
+            var data = Network.SendRequesAsync<T[]>(Point.ClsGet, new HeaderClsData() { Ogrn = Ogrn, Kpp = Kpp, Cls = strE.GetType<T>() }, isCls: true, isToString: isToString);
+            if (!isToString) Console.Write("завершение операции с ответом ... " + (data.Data != null ? ("... Количество Cls: " + data.Data.Count()) : "Ошибка записана в логе!\n"));
+            else Console.Write("завершение операции с ответом ... " + ((data.DataToString == null || data.DataToString == "") ? "Ошибка записана в логе!\n" : "... Данные имеются: "));
+            return (data.Data, data.DataToString, data.Error);
             
         }
 
@@ -109,8 +111,8 @@ namespace CryptoCore.Controller
             if (Ogrn == null) Ogrn = Startup.AppSetting.Ogrn;
             if (Kpp == null) Kpp = Startup.AppSetting.Kpp.First().KppOrganization;
             var data = Network.SendRequesAsync<StatusData>(Point.Check, new HeaderData() { Action = "Add", Entity = "ApplicationList", Ogrn = Ogrn, Kpp = Kpp }, "<PackageData></PackageData>", isJWT: true);
-            Console.Write("завершение операции с ответом ... " + (data.Item1 != null ? (data.Item1.Status == "Токен в порядке").ToString().ToUpper() + "\n" : "Ошибка записана в логе!\n"));
-            return ((data.Item1 != null ? (data.Item1.Status == "Токен в порядке") : false), data.Item2);
+            Console.Write("завершение операции с ответом ... " + (data.Data != null ? (data.Data.Status == "Токен в порядке").ToString().ToUpper() + "\n" : "Ошибка записана в логе!\n"));
+            return ((data.Data != null ? (data.Data.Status == "Токен в порядке") : false), data.Error);
         }
 
         /// <summary>
@@ -120,8 +122,8 @@ namespace CryptoCore.Controller
         {
             Console.Write("Выполняется запрос: пропускная способность ... ");
             var data = Network.SendRequesAsync<DelayData>(Point.DelayGet, null, Method: "Get");
-            Console.WriteLine("завершение операции с ответом ... " + "\n" + (data.Item1 != null ? (data.Item1.Comment + ".\nКоличество секунд задержки: " + data.Item1.DelayHumanReadable + "\n") : "Ошибка записана в логе!\n"));
-            return (data.Item1, data.Item2);
+            Console.WriteLine("завершение операции с ответом ... " + "\n" + (data.Data != null ? (data.Data.Comment + ".\nКоличество секунд задержки: " + data.Data.DelayHumanReadable + "\n") : "Ошибка записана в логе!\n"));
+            return (data.Data, data.Error);
         }
 
         /// <summary>
@@ -147,8 +149,8 @@ namespace CryptoCore.Controller
                 return (null, "ОШИБКА! ВНЕСИТЕ ДАННЫЕ ЗНАЧЕНИИ XML ИЛИ СУЩЕСТВУЮЩИХ МОДЕЛИ ДАННЫХ!");
             }
             var data = Network.SendRequesAsync<TokenData>(Point.TokenNew, new HeaderData() { Action = Action, Entity = Entity == null ? new StringExtension().GetType<T>() : Entity, Ogrn = Ogrn, Kpp = Kpp }, Xml == null ? Tdata.EncodeXml<T>().SetPD() : Xml, Session.SessionKey, true);
-            Console.Write("завершение операции с ответом ... " + (data.Item1 != null ? data.Item1.IdJwt.ToString().ToUpper() + "\n" : "Ошибка записана в логе!\n"));
-            return (data.Item1, data.Item2);
+            Console.Write("завершение операции с ответом ... " + (data.Data != null ? data.Data.IdJwt.ToString().ToUpper() + "\n" : "Ошибка записана в логе!\n"));
+            return (data.Data, data.Error);
         }
 
         /// <summary>
@@ -165,9 +167,9 @@ namespace CryptoCore.Controller
             SetSessionKey(Ogrn, Kpp);
             Console.Write("Выполняется запрос: получения токена ... ");
             var data = Network.SendRequesAsync<TokenData>(Point.OwnGet, null, "{ \"IdJwt\" : "  + IdJwt + " }", Session.SessionKey);
-            Console.Write("завершение операции с ответом ... " + (data.Item1 != null ? "Имеется токен" + "\n" : "Ошибка записана в логе!\n"));
-            if (data.Item1 == null) return (null, data.Item2);
-            return (Encoding.UTF8.GetString(Convert.FromBase64String(data.Item1.Token.Split('.')[1])), data.Item2);
+            Console.Write("завершение операции с ответом ... " + (data.Data != null ? "Имеется токен" + "\n" : "Ошибка записана в логе!\n"));
+            if (data.Data == null) return (null, data.Error);
+            return (Encoding.UTF8.GetString(Convert.FromBase64String(data.Data.Token.Split('.')[1])), data.Error);
         }
 
         /// <summary>
@@ -186,9 +188,9 @@ namespace CryptoCore.Controller
             SetSessionKey(Ogrn, Kpp);
             Console.Write("Выполняется запрос: получения токена ... ");
             var data = Network.SendRequesAsync<TokenData>(Point.DespatchGet, null, "{ \"IdJwt\" : "  + IdJwt + " }", Session.SessionKey);
-            Console.Write("завершение операции с ответом ... " + (data.Item1 != null ? "Имеется токен" + "\n" : "Ошибка записана в логе!\n"));
-            if (data.Item1 == null) return (null, null, data.Item2);
-            return (JsonConvert.DeserializeObject<HeaderJwtData>(Encoding.UTF8.GetString(Convert.FromBase64String(data.Item1.Token.Split('.')[0]))), Encoding.UTF8.GetString(Convert.FromBase64String(data.Item1.Token.Split('.')[1])), data.Item2);
+            Console.Write("завершение операции с ответом ... " + (data.Data != null ? "Имеется токен" + "\n" : "Ошибка записана в логе!\n"));
+            if (data.Data == null) return (null, null, data.Error);
+            return (JsonConvert.DeserializeObject<HeaderJwtData>(Encoding.UTF8.GetString(Convert.FromBase64String(data.Data.Token.Split('.')[0]))), Encoding.UTF8.GetString(Convert.FromBase64String(data.Data.Token.Split('.')[1])), data.Error);
         }
 
         /// <summary>
@@ -205,8 +207,8 @@ namespace CryptoCore.Controller
             SetSessionKey(Ogrn, Kpp);
             Console.Write("Выполняется запрос: получение списков Jwt токенов ... ");
             var data = Network.SendRequesAsync<IdJwtList>(!IsDespatch ? Point.OwnGet : Point.DespatchGet, null, "{ \"IdJwt\" : "  + 0 + " }", Session.SessionKey);
-            Console.Write("завершение операции с ответом ... " + (data.Item1 != null ? "Имеются списки ожидаемых обработок токенов" + "\n" : "Ошибка записана в логе!\n"));
-            return (data.Item1, data.Item2);
+            Console.Write("завершение операции с ответом ... " + (data.Data != null ? "Имеются списки ожидаемых обработок токенов" + "\n" : "Ошибка записана в логе!\n"));
+            return (data.Data, data.Error);
         }
 
         /// <summary>
@@ -228,8 +230,8 @@ namespace CryptoCore.Controller
             SetSessionKey(Ogrn, Kpp);
             Console.Write("Выполняется запрос: получение файла от ССПВО ...");
             var data = Network.SendRequesAsync<FileResultData>(Point.FileGet, null, "{ \"Fui\" : " + Fui.Fui + " }", Session.SessionKey);
-            Console.Write("завершение операции с ответом ... " + (data.Item1 != null ? "Имеются файлы\n" : "Ошибка записана в логе!\n"));
-            return (data.Item1, data.Item2);
+            Console.Write("завершение операции с ответом ... " + (data.Data != null ? "Имеются файлы\n" : "Ошибка записана в логе!\n"));
+            return (data.Data, data.Error);
         }
 
         #endregion

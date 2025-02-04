@@ -12,4 +12,11 @@ namespace CryptoCore.Models.JsonData
         public required string Ogrn { get; set; }
         public required string Kpp { get; set; }
     }
+
+    public class HeaderSessionData
+    {
+        public required string Ogrn { get; set; }
+        public required string Kpp { get; set; }
+        public int Month = DateTime.Now.Month;
+    }
 }
