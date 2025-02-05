@@ -12,6 +12,20 @@ namespace CryptoCore.Models.ReceptionService.Own
     public class EducationalProgramList
     {
         /// <summary>
+        /// Уникальный идентификатор Образовательной программы (EducationalProgramList). Все значения IdEducationalProgram в теге EducationalProgramList должны быть уникальны, иначе ошибка
+        /// </summary>
+        /// <value></value>
+        public int[]? IdEducationalProgram { get; set; }
+        /// <summary>
+        /// Объект
+        /// </summary>
+        /// <value></value>
+        public EducationalProgram[]? EducationalProgram { get; set; }
+    }
+
+    public class EducationalProgram
+    {
+        /// <summary>
         /// Уникальный идентификатор объекта в рамках данного токена
         /// </summary>
         /// <value></value>
@@ -46,11 +60,5 @@ namespace CryptoCore.Models.ReceptionService.Own
         /// </summary>
         /// <value></value>
         public int? StudyDuration { get; set; }
-
-        /// <summary>
-        /// Уникальный идентификатор Образовательной программы (EducationalProgramList). Все значения IdEducationalProgram в теге EducationalProgramList должны быть уникальны, иначе ошибка
-        /// </summary>
-        /// <value></value>
-        public long[]? IdEducationalProgram { get; set; }
     }
 }
