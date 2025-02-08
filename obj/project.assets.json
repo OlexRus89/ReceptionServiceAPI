@@ -4649,7 +4649,7 @@
     "C:\\Users\\D-302020900060\\.nuget\\packages\\": {}
   },
   "project": {
-    "version": "1.0.19",
+    "version": "1.0.22",
     "restore": {
       "projectUniqueName": "C:\\Users\\D-302020900060\\Downloads\\ProjectsForReceptionService\\Projects\\ReceptionServiceLibrary\\ReceptionServiceAPI\\CryptoCore.csproj",
       "projectName": "CryptoCore",
@@ -4658,6 +4658,7 @@
       "outputPath": "C:\\Users\\D-302020900060\\Downloads\\ProjectsForReceptionService\\Projects\\ReceptionServiceLibrary\\ReceptionServiceAPI\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
+        "C:\\Users\\D-302020900060\\Downloads\\ProjectsForReceptionService\\Projects\\ReceptionServiceLibrary\\ReceptionServiceAPI\\NuGet.Config",
         "C:\\Users\\D-302020900060\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -4665,9 +4666,8 @@
         "net8.0"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "C:\\Program Files\\dotnet\\library-packs": {},
-        "C:\\Users\\D-302020900060\\Documents\\Nugets": {},
+        "C:\\Users\\D-302020900060\\Downloads\\ProjectsForReceptionService\\Projects\\ReceptionServiceLibrary\\ReceptionServiceAPI\\Nugets": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {

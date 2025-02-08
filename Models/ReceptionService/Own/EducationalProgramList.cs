@@ -29,7 +29,7 @@ namespace CryptoCore.Models.ReceptionService.Own
         /// Уникальный идентификатор объекта в рамках данного токена
         /// </summary>
         /// <value></value>
-        public long? IdObject { get; set; }
+        public required long? IdObject { get; set; }
 
         /// <summary>
         /// Уникальный идентификатор EducationalProgram

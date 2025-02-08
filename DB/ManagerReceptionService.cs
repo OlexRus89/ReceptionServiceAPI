@@ -15,10 +15,10 @@ namespace CryptoCore.DB
     {
         protected Concrete Concrete { get; private set; }
         protected StartupModel Startup { get; private set; }
-        public ManagerReceptionService(StartupModel startup)
+        public ManagerReceptionService(StartupModel startup, string start)
         {
             Startup = startup;
-            Concrete = new Concrete(Startup.AppSetting.ConnectionStrings.Where(a => a.Name == startup.AppSetting.StartupSQLForAPI).First().Name, Startup);
+            Concrete = new Concrete(Startup.AppSetting.ConnectionStrings.Where(a => a.Name == start).First().Name, Startup);
         }
 
         #region Errors

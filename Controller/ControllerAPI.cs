@@ -29,7 +29,7 @@ namespace CryptoCore.Controller
             if (Startup != null) 
             {
                 Network = new Network(Startup);
-                Manager = new ManagerReceptionService(Startup);
+                Manager = new ManagerReceptionService(Startup, Startup.AppSetting.StartupSQLForAPI);
                 Session = new SessionData();
             }
             else new ControllerAPI();

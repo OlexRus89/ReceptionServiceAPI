@@ -33,7 +33,7 @@
 			}
 		],
 		"StartupSQLForAPI": "ReceptionServiceDBTest",
-		"StartupSQLForClient": "dekanat",
+		"StartupSQLForClient": "ReceptionServiceDBTest",
 		"Ogrn": "1022601961580",
 		"Kpp": [
 			{
@@ -50,7 +50,7 @@
 			}
 		],
 		"CerificateName": "ФЕДЕРАЛЬНЫЙ",
-		"SaveFileDirectory": "/home/olex/Рабочий стол/Файл",
+		"SaveFileDirectory": "C:\\Users\\D-302020900060\\Desktop\\Все данные",
 		"StartupDelay": 600,
 		"Key": "SuperService_NCFU",
 		"Source": "Ядро Сервиса приема"

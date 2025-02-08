@@ -27,7 +27,7 @@ namespace CryptoCore.Extensions
         public Network(StartupModel startup)
         {
             Startup = startup;
-            Manager = new ManagerReceptionService(Startup);
+            Manager = new ManagerReceptionService(Startup, Startup.AppSetting.StartupSQLForAPI);
         }
 
         internal (T? Data, string DataToString, string Error) SendRequesAsync<T>(Point point, dynamic Header, string? Payload = null, string? Session = null, bool isJWT = false, bool isCls = false, bool isToString = false, string Method = "POST")

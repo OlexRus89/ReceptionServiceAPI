@@ -46,7 +46,7 @@ namespace CryptoCore.Extensions
             return data;
         }
 
-        public static string? EncodeXml<T>(this T obj)
+        public static string? EncodeXml<T>(this T obj, bool EnableCodeStructure = false)
         {
             if (obj == null) return null;
             XmlSerializerNamespaces names = new XmlSerializerNamespaces();
@@ -70,14 +70,26 @@ namespace CryptoCore.Extensions
                 ms.Seek(0, SeekOrigin.Begin);
                 StreamReader sr = new StreamReader(ms);
 
-                var str = sr.ReadToEnd().Split('\n');
+                var str = sr.ReadToEnd().Split("\r\n");
                 var result = "";
                 for (int i = 0; i < str.Count(); i++)
                 {
-                    if (!str[i].Contains("p3:nil=\"true\" xmlns:p3=\"http://www.w3.org/2001/XMLSchema-instance\""))
-                    {
-                        result += str[i] + "\n";
-                    }
+                    if (!(
+                            str[i].Contains("p3:nil=\"true\" xmlns:p3=\"http://www.w3.org/2001/XMLSchema-instance\"") || 
+                            str[i].Contains("p4:nil=\"true\" xmlns:p4=\"http://www.w3.org/2001/XMLSchema-instance\"") ||
+                            str[i].Contains("p5:nil=\"true\" xmlns:p5=\"http://www.w3.org/2001/XMLSchema-instance\"") ||
+                            str[i].Contains("p6:nil=\"true\" xmlns:p6=\"http://www.w3.org/2001/XMLSchema-instance\"") ||
+                            str[i].Contains("p7:nil=\"true\" xmlns:p7=\"http://www.w3.org/2001/XMLSchema-instance\"") ||
+                            str[i].Contains("p8:nil=\"true\" xmlns:p8=\"http://www.w3.org/2001/XMLSchema-instance\"") ||
+                            str[i].Contains("p9:nil=\"true\" xmlns:p9=\"http://www.w3.org/2001/XMLSchema-instance\"") ||
+                            str[i].Contains("p10:nil=\"true\" xmlns:p10=\"http://www.w3.org/2001/XMLSchema-instance\"")
+                        ))
+                        result += !EnableCodeStructure ? str[i].TrimStart(' ') : str[i] + "\r\n";
+                    
+                     // ||
+                    // !str[i].Contains() ||
+                    // !str[i].Contains() ||
+                    // !str[i].Contains()
                 }
                 new WriterExtension().DeleteTxt();
                 return result.TrimEnd().SetPD();

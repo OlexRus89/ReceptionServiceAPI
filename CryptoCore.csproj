@@ -4,7 +4,7 @@
     <!-- <OutputType>Exe</OutputType> -->
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
-    <Version>1.0.19</Version>
+    <Version>1.0.22</Version>
     <Author>Svidnitckii Alexey Dmitrievich</Author>
     <Company>NCFU</Company>
     <Product>Library ReceptionServiceAPI</Product>
