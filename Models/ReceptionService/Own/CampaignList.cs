@@ -31,7 +31,7 @@ namespace CryptoCore.Models.ReceptionService.Own
         /// Id объекта ПК
         /// </summary>
         /// <value></value>
-        public long Id { get; set; }
+        public long? Id { get; set; }
         /// <summary>
         /// Уникальный идентификатор объекта в рамках организации сгенерированный организацией
         /// </summary>
