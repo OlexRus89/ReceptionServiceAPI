@@ -24,9 +24,9 @@ namespace CryptoCore.Extensions
         }
     }
 
-    internal static class StringExtensions
+    public static class StringExtensions
     {
-        internal static bool IsValidURI(this string source)
+        public static bool IsValidURI(this string source)
         {
             Uri uriResult;
             bool isTrue = false;
@@ -35,7 +35,7 @@ namespace CryptoCore.Extensions
             return isTrue;
         }
 
-        internal static (bool ResultBool, int ResultInt) IsValidInt(this string source)
+        public static (bool ResultBool, int ResultInt) IsValidInt(this string source)
         {
             int n;
             if (int.TryParse(source, out n))
@@ -45,7 +45,7 @@ namespace CryptoCore.Extensions
             else return (false, 0);
         }
 
-        internal static bool IsValidFile(this string sourse)
+        public static bool IsValidFile(this string sourse)
         {
             DirectoryInfo directory = new DirectoryInfo(sourse);
             return directory.Exists;  
