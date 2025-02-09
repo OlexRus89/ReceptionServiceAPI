@@ -30,8 +30,12 @@ namespace CryptoCore.Extensions
         {
             Uri uriResult;
             bool isTrue = false;
-            if (Uri.TryCreate(source, UriKind.Absolute, out uriResult) && uriResult.Scheme == Uri.UriSchemeHttp) isTrue = true;
-            if (Uri.TryCreate(source, UriKind.Absolute, out uriResult) && uriResult.Scheme == Uri.UriSchemeHttps) isTrue = true;
+            if (source.StartsWith("http://") || source.StartsWith("https://") || source.StartsWith("www."))
+            {
+                if (Uri.TryCreate(source, UriKind.Absolute, out uriResult) && uriResult.Scheme == Uri.UriSchemeHttp) isTrue = true;
+                if (Uri.TryCreate(source, UriKind.Absolute, out uriResult) && uriResult.Scheme == Uri.UriSchemeHttps) isTrue = true;
+            }
+            
             return isTrue;
         }
 
