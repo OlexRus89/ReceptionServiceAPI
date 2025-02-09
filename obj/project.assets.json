@@ -4650,7 +4650,7 @@
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
-    "version": "1.0.25",
+    "version": "1.0.26",
     "restore": {
       "projectUniqueName": "C:\\Users\\Olex\\Desktop\\ProjectsForReceptionService\\Projects\\ReceptionServiceLibrary\\CryptoCore\\CryptoCore.csproj",
       "projectName": "CryptoCore",

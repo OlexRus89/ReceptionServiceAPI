@@ -50,11 +50,11 @@ namespace CryptoCore.Models.ReceptionService.Own
         /// <summary>
         /// Огрн организации за которую заполняются данные (организация должна быть либо филиалом либо головной организацией с вашей организацией)
         /// </summary>
-        public required string OgrnOwnerOrganization { get; set; }
+        public string? OgrnOwnerOrganization { get; set; }
         /// <summary>
         /// Кпп организации за которую заполняются данные (организация должна быть либо филиалом либо головной организацией с вашей организацией)
         /// </summary>
-        public required string KppOwnerOrganization { get; set; }
+        public string? KppOwnerOrganization { get; set; }
         /// <summary>
         /// Идентификатор классификатора IdStagesAdmission
         /// </summary>
