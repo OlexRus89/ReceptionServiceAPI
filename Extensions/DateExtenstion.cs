@@ -35,6 +35,27 @@ namespace CryptoCore.Extensions
             return Date.ToString("yyyy-MM-dd'T'HH:mm:ss+03:00");
         }
 
+        public static string ConvertToStringYMD(this DateTime Date, TimeZoneInfo timeZone)
+        {
+            var dateTimeUnspec = DateTime.SpecifyKind(Date, DateTimeKind.Unspecified);
+            var utcDateTime = TimeZoneInfo.ConvertTimeToUtc(dateTimeUnspec, timeZone);
+            return utcDateTime.ToString("yyyy-MM-dd");
+        }
+
+        public static string ConvertTostringYMDHMS(this DateTime Date, TimeZoneInfo timeZone)
+        {
+            var dateTimeUnspec = DateTime.SpecifyKind(Date, DateTimeKind.Unspecified);
+            var utcDateTime = TimeZoneInfo.ConvertTimeToUtc(dateTimeUnspec, timeZone);
+            return utcDateTime.ToString("yyyy-MM-dd HH:mm:ss");
+        }
+
+        public static string ConvertToStringYMDTHMSZ(this DateTime Date, TimeZoneInfo timeZone)
+        {
+            var dateTimeUnspec = DateTime.SpecifyKind(Date, DateTimeKind.Unspecified);
+            var utcDateTime = TimeZoneInfo.ConvertTimeToUtc(dateTimeUnspec, timeZone);
+            return utcDateTime.ToString("yyyy-MM-dd'T'HH:mm:ss+03:00");
+        }
+
         public static string ConvertToStringYMD(this string Date)
         {
             return DateTime.Parse(Date).ToString("yyyy-MM-dd");
@@ -50,5 +71,25 @@ namespace CryptoCore.Extensions
             return DateTime.Parse(Date).ToString("yyyy-MM-dd'T'HH:mm:ss+03:00");
         }
 
+        public static string ConvertToStringYMD(this string Date, TimeZoneInfo timeZone)
+        {
+            var dateTimeUnspec = DateTime.SpecifyKind(DateTime.Parse(Date), DateTimeKind.Unspecified);
+            var utcDateTime = TimeZoneInfo.ConvertTimeToUtc(dateTimeUnspec, timeZone);
+            return utcDateTime.ToString("yyyy-MM-dd");
+        }
+
+        public static string ConvertTostringYMDHMS(this string Date, TimeZoneInfo timeZone)
+        {
+            var dateTimeUnspec = DateTime.SpecifyKind(DateTime.Parse(Date), DateTimeKind.Unspecified);
+            var utcDateTime = TimeZoneInfo.ConvertTimeToUtc(dateTimeUnspec, timeZone);
+            return utcDateTime.ToString("yyyy-MM-dd HH:mm:ss");
+        }
+
+        public static string ConvertToStringYMDTHMSZ(this string Date, TimeZoneInfo timeZone)
+        {
+            var dateTimeUnspec = DateTime.SpecifyKind(DateTime.Parse(Date), DateTimeKind.Unspecified);
+            var utcDateTime = TimeZoneInfo.ConvertTimeToUtc(dateTimeUnspec, timeZone);
+            return utcDateTime.ToString("yyyy-MM-dd'T'HH:mm:ss+03:00");
+        }
     }
 }

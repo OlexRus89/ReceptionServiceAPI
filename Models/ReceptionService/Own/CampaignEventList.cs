@@ -41,7 +41,7 @@ namespace CryptoCore.Models.ReceptionService.Own
         /// Уникальный идентификатор Приемной кампании (CampaignList) к которой относится данный объект
         /// </summary>
         /// <value></value>
-        public int? IdCampaign { get; set; }
+        public long? IdCampaign { get; set; }
         [Obsolete(message: "Данная модель является устаревшим от МинОбрНауки", error: true)]
         /// <summary>
         /// Уникальный идентификатор Приемной кампании (CampaignList) к которой относится данный объект
