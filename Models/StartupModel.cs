@@ -954,5 +954,10 @@ namespace CryptoCore.Models
     {
         public required string NameKpp { get; set; }
         public required string KppOrganization { get; set; }
+
+        public override string ToString()
+        {
+            return NameKpp.ToString();
+        }
     }
 }
