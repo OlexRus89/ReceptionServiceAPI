@@ -59,6 +59,7 @@ namespace CryptoCore.Models.ReceptionService.Own
         /// </summary>
         /// <value></value>
         public int? IdDirection { get; set; }
+        [XmlElement("OksoUgsnList", typeof(OksoUgsnList))]
         /// <summary>
         /// НП из состава УГСН
         /// </summary>
@@ -132,11 +133,13 @@ namespace CryptoCore.Models.ReceptionService.Own
         /// Список доп параметров конкурса
         /// </summary>
         public CompetitionParamList? CompetitionParamList{ get; set; }
+        [XmlElement("EducationalProgramList", typeof(EducationalProgramList))]
         /// <summary>
         /// Образовательные программы
         /// </summary>
         /// <value></value>
         public EducationalProgramList? EducationalProgramList { get; set; }
+        [XmlElement("TargetOrganizationList", typeof(TargetOrganizationList))]
         /// <summary>
         /// Целевые организации
         /// </summary>

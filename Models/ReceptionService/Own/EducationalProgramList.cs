@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace CryptoCore.Models.ReceptionService.Own
 {
@@ -16,6 +17,7 @@ namespace CryptoCore.Models.ReceptionService.Own
         /// </summary>
         /// <value></value>
         public int[]? IdEducationalProgram { get; set; }
+        [XmlElement("EducationalProgram", typeof(EducationalProgram))]
         /// <summary>
         /// Объект
         /// </summary>
