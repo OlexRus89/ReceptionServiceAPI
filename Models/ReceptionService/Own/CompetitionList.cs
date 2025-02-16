@@ -64,7 +64,7 @@ namespace CryptoCore.Models.ReceptionService.Own
         /// НП из состава УГСН
         /// </summary>
         /// <value></value>
-        public OksoUgsnList[]? OksoUgsnList { get; set; }
+        public OksoUgsnList? OksoUgsnList { get; set; }
         [Obsolete(message: "Данная модель является устаревшим от МинОбрНауки", error: true)]
         /// <summary>
         /// Уникальный идентификатор Направления подготовки организации (OrgDirectionList) к которой относится данный объект
@@ -176,7 +176,7 @@ namespace CryptoCore.Models.ReceptionService.Own
         /// Идентификатор классификатора DirectionCls
         /// </summary>
         /// <value></value>
-        public required int IdDirection { get; set; }
+        public required int[] IdDirection { get; set; }
     }
 
     /// <summary>
