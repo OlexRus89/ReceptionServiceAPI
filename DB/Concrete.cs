@@ -95,6 +95,22 @@ namespace CryptoCore.DB
                 );
             }
         }
+
+        public async Task<TOut?> ExecMultiple<TOut>(string SQL, Func<SqlMapper.GridReader, TOut> func, object? obj = null, CommandType type = CommandType.StoredProcedure, int TimeOut = 360)
+        {
+            SqlMapper.GridReader reader;
+            using (var cnt = SqlName == "PostgreSQL".ToUpper() ? OpenConnectionAsyncPostgre() : OpenConnectionAsync())
+            {
+                var data = await cnt.QueryMultipleAsync(
+                    sql: SQL,
+                    param: obj,
+                    commandTimeout: TimeOut,
+                    commandType: type
+                );
+                return func(data);
+            }
+        }
+
         private async Task UseConnection(Action<DbConnection> action)
         {
             using (DbConnection conn = await CreateConnection()) action(conn);
