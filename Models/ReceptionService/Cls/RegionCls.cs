@@ -1,6 +1,5 @@
 namespace CryptoCore.Models.ReceptionService.Cls
 {
-    [Obsolete(message: "Данная модель является устаревшим от МинОбрНауки", error: true)]
     /// <summary>
     /// Классификатор регионов
     /// </summary>

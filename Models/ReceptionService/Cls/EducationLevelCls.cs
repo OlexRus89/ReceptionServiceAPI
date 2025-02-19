@@ -14,6 +14,10 @@ namespace CryptoCore.Models.ReceptionService.Cls
         /// </summary>
         public string? Name { get; set; }
         /// <summary>
+        /// Группа уровня образования. Идентификатор классификатора EducationLevelGroupCls
+        /// </summary>
+        public int? IdEducationLevelGroup { get; set; }
+        /// <summary>
         /// Признак актуальности
         /// </summary>
         public bool? Actual { get; set; }
