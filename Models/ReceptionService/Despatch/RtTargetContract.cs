@@ -11,48 +11,49 @@ namespace CryptoCore.Models.ReceptionService.Despatch
     public class RtTargetContract
     {
         /// <summary>
-        /// Уникальный идентификатор КГ заявления (CompetitiveGroupList) сгенерированный Сервисом приема
+        /// Уникальный идентификатор КГ заявления (CompetitiveGroupList) сгенерированный Сервисом прием
         /// </summary>
-        public required Guid GuidCompetitiveGroup { get; set; }
-        /// <summary>
-        /// Тип договора (по количеству участников). Идентификатор классификатора ContractTypeCls
-        /// </summary>
-        public required int IdContractType { get; set; }
-        /// <summary>
-        /// Вид целевого договора. Идентификатор классификатора TargetDocumentTypeCls
-        /// </summary>
-        public required int IdTargetDocumentType { get; set; }
+        /// <value></value>
+        public required long IdCompetitiveGroup { get; set; }
         /// <summary>
         /// Наименование заказчика
         /// </summary>
+        /// <value></value>
         public required string EmployerName { get; set; }
         /// <summary>
         /// ОГРН заказчика
         /// </summary>
+        /// <value></value>
         public required string EmployerOgrn { get; set; }
         /// <summary>
         /// КПП заказчика
         /// </summary>
+        /// <value></value>
         public required string EmployerKpp { get; set; }
         /// <summary>
         /// ИНН заказчика
         /// </summary>
-        public string? EmployerInn { get; set; }
+        /// <value></value>
+        public required string EmployerInn { get; set; }
         /// <summary>
         /// Статус целевого договора. Идентификатор классификатора TargetContractStatusCls
         /// </summary>
+        /// <value></value>
         public required int IdTargetContractStatusCls { get; set; }
         /// <summary>
         /// Комментарий к статусу
         /// </summary>
-        public string? StatusComment { get; set; }
+        /// <value></value>
+        public required string StatusComment { get; set; } 
         /// <summary>
         /// Номер договора
         /// </summary>
+        /// <value></value>
         public required string NumberContract { get; set; }
         /// <summary>
         /// Дата договора
         /// </summary>
+        /// <value></value>
         public required string DateContract { get; set; }
     }
 }

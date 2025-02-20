@@ -10,14 +10,26 @@ namespace CryptoCore.Models.ReceptionService.Despatch
     /// </summary>
     public class EpguTestAgreed
     {
+        [Obsolete(message: "Данная модель является устаревшим от МинОбрНауки", error: true)]
         /// <summary>
         /// Уникальный идентификатор профиля поступающего сгенерированный Сервисом приема
         /// </summary>
         public required Guid GuidEntrant { get; set; }
+        [Obsolete(message: "Данная модель является устаревшим от МинОбрНауки", error: true)]
         /// <summary>
         /// Уникальный идентификатор даты сдачи (EntranceTestPlaceList) в рамках организации сгенерированный организацией
         /// </summary>
         public required string UidEntranceTestPlace { get; set; }
+        /// <summary>
+        /// Уникальный идентификатор профиля поступающего сгенерированный Сервисом приема
+        /// </summary>
+        /// <value></value>
+        public required long IdEntrant { get; set; }
+        /// <summary>
+        /// Уникальный идентификатор даты сдачи (EntranceTestPlaceList)
+        /// </summary>
+        /// <value></value>
+        public required long IdEntranceTestPlace { get; set; }
         /// <summary>
         /// Выбранный язык сдачи. Идентификатор классификатора EntranceTestLanguageCls. Если не указан, то считать, что выбран "русский язык"
         /// </summary>

@@ -12,14 +12,26 @@ namespace CryptoCore.Models.ReceptionService.Despatch
     /// </summary>
     public class DocumentChange
     {
+        [Obsolete(message: "Данная модель является устаревшим от МинОбрНауки", error: true)]
         /// <summary>
         /// Уникальный идентификатор профиля поступающего сгенерированный Сервисом приема
         /// </summary>
-        public required Guid GuidEntrant { get; set; }
+        public Guid? GuidEntrant { get; set; }
+        [Obsolete(message: "Данная модель является устаревшим от МинОбрНауки", error: true)]
         /// <summary>
         /// Уникальный идентификатор документа сгенерированный Сервисом приема
         /// </summary>
-        public required Guid GuidDocument { get; set; }
+        public Guid? GuidDocument { get; set; }
+        /// <summary>
+        /// Id документа
+        /// </summary>
+        /// <value></value>
+        public required long IdDocument { get; set; }
+        /// <summary>
+        /// Уникальный идентификатор профиля поступающего сгенерированный Сервисом приема
+        /// </summary>
+        /// <value></value>
+        public required long IdEntrant { get; set; }
         /// <summary>
         /// Тип документа. Идентификатор классификатора DocumentTypeCls
         /// </summary>
@@ -50,10 +62,17 @@ namespace CryptoCore.Models.ReceptionService.Despatch
         /// Реквизиты, в зависимости от типа документа
         /// </summary>
         public Fields? Fields { get; set; }
+        [Obsolete(message: "Данная модель является устаревшим от МинОбрНауки", error: true)]
         /// <summary>
         /// Категория индивидуального достижения. Идентификатор классификатора AchievementCategoryCls
         /// </summary>
         public int? IdAchievementCategory { get; set; }
+        [XmlElement("Achievement", typeof(Achievement))]
+        /// <summary>
+        /// Индивидуальное достижение
+        /// </summary>
+        /// <value></value>
+        public Achievement? Achievement { get; set; }
         /// <summary>
         /// Статус проверки документа. Идентификатор классификатора DocumentCheckStatusCls
         /// </summary>
@@ -75,5 +94,31 @@ namespace CryptoCore.Models.ReceptionService.Despatch
         /// Источник создания документа
         /// </summary>
         public required string Source { get; set; }
+    }
+
+    /// <summary>
+    /// Индивидуальное достижение
+    /// </summary>
+    public class Achievement 
+    {
+        [XmlElement("EducationLevelGroupList", typeof(EducationLevelGroupList))]
+        public required EducationLevelGroupList EducationLevelGroupList { get; set; }
+        /// <summary>
+        /// Категория Индивидуального достижения. Идентификатор справочника AchievementCategoryCls
+        /// </summary>
+        /// <value></value>
+        public required int IdAchievementCategory { get; set; }
+    }
+
+    /// <summary>
+    /// Группы уровней образования (бак/спец/бво или маг/спец.во или аспирантура)
+    /// </summary>
+    public class EducationLevelGroupList
+    {
+        /// <summary>
+        /// Группа уровней образования. Идентификатор справочника EducationLevelGroupCls
+        /// </summary>
+        /// <value></value>
+        public required int[] Id { get; set; }
     }
 }
