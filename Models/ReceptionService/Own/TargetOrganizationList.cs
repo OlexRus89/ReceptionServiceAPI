@@ -11,6 +11,7 @@ namespace CryptoCore.Models.ReceptionService.Own
     /// </summary>
     public class TargetOrganizationList
     {
+        [XmlElement("IdTargetOrganization")]
         /// <summary>
         /// Id значения справочника TargetOrganizationsCls. Все значения IdTargetOrganization в теге TargetOrganizationList должны быть уникальны, иначе ошибка
         /// </summary>

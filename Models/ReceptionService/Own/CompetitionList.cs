@@ -172,6 +172,7 @@ namespace CryptoCore.Models.ReceptionService.Own
     /// </summary>
     public class OksoUgsnList
     {
+        [XmlElement("IdDirection")]
         /// <summary>
         /// Идентификатор классификатора DirectionCls
         /// </summary>
@@ -189,6 +190,7 @@ namespace CryptoCore.Models.ReceptionService.Own
         /// Uid значения справочника DictionaryValueList. Все значения UidDictionaryValue в теге CompetitionParamList должны быть уникальны, иначе ошибка
         /// </summary>
         public string[]? UidDictionaryValue { get; set; }
+        [XmlElement("IdDictionaryValue")]
         /// <summary>
         /// Id значения справочника DictionaryValueList. Все значения IdDictionaryValue в теге CompetitionParamList должны быть уникальны, иначе ошибка
         /// </summary>

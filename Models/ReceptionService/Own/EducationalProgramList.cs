@@ -12,6 +12,7 @@ namespace CryptoCore.Models.ReceptionService.Own
     /// <value></value>
     public class EducationalProgramList
     {
+        [XmlElement("IdEducationalProgram")]
         /// <summary>
         /// Уникальный идентификатор Образовательной программы (EducationalProgramList). Все значения IdEducationalProgram в теге EducationalProgramList должны быть уникальны, иначе ошибка
         /// </summary>
