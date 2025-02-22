@@ -42,10 +42,7 @@ namespace CryptoCore.Extensions
         public static (bool ResultBool, int ResultInt) IsValidInt(this string source)
         {
             int n;
-            if (int.TryParse(source, out n))
-            {
-                return (true, n);
-            }
+            if (int.TryParse(source, out n)) return (true, n);
             else return (false, 0);
         }
 
@@ -53,6 +50,27 @@ namespace CryptoCore.Extensions
         {
             DirectoryInfo directory = new DirectoryInfo(sourse);
             return directory.Exists;  
+        }
+
+        public static (bool ResultBool, float ResultFloat) IsValidFloat(this string source)
+        {
+            float n;
+            if (float.TryParse(source, out n)) return (true, n);
+            else return (false, 0);
+        }
+
+        public static (bool ResultBool, double ResultDouble) IsValidDouble(this string source)
+        {
+            double n;
+            if (double.TryParse(source, out n)) return (true, n);
+            else return (false, 0);
+        }
+
+        public static (bool ResultBool, decimal ResultDecimal) IsValidDecimal(this string source)
+        {
+            decimal n;
+            if (decimal.TryParse(source, out n)) return (true, n);
+            else return (false, 0);
         }
     }
 }
