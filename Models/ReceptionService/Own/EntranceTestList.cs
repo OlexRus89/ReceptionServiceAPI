@@ -83,6 +83,7 @@ namespace CryptoCore.Models.ReceptionService.Own
     /// </summary>
     public class LanguageList
     {
+        [XmlElement("IdEntranceTestLanguage")]
         /// <summary>
         /// Язык сдачи ВИ. Идентификатор классификатора EntranceTestLanguageCls
         /// </summary>
