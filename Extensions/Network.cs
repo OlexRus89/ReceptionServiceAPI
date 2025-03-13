@@ -15,6 +15,8 @@ using System.Security.Cryptography.Pkcs;
 using System.IO;
 using CryptoCore.Extensions;
 using System.Text.Json.Nodes;
+using CryptoPro.Security.Cryptography;
+using System.Security.Cryptography;
 
 namespace CryptoCore.Extensions
 {
@@ -50,12 +52,23 @@ namespace CryptoCore.Extensions
                     } 
                     else using (StreamWriter writer = new StreamWriter(request.GetRequestStream()))
                     {
-                        string data = JsonConvert.SerializeObject(new SenderDataModel()
+                        if (Payload != null)
                         {
-                            payload_base64 = Payload == null ? null : PayloadToBase64(Payload),
-                            signature_base64 = Signature(Header, Payload)
-                        }); 
-                        writer.Write(data);
+                            string data = JsonConvert.SerializeObject(new SenderDataModel()
+                            {
+                                payload_base64 = Payload == null ? null : PayloadToBase64(Payload),
+                                signature_base64 = Signature(Header, Payload)
+                            }); 
+                            writer.Write(data);
+                        }
+                        else 
+                        {
+                            string data = JsonConvert.SerializeObject(new SenderDataSignedModel()
+                            {
+                                signature_base64 = Signature(Header, Payload)
+                            }); 
+                            writer.Write(data);
+                        }
                     }
 
                 using (HttpWebResponse response = (request.GetResponse()) as HttpWebResponse)
@@ -143,17 +156,17 @@ namespace CryptoCore.Extensions
         {
             if (Payload != null && Header != null)
             {
-                return Convert.ToBase64String(Encoding.UTF8.GetBytes(GetSignature(HeaderToBase64(Header) + "." + PayloadToBase64(Payload))));
+                return GetSignature(HeaderToBase64(Header) + "." + PayloadToBase64(Payload));
             }
             
             if (Header != null)
             {
-                return Convert.ToBase64String(Encoding.UTF8.GetBytes(GetSignature(HeaderToBase64(Header))));
+                return GetSignature(HeaderToBase64(Header));
             }
 
             if (Payload != null)
             {
-                return Convert.ToBase64String(Encoding.UTF8.GetBytes(GetSignature(PayloadToBase64(Header))));
+                return GetSignature(PayloadToBase64(Payload));
             }
             return "";
         }
@@ -163,7 +176,9 @@ namespace CryptoCore.Extensions
             ContentInfo contentInfo = new ContentInfo(msg);
             CpSignedCms signedCms = new CpSignedCms(contentInfo, true);
             CpCmsSigner cmsSigner = new CpCmsSigner(signerCert);
+            //cmsSigner.IncludeOption = X509IncludeOption.EndCertOnly;
             signedCms.ComputeSignature(cmsSigner);
+            //File.WriteAllBytes("C:\\Users\\adsvidnitckii\\Desktop\\signature.sig", signedCms.Encode());
             return signedCms.Encode();
         }
 
@@ -186,6 +201,11 @@ namespace CryptoCore.Extensions
         private class SenderDataModel
         {
             public string? payload_base64 { get; set; }
+            public string? signature_base64 { get; set; }
+        }
+
+        private class SenderDataSignedModel
+        {
             public string? signature_base64 { get; set; }
         }
     }
